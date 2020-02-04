@@ -4,5 +4,6 @@
         <page name='printPrimeNumbers'/>
         <page name='runClosures'/>
         <page name='Fibonacci'/>
+        <page name='Incrementer'/>
     </pages>
 </playground>
