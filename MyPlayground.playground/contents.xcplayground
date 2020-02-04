@@ -6,5 +6,6 @@
         <page name='Fibonacci'/>
         <page name='Incrementer'/>
         <page name='Factorial'/>
+        <page name='ReverseAnArray'/>
     </pages>
 </playground>
