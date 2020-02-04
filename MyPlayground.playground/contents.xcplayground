@@ -3,5 +3,6 @@
     <pages>
         <page name='printPrimeNumbers'/>
         <page name='runClosures'/>
+        <page name='Fibonacci'/>
     </pages>
 </playground>
