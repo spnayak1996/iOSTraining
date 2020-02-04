@@ -75,4 +75,4 @@ func printNthFibonacci(n n: Int) {
     printVeryLargePositiveInt(nthFibonacci(n: n))
 }
 
-printNthFibonacci(n: 1000) // can only calculate till n= 92
+printNthFibonacci(n: 1000) // can calculate for any n
