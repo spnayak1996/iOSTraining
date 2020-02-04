@@ -8,9 +8,7 @@ func nthFibonacci(n count: Int64) -> Int64 {
         return 1
     } else {
         for _ in 1...(count - 2) {
-            let temp = fN
-            fN = fN_1 + fN
-            fN_1 = temp
+            (fN, fN_1) = (fN + fN_1,fN)
         }
         return fN
     }
