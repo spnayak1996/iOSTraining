@@ -4,13 +4,13 @@ func printDone() -> Void {
     print("MyFunc Done!")
 }
 
-func runClosure(closure: () -> ()) {
+func logger(closure: () -> ()) {
     print("Running MyFunc")
     closure()
     printDone()
 }
 
-runClosure {
+logger {
     DispatchQueue.global(qos: .background).async {
         for i in 1...10 {
             print(i)
