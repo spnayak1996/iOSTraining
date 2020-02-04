@@ -7,5 +7,6 @@
         <page name='Incrementer'/>
         <page name='Factorial'/>
         <page name='ReverseAnArray'/>
+        <page name='FrequencyInString'/>
     </pages>
 </playground>
