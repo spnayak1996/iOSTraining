@@ -1,8 +1,8 @@
 import Foundation
 
 func printDictionary<T,S>(_ dict: [T:S]) {
-    for key in dict.keys {
-        print("\"\(key)\" => \(dict[key]!)")
+    for (key,value) in dict {
+        print("\"\(key)\" => \(value)")
     }
 }
 

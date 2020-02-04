@@ -7,7 +7,7 @@ func nthFibonacci(n count: Int64) -> Int64 {
     if count <= 2 {
         return 1
     } else {
-        for i in 1...(count - 2) {
+        for _ in 1...(count - 2) {
             let temp = fN
             fN = fN_1 + fN
             fN_1 = temp
