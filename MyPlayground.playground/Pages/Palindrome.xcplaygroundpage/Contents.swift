@@ -13,13 +13,13 @@ extension String {
         return true
     }
     
-    func trim() -> String {
+    func trimWhiteSpace() -> String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 
 func checkPalindrome(_ string: String) {
-    if string.trim() == "" {
+    if string.trimWhiteSpace() == "" {
         print("Please provide an input")
         return
     } else {
