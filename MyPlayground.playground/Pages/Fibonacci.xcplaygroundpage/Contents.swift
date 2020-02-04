@@ -1,6 +1,6 @@
 import Foundation
 
-func nthFibonacciUnsigned(n count: Int) -> UInt64 {//Int64 for count was not required and Int64 was not required anyways because this is 64 nit machine; UInt64 only increases 1 bit so there was not much effect
+func nthFibonacciUnsigned(n count: Int) -> UInt64 {//Int64 for count was not required and Int64 was not required anyways because this is 64 bit machine; UInt64 only increases 1 bit so there was not much effect
     var fN_1: UInt64 = 1
     var fN: UInt64 = 2
     
