@@ -71,4 +71,8 @@ func printVeryLargePositiveInt(_ a: [Int]) {
     print(output)
 }
 
-printVeryLargePositiveInt(nthFibonacci(n: 1000)) // can only calculate till n= 92
+func printNthFibonacci(n n: Int) {
+    printVeryLargePositiveInt(nthFibonacci(n: n))
+}
+
+printNthFibonacci(n: 1000) // can only calculate till n= 92
