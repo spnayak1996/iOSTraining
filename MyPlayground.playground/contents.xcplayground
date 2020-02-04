@@ -9,5 +9,6 @@
         <page name='ReverseAnArray'/>
         <page name='FrequencyInString'/>
         <page name='Palindrome'/>
+        <page name='MinMax'/>
     </pages>
 </playground>
