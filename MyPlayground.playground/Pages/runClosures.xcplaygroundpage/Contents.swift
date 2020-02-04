@@ -1,7 +1,19 @@
-//: [Previous](@previous)
-
 import Foundation
 
-var str = "Hello, playground"
+func printDone() -> Void {
+    print("MyFunc Done!")
+}
 
-//: [Next](@next)
+func runClosure(closure: () -> ()) {
+    print("Running MyFunc")
+    closure()
+    printDone()
+}
+
+runClosure {
+    DispatchQueue.global(qos: .background).async {
+        for i in 1...10 {
+            print(i)
+        }
+    }
+}
