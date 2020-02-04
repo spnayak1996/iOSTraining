@@ -8,5 +8,6 @@
         <page name='Factorial'/>
         <page name='ReverseAnArray'/>
         <page name='FrequencyInString'/>
+        <page name='Palindrome'/>
     </pages>
 </playground>
