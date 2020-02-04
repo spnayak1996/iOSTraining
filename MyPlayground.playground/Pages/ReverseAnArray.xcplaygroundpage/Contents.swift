@@ -13,3 +13,11 @@ func arrayReverser(array arr: [Int]) -> [Int] {
 }
 
 print(arrayReverser(array: [1,2,3,4,5,6,7,8,9]))
+
+//for O(1) complexity
+
+func reverse(array arr: [Int]) -> [Int] {
+    return arr.reversed()
+}
+
+print(reverse(array: [1,2,3,4,5,6,7,8,9]))
