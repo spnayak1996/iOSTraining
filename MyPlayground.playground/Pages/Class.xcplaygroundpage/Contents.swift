@@ -2,7 +2,7 @@ import Foundation
 
 
 class Circle {
-    var radius: Double              //stored property editable (variable)
+    public var radius: Double              //stored property editable (variable)
     let pi = 3.141592               //stored property non-editable (constant)
     public var area: Double {              //computed property with both get and set
         get {
