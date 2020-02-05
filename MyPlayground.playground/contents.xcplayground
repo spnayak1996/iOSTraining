@@ -11,5 +11,6 @@
         <page name='Palindrome'/>
         <page name='MinMax'/>
         <page name='test'/>
+        <page name='Class'/>
     </pages>
 </playground>
