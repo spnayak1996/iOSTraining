@@ -8,24 +8,32 @@ func printDictionary<T,S>(_ dict: [T:S]) {
     print(string)
 }
 
-func updateCharFreqDict(_ dict: inout [Character: Int], _ char: Character) {
+func updateCharFreqDict(_ dict: inout [Character: Int], char: Character) {
     dict[char] = (dict[char] ?? 0) + 1
+}
+
+func updateCharFreqDict(_ dict: inout [Character: Int], string: String) {
+    for char in string {
+        updateCharFreqDict(&dict, char: char)
+    }
+}
+
+func updateCharFreqDict(_ dict: inout [Character: Int], array: [String]) {
+    for string in array {
+        updateCharFreqDict(&dict, string: string)
+    }
 }
 
 func printFrequencies<T>(_ input: T) {
     var dict = [Character: Int]()
-    if let string = input as? String {
-        for char in string.lowercased() {
-            updateCharFreqDict(&dict, char)
-        }
-    } else if let array = input as? [String] {
-        for string in array {
-            for char in string.lowercased() {
-                updateCharFreqDict(&dict, char)
-            }
-        }
-    } else {
+    switch input {
+    case let string as String:
+        updateCharFreqDict(&dict, string: string)
+    case let array as [String]:
+        updateCharFreqDict(&dict, array: array)
+    default:
         print("Invalid Input: Enter a string or array of strings")
+        return
     }
     printDictionary(dict)
 }
