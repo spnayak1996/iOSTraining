@@ -13,6 +13,7 @@ extension String {
     
     subscript(_ index: Int) -> Character? {
         if index < 0 || index > self.count - 1 {
+            print("index out of bound while accessing \(index)th index in \"\(self)\"")
             return nil
         } else {
             let requiredIndex = self.index(self.startIndex, offsetBy: index)
