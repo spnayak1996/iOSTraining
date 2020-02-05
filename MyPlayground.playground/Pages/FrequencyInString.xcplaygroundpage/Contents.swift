@@ -12,34 +12,23 @@ func updateCharFreqDict(_ dict: inout [Character: Int], _ char: Character) {
     dict[char] = (dict[char] ?? 0) + 1
 }
 
-func createFrequencyDict(_ string: String) -> [Character: Int] {
+func printFrequencies<T>(_ input: T) {
     var dict = [Character: Int]()
-    for char in string.lowercased() {
-        updateCharFreqDict(&dict, char)
-    }
-    return dict
-}
-
-func createFrequencyDict(_ array: [String]) -> [Character: Int] {
-    var dict = [Character: Int]()
-    for string in array {
+    if let string = input as? String {
         for char in string.lowercased() {
             updateCharFreqDict(&dict, char)
         }
+    } else if let array = input as? [String] {
+        for string in array {
+            for char in string.lowercased() {
+                updateCharFreqDict(&dict, char)
+            }
+        }
+    } else {
+        print("Invalid Input: Enter a string or array of strings")
     }
-    return dict
-}
-
-func printFrequencies(string: String) {
-    let dict = createFrequencyDict(string)
     printDictionary(dict)
 }
 
-func printFrequencies(array: [String]) {
-    let dict = createFrequencyDict(array)
-    printDictionary(dict)
-}
-
-printFrequencies(string: "Sarthak Pattanayak")
-print()
-printFrequencies(array: ["Sarthak Pattanayak","Satish Chauhan"])
+printFrequencies("Sarthak Pattanayak")
+printFrequencies(["Sarthak Pattanayak","Satish Chauhan"])
