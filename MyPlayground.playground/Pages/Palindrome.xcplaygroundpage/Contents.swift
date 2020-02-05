@@ -4,13 +4,20 @@ extension String {
     func isPalindrome() -> Bool {
         let n = self.count
         for i in 0...(n % 2 == 0 ? (n/2 - 1) : ((n - 1)/2 - 1) ) {
-            let frontIndex = self.index(self.startIndex, offsetBy: i)
-            let backIndex = self.index(self.startIndex, offsetBy: (n - 1 - i))
-            if self[frontIndex] != self[backIndex] {
+            if self[i] != self[n - 1 - i] {
                 return false
             }
         }
         return true
+    }
+    
+    subscript(_ index: Int) -> Character? {
+        if index < 0 || index > self.count - 1 {
+            return nil
+        } else {
+            let requiredIndex = self.index(self.startIndex, offsetBy: index)
+            return self[requiredIndex]
+        }
     }
     
     func trimWhiteSpace() -> String {
