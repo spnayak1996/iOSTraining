@@ -54,17 +54,7 @@ func productSingleDigit(_ n: Int, _ arr: [Int]) -> [Int] {
     let m = arr.count
     for i in 1...m {
         let sum = (n * arr[m - i]) + carryOver
-        if sum > 9 {
-            output.insert(sum % 10, at: 0)
-            if i == m {
-                output.insert(sum/10, at: 0)
-            } else {
-                carryOver = sum/10
-            }
-        } else {
-            carryOver = 0
-            output.insert(sum, at: 0)
-        }
+        carryOver = calculateCarryover(&output, sum, isLastDigit: i == m)
     }
     return output
 }
@@ -78,19 +68,25 @@ func addVeryLargePositiveInts(_ arr1: [Int], _ arr2: [Int]) -> [Int] {
     let n = a.count
     for i in 1...n {
         let sum = a[n - i] + b[n - i] + carryOver
-        if sum > 9 {
-            output.insert(sum % 10, at: 0)
-            if i == n {
-                output.insert(sum/10, at: 0)
-            } else {
-                carryOver = sum/10
-            }
-        } else {
-            carryOver = 0
-            output.insert(sum, at: 0)
-        }
+        carryOver = calculateCarryover(&output, sum, isLastDigit: i == n)
     }
     return output
+}
+
+func calculateCarryover(_ output: inout [Int], _ sum: Int, isLastDigit: Bool) -> Int {
+    var carryOver = 0
+    if sum > 9 {
+        output.insert(sum % 10, at: 0)
+        if isLastDigit {
+            output.insert(sum/10, at: 0)
+        } else {
+            carryOver = sum/10
+        }
+    } else {
+        carryOver = 0
+        output.insert(sum, at: 0)
+    }
+    return carryOver
 }
 
 func makeEqualSizes(_ a: inout [Int], _ b: inout [Int]) {
@@ -102,11 +98,10 @@ func makeEqualSizes(_ a: inout [Int], _ b: inout [Int]) {
 }
 
 func printVeryLargePositiveInt(_ a: [Int]) {
-    var output = ""
     for i in a {
-        output += String(i)
+        print(i, terminator: "")
     }
-    print(output)
+    print()
 }
 
 func printFactorial(_ n: Int) {
