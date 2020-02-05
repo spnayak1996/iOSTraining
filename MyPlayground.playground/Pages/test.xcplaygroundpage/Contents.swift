@@ -3,34 +3,54 @@ import Foundation
 class Food {
     var name: String
     init(name: String) {
-        print("A")
+//        print("A")
         self.name = name
-        print("a")
+//        print("a")
     }
     convenience init() {
-        print("B")
+//        print("B")
         self.init(name: "[Unnamed]")
-        print("b")
+//        print("b")
     }
 }
 
 class RecipeIngredient: Food {
     var quantity: Int
     init(name: String, quantity: Int) {
-        print("C")
+//        print("C")
         self.quantity = quantity
         super.init(name: name)
-        print("c")
+//        print("c")
     }
     override convenience init(name: String) {
-        print("D")
+//        print("D")
         self.init(name: name, quantity: 1)
-        print("d")
+//        print("d")
+    }
+}
+
+class ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    var description: String {
+        var output = purchased ? "✔ " : "✘ "
+        output += "\(quantity) x \(name)"
+        return output
     }
 }
 
 //let random = RecipeIngredient()
 //print(random.name, random.quantity)
+
+var breakfastList = [
+    ShoppingListItem(),
+    ShoppingListItem(name: "Bacon"),
+    ShoppingListItem(name: "Eggs", quantity: 6),
+]
+breakfastList[0].name = "Orange juice"
+breakfastList[0].purchased = true
+for item in breakfastList {
+    print(item.description)
+}
 
 class Quadrilateral {
     var name: String
@@ -57,6 +77,7 @@ class Quadrilateral {
 
 class Rectangle: Quadrilateral {
     var area: Int {
+        print("getting area")
         return side1 * side2
     }
     convenience init(side1: Int, side2: Int) {
@@ -72,3 +93,6 @@ class Square: Rectangle {
 
 let mySquare = Square(side1: 5, side2: 5, side3: 5, side4: 5)
 print(mySquare.name, mySquare.side1, mySquare.side2, mySquare.side3, mySquare.side4, mySquare.area, mySquare.perimeter)
+
+print(type(of: mySquare.area))
+print(mySquare.area)

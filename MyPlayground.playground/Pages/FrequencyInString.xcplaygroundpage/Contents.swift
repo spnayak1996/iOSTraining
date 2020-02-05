@@ -8,10 +8,14 @@ func printDictionary<T,S>(_ dict: [T:S]) {
     print(string)
 }
 
+func updateCharFreqDict(_ dict: inout [Character: Int], _ char: Character) {
+    dict[char] = (dict[char] ?? 0) + 1
+}
+
 func createFrequencyDict(_ string: String) -> [Character: Int] {
     var dict = [Character: Int]()
-    for char in string {
-        dict[char] = (dict[char] ?? 0) + 1
+    for char in string.lowercased() {
+        updateCharFreqDict(&dict, char)
     }
     return dict
 }
@@ -19,8 +23,8 @@ func createFrequencyDict(_ string: String) -> [Character: Int] {
 func createFrequencyDict(_ array: [String]) -> [Character: Int] {
     var dict = [Character: Int]()
     for string in array {
-        for char in string {
-            dict[char] = (dict[char] ?? 0) + 1
+        for char in string.lowercased() {
+            updateCharFreqDict(&dict, char)
         }
     }
     return dict
