@@ -12,5 +12,6 @@
         <page name='MinMax'/>
         <page name='test'/>
         <page name='Class'/>
+        <page name='Struct'/>
     </pages>
 </playground>

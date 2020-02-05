@@ -4,7 +4,7 @@ import Foundation
 class Circle {
     var radius: Double              //stored property editable (variable)
     let pi = 3.141592               //stored property non-editable (constant)
-    var area: Double {              //computed property with both get and set
+    public var area: Double {              //computed property with both get and set
         get {
             return pi * radius * radius
         }
@@ -12,7 +12,7 @@ class Circle {
             radius = (newArea/pi).squareRoot()
         }
     }
-    var perimeter: Double {         //computed property with only get
+    private var perimeter: Double {         //computed property with only get
         return 2 * pi * radius
     }
     
@@ -24,7 +24,7 @@ class Circle {
         self.init(radius: 1)
     }
     
-    func printDescription() {       //function that prints radius, perimeter and area
+    public func printDescription() {       //function that prints radius, perimeter and area
         print("A circle with radius = \(radius), perimeter = \(self.perimeter), area = \(self.area)")
     }
 }
