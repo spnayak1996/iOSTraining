@@ -22,27 +22,21 @@ func factorial(_ n: Int) -> Int {
     }
 }
 
-print(factorial(20)) // only calculates for n <= 20
-
-
-func factorialForLargeN(_ n: Int) -> [Int] {
-    if n == 1 || n == 0 {
-        return [1]
-    } else if n == 2 {
-        return [2]
+func factorialGreaterThanTwenty(_ n: Int) -> [Int] {
+    if n == 20 {
+        return factorial(20).digitsArray()
     } else {
-        return product(n, factorialForLargeN(n - 1))
+        return product(n.digitsArray(), factorialGreaterThanTwenty(n - 1))
     }
-    
 }
 
-func product(_ n: Int, _ arr: [Int]) -> [Int] {
+func product(_ multiplier: [Int], _ multiplicand: [Int]) -> [Int] {
     var output = [Int]()
-    for digit in n.digitsArray() {
+    for digit in multiplier {
         if output == [] {
-            output = productSingleDigit(digit, arr)
+            output = productSingleDigit(digit, multiplicand)
         } else {
-            output = addVeryLargePositiveInts(output + [0], productSingleDigit(digit, arr))
+            output = addVeryLargePositiveInts(output + [0], productSingleDigit(digit, multiplicand))
         }
     }
     return output
@@ -105,8 +99,13 @@ func printVeryLargePositiveInt(_ a: [Int]) {
 }
 
 func printFactorial(_ n: Int) {
-    printVeryLargePositiveInt(factorialForLargeN(n))
+    if n <= 20 {
+        print(factorial(n))
+    } else {
+        printVeryLargePositiveInt(factorialGreaterThanTwenty(n))
+    }
 }
 
 printFactorial(100)
+printFactorial(50)
 

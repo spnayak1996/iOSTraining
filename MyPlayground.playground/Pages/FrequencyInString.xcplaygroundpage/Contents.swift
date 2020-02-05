@@ -13,7 +13,7 @@ func updateCharFreqDict(_ dict: inout [Character: Int], char: Character) {
 }
 
 func updateCharFreqDict(_ dict: inout [Character: Int], string: String) {
-    for char in string {
+    for char in string.lowercased() {
         updateCharFreqDict(&dict, char: char)
     }
 }
