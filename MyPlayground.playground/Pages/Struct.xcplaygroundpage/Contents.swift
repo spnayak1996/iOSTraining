@@ -12,7 +12,7 @@ struct Circle {
             radius = newValue/(2 * pi)
         }
     }
-    private var area: Double {                  //private stored property
+    private var area: Double {                  //private computed property
         get {
             return pi * radius * radius
         }
@@ -33,17 +33,19 @@ extension Circle {
     }
 }
 
-let circle0 = Circle()
-var circle1 = Circle(name: "circle")
-var circle2 = Circle(name: "circle2", radius: 3)
-var circle3 = Circle(radius: 2)
+let circle0 = Circle()                              //custom initializer
+var circle1 = Circle(name: "circle")                //default initializer
+var circle2 = Circle(name: "circle2", radius: 3)    //default initializer
+var circle3 = Circle(radius: 2)                     //custom initializer
 
-circle0.printDescription()
+circle0.printDescription()                      //function call
 circle1.printDescription()
 circle2.printDescription()
 circle3.printDescription()
 
-circle1.perimeter = 4
+print(circle0.radius)                           //get for variable
+
+circle1.perimeter = 4                           //public set
 circle2.perimeter = 20
 circle3.perimeter = 40
 
