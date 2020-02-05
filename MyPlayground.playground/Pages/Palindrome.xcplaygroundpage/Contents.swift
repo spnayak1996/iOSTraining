@@ -3,7 +3,7 @@ import Foundation
 extension String {
     func isPalindrome() -> Bool {
         let n = self.count
-        for i in 0...(n - 1) {
+        for i in 0...(n % 2 == 0 ? (n/2 - 1) : ((n + 1)/2 - 1) ) {
             let frontIndex = self.index(self.startIndex, offsetBy: i)
             let backIndex = self.index(self.startIndex, offsetBy: (n - 1 - i))
             if self[frontIndex] != self[backIndex] {

@@ -10,5 +10,6 @@
         <page name='FrequencyInString'/>
         <page name='Palindrome'/>
         <page name='MinMax'/>
+        <page name='test'/>
     </pages>
 </playground>
