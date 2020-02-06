@@ -14,5 +14,6 @@
         <page name='Class'/>
         <page name='Struct'/>
         <page name='Vehicle'/>
+        <page name='Calculator'/>
     </pages>
 </playground>

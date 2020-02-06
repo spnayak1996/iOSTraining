@@ -10,7 +10,7 @@ class Vehicle {
     }
     
     init() {
-        self.name = "deafult"
+        self.name = "default"
         self.price = 0
     }
     
