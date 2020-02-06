@@ -7,14 +7,18 @@ extension Double {
 }
 
 struct Utils {
+    static func changeValue<T>(_ dict: inout [T: Int], _ key: T, _ change: Int) {
+        dict[key] = (dict[key] ?? 0) + change
+    }
+    
     static func updateDict<T>(_ dict: inout [T: Int], _ key: T, _ change: Int) -> Bool {
         if change > 0 {
-            dict[key] = (dict[key] ?? 0) + change
+            changeValue(&dict, key, change)
             return true
         } else if change < 0 {
             if let qty = dict[key], qty > 0 {
                 if qty > (-change) {
-                    dict[key] = (dict[key] ?? 0) + change
+                    changeValue(&dict, key, change)
                 }
                 dict[key] = nil
                 return true
@@ -108,9 +112,10 @@ class Cart {
     func printBill() {
         print()
         print("name      price      qty      tax")
+        let shoppingCart = Cart.cart.shoppingCart
         var total: Double = 0
-        for key in Cart.cart.shoppingCart.keys.sorted(by: { $0.name < $1.name }) {
-            if let qty = Cart.cart.shoppingCart[key] {
+        for key in shoppingCart.keys.sorted(by: { $0.name < $1.name }) {
+            if let qty = shoppingCart[key] {
                 let tax = key.calculateTax()
                 total += (key.price + tax) * Double(qty)
                 print("\(key.name)      \(key.price)      \(qty)      \(tax)")
