@@ -16,5 +16,6 @@
         <page name='Vehicle'/>
         <page name='Calculator'/>
         <page name='CustomerAccountBalance'/>
+        <page name='BillCalculator'/>
     </pages>
 </playground>
