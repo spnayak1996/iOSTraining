@@ -4,6 +4,11 @@ struct Constants {
     static let accNoKey = "ACCNOKEY"
 }
 
+enum WithdrawalError: Error {
+    case InvalidWithdrawalAmount
+    case InsufficientBalance
+}
+
 struct Utils {
     static func getAccountNo() -> Int {
         let currentCount = UserDefaults.standard.integer(forKey: Constants.accNoKey)
@@ -41,18 +46,26 @@ class Customer {
         print("Successfully deposited \(amount) INR. Your new balance is \(balance) INR")
     }
     
-    func withdraw(amount: Int) -> Int? {
+    private func withdraw(_ amount: Int) throws -> Int {
         guard amount > 0 else {
-            print("Withdraw amount should be greater than 0")
-            return nil
+            throw WithdrawalError.InvalidWithdrawalAmount
         }
         guard amount <= balance else {
-            print("Not enough account balance")
-            return nil
+            throw WithdrawalError.InsufficientBalance
         }
         self.balance -= amount
         print("successfully withdrawn \(amount) INR. Your new balance is \(balance) INR")
         return amount
+    }
+    
+    func withdraw(amount: Int) {
+        do {
+            try withdraw(amount)
+        } catch WithdrawalError.InsufficientBalance {
+            print("Not enough account balance")
+        } catch {
+            print("Invalid withdrawal amount")
+        }
     }
     
 }
@@ -65,6 +78,7 @@ let account1 = Customer(name: "name1")
 account1?.displayBalance()
 account1?.deposit(amount: 300)
 account1?.withdraw(amount: 2000)
+account1?.withdraw(amount: -2000)
 account1?.displayBalance()
 account1?.withdraw(amount: 500)
 
