@@ -1,34 +1,40 @@
 import Foundation
 
-struct Constants {
-    static let accNoKey = "ACCNOKEY"
-}
-
 enum WithdrawalError: Error {
     case InvalidWithdrawalAmount
     case InsufficientBalance
 }
 
-struct Utils {
-    static func getAccountNo() -> Int {
-        let currentCount = UserDefaults.standard.integer(forKey: Constants.accNoKey)
-        UserDefaults.standard.set(currentCount + 1, forKey: Constants.accNoKey)
-        return currentCount + 1
-    }
+enum InitializationError: Error {
+    case EmptyName
 }
 
+enum DepositionError: Error {
+    case InvalidAmount
+}
 
 class Customer {
-    private(set) var name: String
-    private var accountNo: Int
+    let name: String
+    let accountNo: Int
     private var balance: Int
     
-    init?(name: String) {
-        guard !name.isEmpty else {
-            print("Name should not be empty")
-            return nil
+    private struct Utils {
+        private struct Constants {
+            static let accNoKey = "ACCNOKEY"
         }
-        self.name = name
+        
+        static func getAccountNo() -> Int {
+            let currentCount = UserDefaults.standard.integer(forKey: Constants.accNoKey)
+            UserDefaults.standard.set(currentCount + 1, forKey: Constants.accNoKey)
+            return currentCount + 1
+        }
+    }
+    
+    init(accountName: String) throws {
+        guard !accountName.isEmpty else {
+            throw InitializationError.EmptyName
+        }
+        self.name = accountName
         self.accountNo = Utils.getAccountNo()
         self.balance = 1000
     }
@@ -37,16 +43,16 @@ class Customer {
         print("Hi, \(name). Your account balance for acc. no. \(accountNo) is \(balance) INR")
     }
     
-    func deposit(amount: Int) {
+    func deposit(amount: Int) throws -> Int {
         guard amount > 0 else {
-            print("Deposit amount should be greater than 0")
-            return
+            throw DepositionError.InvalidAmount
         }
         self.balance += amount
-        print("Successfully deposited \(amount) INR. Your new balance is \(balance) INR")
+        print("Deposit Success")
+        return amount
     }
     
-    private func withdraw(_ amount: Int) throws -> Int {
+    func withdraw(amount: Int) throws -> Int {
         guard amount > 0 else {
             throw WithdrawalError.InvalidWithdrawalAmount
         }
@@ -54,18 +60,8 @@ class Customer {
             throw WithdrawalError.InsufficientBalance
         }
         self.balance -= amount
-        print("successfully withdrawn \(amount) INR. Your new balance is \(balance) INR")
+        print("Withdraw success")
         return amount
-    }
-    
-    func withdraw(amount: Int) {
-        do {
-            try withdraw(amount)
-        } catch WithdrawalError.InsufficientBalance {
-            print("Not enough account balance")
-        } catch {
-            print("Invalid withdrawal amount")
-        }
     }
     
 }
@@ -74,20 +70,23 @@ class Customer {
 //test
 //UserDefaults.standard.set(0, forKey: Constants.accNoKey) // for reseting the acc no count
 
-let account1 = Customer(name: "name1")
-account1?.displayBalance()
-account1?.deposit(amount: 300)
-account1?.withdraw(amount: 2000)
-account1?.withdraw(amount: -2000)
-account1?.displayBalance()
-account1?.withdraw(amount: 500)
+//let failedAccount = Customer(accountName: "")             //the commented statements throw error
+
+let account1 = Customer(accountName: "name1")
+account1.displayBalance()
+//account1.deposit(amount: 0)
+account1.deposit(amount: 300)
+//account1.withdraw(amount: 2000)
+//account1.withdraw(amount: -2000)
+account1.displayBalance()
+account1.withdraw(amount: 500)
 
 print()
-let account2 = Customer(name: "name2")
-account2?.displayBalance()
+let account2 = Customer(accountName: "name2")
+account2.displayBalance()
 print()
-let account3 = Customer(name: "name3")
-account3?.displayBalance()
+let account3 = Customer(accountName: "name3")
+account3.displayBalance()
 
 
 

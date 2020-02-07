@@ -8,23 +8,18 @@ extension Double {
 
 struct Utils {
     static func changeValue<T>(_ dict: inout [T: Int], _ key: T, _ change: Int) {
-        dict[key] = (dict[key] ?? 0) + change
+        let newVal = (dict[key] ?? 0) + change
+        dict[key] = newVal > 0 ? newVal : nil
     }
     
     static func updateDict<T>(_ dict: inout [T: Int], _ key: T, _ change: Int) -> Bool {
-        if change > 0 {
-            changeValue(&dict, key, change)
+        guard change != 0 else {
             return true
-        } else if change < 0 {
-            if let qty = dict[key], qty > 0 {
-                if qty > (-change) {
-                    changeValue(&dict, key, change)
-                }
-                dict[key] = nil
-                return true
-            }
+        }
+        if dict[key] == nil && change < 0 {
             return false
         }
+        changeValue(&dict, key, change)
         return true
     }
 }
@@ -35,9 +30,7 @@ class Category {
     
     init(name: String) {
         self.name = name
-        if name == "Book" || name == "Food" || name == "Medicine" {
-            self.exempted = true
-        }
+        self.exempted = (name == "Book" || name == "Food" || name == "Medicine")
     }
 }
 
