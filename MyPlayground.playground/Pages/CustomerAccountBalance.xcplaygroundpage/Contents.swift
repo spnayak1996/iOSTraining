@@ -48,7 +48,6 @@ class Customer {
             throw DepositionError.InvalidAmount
         }
         self.balance += amount
-        print("Deposit Success")
         return amount
     }
     
@@ -60,7 +59,6 @@ class Customer {
             throw WithdrawalError.InsufficientBalance
         }
         self.balance -= amount
-        print("Withdraw success")
         return amount
     }
     
