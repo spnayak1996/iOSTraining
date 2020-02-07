@@ -41,16 +41,16 @@ class ShoppingListItem: RecipeIngredient {
 //let random = RecipeIngredient()
 //print(random.name, random.quantity)
 
-var breakfastList = [
-    ShoppingListItem(),
-    ShoppingListItem(name: "Bacon"),
-    ShoppingListItem(name: "Eggs", quantity: 6),
-]
-breakfastList[0].name = "Orange juice"
-breakfastList[0].purchased = true
-for item in breakfastList {
-    print(item.description)
-}
+//var breakfastList = [
+//    ShoppingListItem(),
+//    ShoppingListItem(name: "Bacon"),
+//    ShoppingListItem(name: "Eggs", quantity: 6),
+//]
+//breakfastList[0].name = "Orange juice"
+//breakfastList[0].purchased = true
+//for item in breakfastList {
+//    print(item.description)
+//}
 
 class Quadrilateral {
     var name: String
@@ -91,8 +91,80 @@ class Square: Rectangle {
     }
 }
 
-let mySquare = Square(side1: 5, side2: 5, side3: 5, side4: 5)
-print(mySquare.name, mySquare.side1, mySquare.side2, mySquare.side3, mySquare.side4, mySquare.area, mySquare.perimeter)
+//let mySquare = Square(side1: 5, side2: 5, side3: 5, side4: 5)
+//print(mySquare.name, mySquare.side1, mySquare.side2, mySquare.side3, mySquare.side4, mySquare.area, mySquare.perimeter)
+//
+//print(type(of: mySquare.area))
+//print(mySquare.area)
 
-print(type(of: mySquare.area))
-print(mySquare.area)
+
+enum Beverage: CaseIterable {
+    case coffee, tea, juice
+}
+
+//print(Beverage.allCases, separator: ", ")
+
+enum Planet: Double {
+    case mercury = 10, venus, earth, mars, jupiter, saturn, uranus, neptune
+}
+
+//print(Planet.mars.rawValue)
+
+indirect enum ArithmeticExpression {
+    case number(Int)
+    case addition(ArithmeticExpression, ArithmeticExpression)
+    case multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+
+func evaluate(_ expression: ArithmeticExpression) -> Int {
+    switch expression {
+    case let .number(a):
+        return a
+    case let .addition(expression1, expression2):
+        return evaluate(expression1) + evaluate(expression2)
+    case let .multiplication(expression1, expression2):
+        return evaluate(expression1) * evaluate(expression2)
+    }
+}
+
+//let expression = ArithmeticExpression.multiplication(.addition(.number(5), .number(10)), .number(3))
+//print(evaluate(expression))
+
+var test: String? = .none               //.none for optional is same as nil
+//print(test)
+
+enum Result<T> {                        //generic associated enum
+    case Success(T)
+    case Failure(NSError)
+}
+
+enum Barcode {
+    case UPCA(Int, Int, Int)
+    case QRCode(String)
+}
+
+extension Barcode: RawRepresentable {           //use RawRepresentable extension on an enum with associated values to hav both
+
+    public typealias RawValue = String
+
+    /// Failable Initalizer
+    public init?(rawValue: RawValue) {
+        switch rawValue {
+        case "Order 1":  self = .UPCA(1,1,1)
+        case "Order 2":  self = .QRCode("foo")
+        default:
+            return nil
+        }
+    }
+
+    /// Backing raw value
+    public var rawValue: RawValue {
+        switch self {
+        case .UPCA:     return "Order 1"
+        case .QRCode:   return "Order 2"
+        }
+    }
+
+}
+
+

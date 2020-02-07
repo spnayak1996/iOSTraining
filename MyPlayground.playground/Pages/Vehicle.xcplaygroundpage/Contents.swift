@@ -1,21 +1,16 @@
 import Foundation
 
 class Vehicle {
-    private(set) var name: String
-    var price: UInt
+    let name: String
+    private(set) var price: UInt
     
     init(name: String, price: UInt) {
         self.name = name
         self.price = price
     }
     
-    init() {
-        self.name = "default"
-        self.price = 0
-    }
-    
-    func printDescription() {
-        print("name: \(name); price: \(price) INR")
+    func description() -> String {
+        return "name: \(name); price: \(price) INR"
     }
     
     func changePrice(newPrice: UInt) {
@@ -25,28 +20,23 @@ class Vehicle {
 }
 
 class Bike: Vehicle {
-    private var dealer: String
+    private let dealer: String
     
     init(name: String, price: UInt, dealer: String) {
         self.dealer = dealer
         super.init(name: name, price: price)
     }
     
-    override init() {
-        self.dealer = "default"
-        super.init()
-    }
-    
-    override func printDescription() {
-        print("name: \(name); price: \(price) INR; dealer: \(dealer)")
+    override func description() -> String {
+        return "name: \(name); price: \(price) INR; dealer: \(dealer)"
     }
 }
 
 
-let bike1 = Bike()
-bike1.printDescription()
+let bike1 = Bike(name: "Honda", price: 50_000, dealer: "Vinayak")
+print(bike1.description())
 
 let bike2 = Bike(name: "Kawasaki", price: 300_000, dealer: "Ninja")
-bike2.printDescription()
-bike2.price = 200_000
-bike2.printDescription()
+print(bike2.description())
+bike2.changePrice(newPrice: 200_000)
+print(bike2.description())

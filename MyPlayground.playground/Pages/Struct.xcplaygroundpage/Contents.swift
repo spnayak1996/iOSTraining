@@ -3,7 +3,7 @@ import Foundation
 struct Circle {
     public var name: String
     private(set) var radius: Double = 1         //editable stored property(with private setter and public getter
-    let pi = 3.141592                           //non-editabel stored property
+    private let pi = 3.141592                           //non-editabel stored property
     public var perimeter: Double {              //computed properties and public setter
         get {
             return 2 * pi * radius
