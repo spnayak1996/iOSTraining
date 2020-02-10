@@ -167,4 +167,226 @@ extension Barcode: RawRepresentable {           //use RawRepresentable extension
 
 }
 
+enum Operator: Character {
+    case Add = "+"
+    case Subtract = "-"
+    case Product = "*"
+    case Division = "/"
+}
+
+extension Double {
+    func displayIntVal() -> Any {
+        if let intVal = Int(exactly: self) {
+            return intVal
+        } else {
+            return self
+        }
+    }
+}
+
+class Calculator {
+    private var operand1: Double
+    private var operand2: Double
+    private var operation: Operator
+    private var result: Double {
+        return operate()
+    }
+    
+    init?(operand1: Double,by op: Character, operand2: Double) { //failable init
+        if let operation = Operator(rawValue: op) {
+            self.operation = operation
+        } else {
+            print("calculator init failed because of invalid operator.")
+            return nil
+        }
+        self.operand1 = operand1
+        self.operand2 = operand2
+    }
+    
+    private func operate() -> Double {
+        switch operation {
+        case .Add:
+            return operand1 + operand2
+        case .Subtract:
+            return operand1 - operand2
+        case .Product:
+            return operand1 * operand2
+        case .Division:
+            return operand1 / operand2
+        }
+    }
+    
+    func output() -> Any {
+        return result.displayIntVal()
+    }
+    
+    func replaceOperator(by op: Character) {
+        if let operation = Operator(rawValue: op) {
+            self.operation = operation
+            print("operator changed to \(operation.rawValue)")
+        } else {
+            print("Invalid operator")
+        }
+    }
+    
+    func showOperator() {
+        print(operation.rawValue)
+    }
+    
+    func printOutput() {
+        print(self.output())
+    }
+    
+    func changeOperand(_ val: Double, position: UInt) {
+        switch position {
+        case 1:
+            self.operand1 = val
+        case 2:
+            self.operand2 = val
+        default:
+            print("Invalid position")
+            break
+        }
+    }
+    
+    private func getOperand(_ position: Int) -> Any? {
+        switch position {
+        case 1:
+            return operand1.displayIntVal()
+        case 2:
+            return operand2.displayIntVal()
+        default:
+            return nil
+        }
+    }
+    
+    func getExpression() {
+        print("\(getOperand(1)!) \(operation.rawValue) \(getOperand(2)!)")
+    }
+    
+    func resultExpression() {
+        print("\(getOperand(1)!) \(operation.rawValue) \(getOperand(2)!) = \(result)")
+    }
+}
+
+class NamedCalculator: Calculator {
+    var name: String
+    
+    init?(name: String, operand1: Double, by op: Character, operand2: Double) {
+        self.name = name
+        super.init(operand1: operand1, by: op, operand2: operand2)
+    }
+}
+
+//if let calculator1 = Calculator(operand1: 4, by: "p", operand2: 5) {    //returns nil because of invalid operator
+//    calculator1.resultExpression()
+//}
+
+struct Utils {
+    static func checkForValidity(_ side1: Double, _ side2: Double, _ side3: Double) -> Bool {
+        let arr = [side1, side2, side3].sorted()
+        if arr[2] > arr[0] + arr[1] {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+class Triangle {
+    var side1: Double
+    var side2: Double
+    var side3: Double
+    
+    var area: Double {
+        return computeArea()
+    }
+    
+    fileprivate init(a: Double, b: Double, c: Double) {
+        self.side1 = a
+        self.side2 = b
+        self.side3 = c
+    }
+    
+    convenience init?(side1: Double, side2: Double, side3: Double) {
+        if Utils.checkForValidity(side1, side2, side3) {
+            self.init(a: side1, b: side2, c: side3)
+        } else {
+            return nil
+        }
+    }
+    
+    fileprivate func computeArea() -> Double {
+        let s = (side1 + side2 + side3)/2
+        let aSquared = s * (s - side1) * (s - side2)
+        return sqrt(aSquared * (s - side3))
+    }
+}
+
+class Equilateral: Triangle {
+    init(side: Double) {
+        super.init(a: side, b: side, c: side)
+    }
+
+    override fileprivate func computeArea() -> Double {
+        return (sqrt(3) * side1 * side1) / 4
+    }
+}
+
+//let t1 = Equilateral(side: 5)
+//print(t1.area)
+
+protocol Togglable {
+    init()
+    
+    mutating func toggle()
+    
+    func description()
+}
+
+extension Togglable {
+    func description() {
+        print("Done")
+    }
+}
+
+class OnOffSwitch: Togglable {
+    var on: Bool
+    
+    required init() {
+        on = false
+    }
+    
+    func toggle() {
+        on = !on
+    }
+    
+    func description() {
+        print("Hmmm")
+    }
+}
+
+class Switch: Togglable {
+    var button: Bool
+    
+    required init() {
+        button = true
+    }
+    
+    func toggle() {
+        button = !button
+    }
+}
+
+//var arr: [Togglable] = [OnOffSwitch(), Switch()]
+//
+//for i in arr {
+//    i.description()
+//    if let onOffSwitch = i as? OnOffSwitch {
+//        print(onOffSwitch.on)
+//    }
+//    if let button = i as? Switch {
+//        print(button.button)
+//    }
+//}
 
