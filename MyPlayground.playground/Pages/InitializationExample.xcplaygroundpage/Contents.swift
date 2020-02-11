@@ -1,6 +1,6 @@
 import Foundation
 
-/* For a struct, it is not compulsory to provide an initializer. By default, an initializer is provided with arguments as properties that have not been provided a default value. Example: */
+/* For a struct, it is not compulsory to provide an initializer. By default, an initializer is provided with properties as argument. Example: */
 
 struct Circle {
     public var name: String
@@ -38,7 +38,7 @@ extension Circle {
     }
 }
 
-/*As there is no concept of inheritence in structs, the init process is very straightforward. All non-optional properties after init need to have a value.*/
+/*As there is no concept of inheritence in structs, the init process is very straightforward. All non-optional properties after init need to have a value may it be default provided value or value provided in the init.*/
 
 
 /*For a class, there can be 2 kinds of inits: designated & convenience. Designated inits set the values to the properties, but again it is compulsory to set a value for non-optional properties without a deafult value. A designated init must always call one of the designated inits of the superclass after initializing the newly defined properties. Convenience inits are inits that need to call one of the defined inits(convenience or designated) of the class, but ultimately should call one of the designated init of the class. So, designated inits delegate up and convenience inits delegate across. And if a subclass has an init that has the same name and parameters as that of an init in the superclass, then there needs to be an override keyword which would notify the compiler that, this init is overriding an init in its superclass. Example: */
