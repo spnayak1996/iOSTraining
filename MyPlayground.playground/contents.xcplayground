@@ -18,5 +18,6 @@
         <page name='CustomerAccountBalance'/>
         <page name='BillCalculator'/>
         <page name='InitializationExample'/>
+        <page name='ProtocolExample'/>
     </pages>
 </playground>
