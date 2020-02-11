@@ -27,7 +27,7 @@ extension Circle {
     init(radius: Double) {                      //custom initializer
         self.init(name: "unnamed", radius: radius)
     }
-    
+
     init() {                                    //custom initializer
         self.init(name: "unnamed2", radius: 0.5)
     }
