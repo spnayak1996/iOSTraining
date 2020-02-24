@@ -70,21 +70,19 @@ class Customer {
 
 //let failedAccount = Customer(accountName: "")             //the commented statements throw error
 
-let account1 = Customer(accountName: "name1")
+let account1 = try Customer(accountName: "name1")
 account1.displayBalance()
 //account1.deposit(amount: 0)
-account1.deposit(amount: 300)
+try account1.deposit(amount: 300)
 //account1.withdraw(amount: 2000)
 //account1.withdraw(amount: -2000)
 account1.displayBalance()
-account1.withdraw(amount: 500)
+try account1.withdraw(amount: 500)
 
 print()
-let account2 = Customer(accountName: "name2")
+let account2 = try Customer(accountName: "name2")
 account2.displayBalance()
 print()
-let account3 = Customer(accountName: "name3")
+let account3 = try Customer(accountName: "name3")
 account3.displayBalance()
-
-
 

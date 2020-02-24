@@ -58,19 +58,19 @@ protocol Bird2{
     var name:String {get set}
 }
 
-protocol Flyable2{
+private protocol Flyable{
     func fly()
 }
-extension Flyable2{
+extension Flyable{
     func fly(){
         print("I believe i can fly")
     }
 }
 
-protocol Featherable2{
+protocol Featherable{
     var feathers:String { get }
 }
-extension Featherable2{
+extension Featherable{
     var feathers:String {
         get{
             return "I have feather"
@@ -80,7 +80,7 @@ extension Featherable2{
 
 /* Now mt implementation becomes less cumbersome and easy to modify and flexible. The revised implementation is as folows:*/
 
-struct Parrot2:Bird2, Flyable2, Featherable2{
+struct Parrot2:Bird2&Flyable&Featherable{
     var name: String
     
     init(name: String){
@@ -96,7 +96,7 @@ struct Parrot2:Bird2, Flyable2, Featherable2{
     }
 }
 
-struct Eagle2:Bird2, Flyable2, Featherable2 {
+struct Eagle2:Bird2, Flyable, Featherable {
     var name: String
     
     init(name:String){
@@ -107,9 +107,9 @@ struct Eagle2:Bird2, Flyable2, Featherable2 {
         print("I can fly very high.")
     }
     
-    var feathers: String {
-        return "I have grey feathers."
-    }
+//    var feathers: String {
+//        return "I have grey feathers."
+//    }
 }
 
 struct Penguin2:Bird2 {
@@ -121,3 +121,6 @@ struct Penguin2:Bird2 {
 }
 
 /* protools can make life easier when handling multiple disjoint properties with need of very high flexibility. Protocols also hlp unify many different objects into one functionality for simpler implementation. In other words, protocols canhelp reduce complexity that may arise while only use of classes.*/
+
+let penguin = Parrot2(name: "peng")
+penguin.fly()

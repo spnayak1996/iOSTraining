@@ -390,3 +390,104 @@ class Switch: Togglable {
 //    }
 //}
 
+class House {
+    var windows:Int = 0
+
+    init(windows:Int) {
+        self.windows = windows
+    }
+}
+
+class Villa: House {
+    var hasGarage:Bool = false
+
+    init(windows:Int, hasGarage:Bool) {
+        self.hasGarage = hasGarage
+
+        super.init(windows: windows)
+    }
+}
+
+class Castle: House {
+    var towers:Int = 0
+
+    init(windows:Int, towers:Int) {
+        self.towers = towers
+
+        super.init(windows: windows)
+    }
+}
+
+//let house:House = Castle(windows: 200, towers: 4) as House
+//print(type(of: house))
+//let castle:Castle = house as! Castle
+//print(castle.towers)
+//print(house === castle)
+
+
+struct BlackjackCard {
+
+    // nested Suit enumeration
+    enum Suit: Character {
+        case spades = "♠", hearts = "♡", diamonds = "♢", clubs = "♣"
+    }
+
+    // nested Rank enumeration
+    enum Rank: Int {
+        case two = 2, three, four, five, six, seven, eight, nine, ten
+        case jack, queen, king, ace
+        struct Values {
+            let first: Int, second: Int?
+        }
+        var values: Values {
+            switch self {
+            case .ace:
+                return Values(first: 1, second: 11)
+            case .jack, .queen, .king:
+                return Values(first: 10, second: nil)
+            default:
+                return Values(first: self.rawValue, second: nil)
+            }
+        }
+    }
+
+    // BlackjackCard properties and methods
+    let rank: Rank, suit: Suit
+    var description: String {
+        var output = "suit is \(suit.rawValue),"
+        output += " value is \(rank.values.first)"
+        if let second = rank.values.second {
+            output += " or \(second)"
+        }
+        return output
+    }
+}
+
+//let name = BlackjackCard.Suit.clubs
+
+enum Failure: Error {
+    case Failure
+}
+
+func name1() throws {
+    throw Failure.Failure
+}
+
+func name2() throws {
+    do {
+        try name1()
+    } catch {
+        throw Failure.Failure
+    }
+}
+
+extension Int {
+    static postfix func ++(a: inout Int) {
+        a += 1
+    }
+}
+
+var a = 4
+a++
+print(a++)
+print(a)
