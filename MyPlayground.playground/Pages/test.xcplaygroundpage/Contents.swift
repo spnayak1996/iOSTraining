@@ -487,7 +487,70 @@ extension Int {
     }
 }
 
-var a = 4
-a++
-print(a++)
-print(a)
+//var a = 4
+//a++
+//print(a++)
+//print(a)
+
+
+class Random {
+    private var a = 0
+    
+    var b: Int {
+        get {
+            return a
+        }
+        set {
+            if newValue > 0 {
+                a = newValue
+            }
+        }
+    }
+}
+
+//let random = Random()
+//random.b = 3
+//print(random.b)
+//random.b = 0
+//print(random.b)
+
+//let group = DispatchGroup()
+//
+//group.enter()
+//DispatchQueue.global().async {
+//    for i in 0..<100 {
+//        print(i)
+//    }
+//    group.leave()
+//}
+//group.enter()
+//DispatchQueue.global().async {
+//
+//    for _ in 0..<100 {
+//        print("🔵")
+//    }
+//    group.leave()
+//}
+//group.enter()
+//DispatchQueue.global().async {
+//    for _ in 0..<10000 {
+//        print("💔")
+//    }
+//    group.leave()
+//}
+//
+//group.notify(queue: .main) {
+//    print("DONE")
+//}
+
+let concurrent = DispatchQueue(label: "com.besher.concurrent", attributes: .concurrent)
+
+concurrent.sync {
+    for _ in 0..<5 { print("🔵") }
+}
+
+concurrent.async {
+    for _ in 0..<5 { print("🔴") }
+}
+
+

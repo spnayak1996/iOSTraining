@@ -23,7 +23,6 @@ class ExerciseTableViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.allowsMultipleSelection = true
         tableView.allowsMultipleSelectionDuringEditing = true
     }
     

@@ -26,7 +26,7 @@ class ExerciseTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        self.accessoryType = selected ? .checkmark : .none
+//        self.accessoryType = selected ? .checkmark : .none
     }
     
     func setData(index: Int, data: String) {
