@@ -17,7 +17,7 @@ enum DownloadError {
 
 typealias PhotoDownloadCompletionBlock = (_ image: Photo?, _ error: DownloadError?) -> Void
 
-private let downloadSession = URLSession(configuration: URLSessionConfiguration.ephemeral)
+private let downloadSession = URLSession(configuration: URLSessionConfiguration.default)
 
 final class Photo {
     private(set) var image: UIImage?

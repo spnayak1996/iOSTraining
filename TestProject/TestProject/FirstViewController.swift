@@ -8,6 +8,22 @@
 
 import UIKit
 
+class ThirdViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setUpSecondVC()
+    }
+    
+    private func setUpSecondVC() {
+        let vc = self.storyboard?.instantiateViewController(identifier: TestTableViewController.controllerId) as! TestTableViewController
+        var vcArray = self.navigationController!.viewControllers
+        vcArray.insert(vc, at: 1)
+        self.navigationController?.viewControllers = vcArray
+    }
+}
+
 class FirstViewController: UIViewController {
     
     private enum Change {
@@ -23,7 +39,8 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBAction func btnClicked() {
-        let vc = self.storyboard?.instantiateViewController(identifier: TestTableViewController.controllerId) as! TestTableViewController
+//        let vc = self.storyboard?.instantiateViewController(identifier: TestTableViewController.controllerId) as! TestTableViewController
+        let vc = self.storyboard?.instantiateViewController(identifier: "ThirdViewController") as! ThirdViewController
 //        vc?.modalPresentationStyle = UIModalPresentationStyle.popover
 //        self.showDetailViewController(vc!, sender: nil)
         self.navigationController?.pushViewController(vc, animated: true)
