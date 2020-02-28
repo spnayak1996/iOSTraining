@@ -12,7 +12,6 @@ class ImageScrollView: UIView {
     
     private var imageView: UIImageView!
     private var scrollView: UIScrollView!
-    
     private var extra: CGFloat = 0
     
     required init?(coder: NSCoder) {

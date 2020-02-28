@@ -11,7 +11,6 @@ import UIKit
 class PhotosViewController: UIViewController {
     
     static let controllerId = "PhotosViewController"
-    static let segueId = "photoViewer"
     
     @IBOutlet private var addPhotoView: UIView! {
         didSet {

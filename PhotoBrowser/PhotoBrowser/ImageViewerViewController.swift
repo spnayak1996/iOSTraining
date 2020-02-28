@@ -17,41 +17,42 @@ class ImageViewerViewController: UIViewController {
     private var index: Int!
     private var photos: [Photo]!
     
-    private var extra: CGFloat = 0
-    
     private var observation: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        extra = self.navigationController?.navigationBar.bounds.height ?? 0
         setUpViews()
+    }
+    
+    deinit {
+        observation = nil
     }
     
     private func setUpViews() {
         let viewHeight: CGFloat = self.view.bounds.size.height
         let viewWidth: CGFloat = self.view.bounds.size.width
+        let scrollView = createScrollView(viewWidth: viewWidth, viewHeight: viewHeight)
+        self.view.addSubview(scrollView)
         
+        setUpObserver(view: scrollView)
+    }
+    
+    private func createScrollView(viewWidth: CGFloat, viewHeight: CGFloat) -> UIScrollView {
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: viewHeight))
         scrollView.isPagingEnabled = true
-        
+        let extra = self.navigationController?.navigationBar.bounds.height ?? 0
         var xPostion: CGFloat = 0
         for i in 0...2 {
-            let view = ImageScrollView(image: photos[rectifyIndex(index: (index - 1 + i), count: photos.count)].image!, frame: CGRect(x: xPostion, y: 0, width: viewWidth, height: viewHeight), extra: self.extra)
+            let view = ImageScrollView(image: photos[rectifyIndex(index: (index - 1 + i), count: photos.count)].image!, frame: CGRect(x: xPostion, y: 0, width: viewWidth, height: viewHeight), extra: extra)
             xPostion += viewWidth
             views.append(view)
             scrollView.addSubview(view)
         }
         scrollView.contentSize = CGSize(width: xPostion, height: viewHeight)
-        self.view.addSubview(scrollView)
-        
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentOffset = CGPoint(x: viewWidth, y: 0)
-        setUpObserver(view: scrollView)
-    }
-    
-    deinit {
-        observation = nil
+        return scrollView
     }
     
     private func setUpObserver(view: UIScrollView) {
@@ -80,8 +81,4 @@ class ImageViewerViewController: UIViewController {
         return (index + count) % count
     }
 
-}
-
-extension ImageViewerViewController: UIScrollViewDelegate {
-    
 }

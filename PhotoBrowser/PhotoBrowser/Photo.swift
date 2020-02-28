@@ -20,8 +20,8 @@ typealias PhotoDownloadCompletionBlock = (_ image: Photo?, _ error: DownloadErro
 private let downloadSession = URLSession(configuration: URLSessionConfiguration.ephemeral)
 
 final class Photo {
-    var image: UIImage?
-    let url: String
+    private(set) var image: UIImage?
+    private let url: String
     
     init(url: String, completionHandler: @escaping PhotoDownloadCompletionBlock) {
         self.url = url
@@ -42,15 +42,11 @@ final class Photo {
         let task = downloadSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 completion(nil, .FAILED)
-            }
-            if let data = data {
-                self.image = UIImage(data: data)
-                if let image = self.image {
-                    let createdPhoto = Photo(url: self.url, image: image)
-                    completion(createdPhoto,nil)
-                } else {
-                    completion(nil, .INVALID_IMAGE)
-                }
+            } else if let data = data, let image = UIImage(data: data) {
+                let createdPhoto = Photo(url: self.url, image: image)
+                completion(createdPhoto,nil)
+            } else {
+                completion(nil, .INVALID_IMAGE)
             }
         }
         
