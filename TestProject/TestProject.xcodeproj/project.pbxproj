@@ -14,6 +14,7 @@
 		DF286D272403E5C400FF578B /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF286D262403E5C400FF578B /* ExerciseTableViewCell.swift */; };
 		DF28B4D323FC1A68004E08AA /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B4D223FC1A68004E08AA /* FirstViewController.swift */; };
 		DF28B4D523FC21EB004E08AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF28B4D423FC21EB004E08AA /* Main.storyboard */; };
+		DF3A238624066FE00013AEF6 /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A238524066FE00013AEF6 /* FirstTableViewCell.swift */; };
 		DF8AEAA223FAD5E000121530 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AEAA123FAD5E000121530 /* AppDelegate.swift */; };
 		DF8AEAA423FAD5E000121530 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AEAA323FAD5E000121530 /* SceneDelegate.swift */; };
 		DF8AEAA623FAD5E000121530 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AEAA523FAD5E000121530 /* ContentView.swift */; };
@@ -22,6 +23,8 @@
 		DF8AEAB923FAD5E200121530 /* TestProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AEAB823FAD5E200121530 /* TestProjectTests.swift */; };
 		DF8AEAC423FAD5E200121530 /* TestProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AEAC323FAD5E200121530 /* TestProjectUITests.swift */; };
 		DFEDC1FF23FE65A10022AB8E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEDC1FE23FE65A10022AB8E /* DetailViewController.swift */; };
+		DFF9AF4F24056B0F00839AB3 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9AF4E24056B0F00839AB3 /* TestView.swift */; };
+		DFF9AF5124056B1B00839AB3 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF9AF5024056B1B00839AB3 /* TestView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,7 @@
 		DF286D262403E5C400FF578B /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		DF28B4D223FC1A68004E08AA /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		DF28B4D423FC21EB004E08AA /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DF3A238524066FE00013AEF6 /* FirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewCell.swift; sourceTree = "<group>"; };
 		DF8AEA9E23FAD5E000121530 /* TestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8AEAA123FAD5E000121530 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF8AEAA323FAD5E000121530 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 		DF8AEAC323FAD5E200121530 /* TestProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProjectUITests.swift; sourceTree = "<group>"; };
 		DF8AEAC523FAD5E200121530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFEDC1FE23FE65A10022AB8E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DFF9AF4E24056B0F00839AB3 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		DFF9AF5024056B1B00839AB3 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 				DF07AE0623FD7B0100D7614F /* TestTableViewCell.swift */,
 				DF07AE0723FD7B0100D7614F /* TestTableViewCell.xib */,
 				DF286D262403E5C400FF578B /* ExerciseTableViewCell.swift */,
+				DF3A238524066FE00013AEF6 /* FirstTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -123,6 +130,7 @@
 		DF8AEAA023FAD5E000121530 /* TestProject */ = {
 			isa = PBXGroup;
 			children = (
+				DFF9AF4D24056AF100839AB3 /* Views */,
 				DF07AE0523FD7ADA00D7614F /* Cells */,
 				DF8AEAA123FAD5E000121530 /* AppDelegate.swift */,
 				DF8AEAA323FAD5E000121530 /* SceneDelegate.swift */,
@@ -163,6 +171,15 @@
 				DF8AEAC523FAD5E200121530 /* Info.plist */,
 			);
 			path = TestProjectUITests;
+			sourceTree = "<group>";
+		};
+		DFF9AF4D24056AF100839AB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DFF9AF4E24056B0F00839AB3 /* TestView.swift */,
+				DFF9AF5024056B1B00839AB3 /* TestView.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +289,7 @@
 				DF8AEAAB23FAD5E100121530 /* Preview Assets.xcassets in Resources */,
 				DF07AE0923FD7B0100D7614F /* TestTableViewCell.xib in Resources */,
 				DF8AEAA823FAD5E100121530 /* Assets.xcassets in Resources */,
+				DFF9AF5124056B1B00839AB3 /* TestView.xib in Resources */,
 				DF28B4D523FC21EB004E08AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,7 +321,9 @@
 				DF8AEAA423FAD5E000121530 /* SceneDelegate.swift in Sources */,
 				DF8AEAA623FAD5E000121530 /* ContentView.swift in Sources */,
 				DF28B4D323FC1A68004E08AA /* FirstViewController.swift in Sources */,
+				DFF9AF4F24056B0F00839AB3 /* TestView.swift in Sources */,
 				DF286D272403E5C400FF578B /* ExerciseTableViewCell.swift in Sources */,
+				DF3A238624066FE00013AEF6 /* FirstTableViewCell.swift in Sources */,
 				DF07AE0823FD7B0100D7614F /* TestTableViewCell.swift in Sources */,
 				DFEDC1FF23FE65A10022AB8E /* DetailViewController.swift in Sources */,
 			);

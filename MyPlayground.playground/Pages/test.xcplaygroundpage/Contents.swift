@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 class Food {
     var name: String
@@ -542,15 +543,13 @@ class Random {
 //group.notify(queue: .main) {
 //    print("DONE")
 //}
-
-let concurrent = DispatchQueue(label: "com.besher.concurrent", attributes: .concurrent)
-
-concurrent.sync {
-    for _ in 0..<5 { print("🔵") }
-}
-
-concurrent.async {
-    for _ in 0..<5 { print("🔴") }
-}
-
-
+//
+//let concurrent = DispatchQueue(label: "com.besher.concurrent", attributes: .concurrent)
+//
+//concurrent.sync {
+//    for _ in 0..<5 { print("🔵") }
+//}
+//
+//concurrent.async {
+//    for _ in 0..<5 { print("🔴") }
+//}
