@@ -83,7 +83,7 @@ class PhotosViewController: UIViewController {
         }
     }
     
-    private func downloadPhoto(url: String) {
+    private func downloadPhoto(url: String, group: DispatchGroup?) {
         let _ = Photo(url: url) { (photo, error) in
             if let error = error {
                 switch error {
@@ -100,6 +100,7 @@ class PhotosViewController: UIViewController {
                     self.collectionView.reloadData()
                 }
             }
+            group?.leave()
         }
     }
 
@@ -110,9 +111,34 @@ class PhotosViewController: UIViewController {
     @IBAction private func addAndDismissPopUp(_ sender: UIButton) {
         self.view.endEditing(true)
         if let text = txtField.text, !(text.trimmingCharacters(in: CharacterSet(charactersIn: " ")).isEmpty) {
-            downloadPhoto(url: text)
+            downloadPhoto(url: text, group: nil)
         }
         dismissPopUp()
+    }
+    
+    @IBAction private func addDefaultPhotos(_ sender: UIButton) {
+        let urlList = ["https://i.imgur.com/7ul1Q6o.jpg","https://i.imgur.com/5bFRavp.jpg", "https://i.imgur.com/wKDRFpx.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png", "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png", "https://homepages.cae.wisc.edu/~ece533/images/baboon.png", "https://homepages.cae.wisc.edu/~ece533/images/boat.png", "https://homepages.cae.wisc.edu/~ece533/images/cat.png"]
+        
+        let downloadGroup = DispatchGroup()
+        let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        activityIndicator.frame = CGRect(x: sender.frame.origin.x, y: sender.frame.origin.y, width: sender.frame.height, height: sender.frame.height)
+        activityIndicator.center = sender.center
+        sender.isUserInteractionEnabled = false
+        sender.alpha = 0.2
+        sender.superview?.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
+        for url in urlList {
+            downloadGroup.enter()
+            downloadPhoto(url: url, group: downloadGroup)
+        }
+        
+        downloadGroup.notify(queue: DispatchQueue.main) {
+            sender.alpha = 1
+            sender.isUserInteractionEnabled = true
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+        }
     }
     
     private func navigateToImageViewer(index: Int,_ list: [Photo]) {

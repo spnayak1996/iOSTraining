@@ -8,6 +8,20 @@
 
 import UIKit
 
+class TestViewController: UIViewController {
+    
+    @IBOutlet weak var button: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func clicked(sender: UIButton) {
+        print(sender.currentTitle)
+        
+    }
+}
+
 class ThirdViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -32,12 +46,13 @@ class FirstViewController: UIViewController {
     
     static let controllerId = "FirstViewController"
     
-    @objc dynamic fileprivate var dataSource = [1,2,3,4,5,6,7,8,9]
+    @objc dynamic private var dataSource = [1,2,3,4,5,6,7,8,9]
     private var count = 10
     var observation: NSKeyValueObservation?
     
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var btnNavigate: UIButton!
     @IBAction func btnClicked() {
 //        let vc = self.storyboard?.instantiateViewController(identifier: TestTableViewController.controllerId) as! TestTableViewController
         let vc = self.storyboard?.instantiateViewController(identifier: "ThirdViewController") as! ThirdViewController

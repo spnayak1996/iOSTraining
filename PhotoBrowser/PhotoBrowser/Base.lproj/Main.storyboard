@@ -84,6 +84,16 @@
                         <viewLayoutGuide key="safeArea" id="OxZ-h6-PNI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="7e9-Ub-5rd">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="CT0-iT-ipx">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UKv-om-Jr6">
+                                <rect key="frame" x="20" y="7" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ADD DEFAULTS"/>
+                                <connections>
+                                    <action selector="addDefaultPhotos:" destination="7Az-Lp-Fe7" eventType="touchUpInside" id="19n-Je-M7H"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="cvR-sd-H93">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="s41-1Z-Sz0">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>

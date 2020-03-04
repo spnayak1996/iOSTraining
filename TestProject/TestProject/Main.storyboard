@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xq0-ct-jc5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L7t-vN-oXa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -128,6 +128,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="IjZ-Tf-rDP"/>
                     <connections>
+                        <outlet property="btnNavigate" destination="jRu-Yc-PyK" id="9JC-6Y-Fxk"/>
                         <outlet property="buttonConstraint" destination="7kz-AK-tyM" id="N3X-IP-bNC"/>
                         <outlet property="tableView" destination="InC-B9-0Fd" id="EdP-nj-zDS"/>
                     </connections>
@@ -289,7 +290,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image1" translatesAutoresizingMaskIntoConstraints="NO" id="mVL-Hf-Tpr">
-                                <rect key="frame" x="37" y="355.5" width="340" height="239.00000000000006"/>
+                                <rect key="frame" x="37" y="236" width="340" height="478"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97B-G7-XQb">
                                 <rect key="frame" x="147.5" y="444" width="119" height="62"/>
@@ -300,7 +301,7 @@
                                 <size key="shadowOffset" width="-2" height="-2"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mR4-52-tiy">
-                                <rect key="frame" x="164" y="287.5" width="86" height="48"/>
+                                <rect key="frame" x="164" y="168" width="86" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="HOME"/>
                                 <connections>
@@ -308,7 +309,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ouC-Rg-a3e">
-                                <rect key="frame" x="157" y="634.5" width="100" height="40"/>
+                                <rect key="frame" x="157" y="754" width="100" height="40"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gjP-px-ZZZ"/>
@@ -346,6 +347,36 @@
             </objects>
             <point key="canvasLocation" x="-13542.028985507248" y="-56.25"/>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="EI7-ew-H2e">
+            <objects>
+                <viewController storyboardIdentifier="Test" id="L7t-vN-oXa" customClass="TestViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gff-5S-dkf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMC-iC-wou">
+                                <rect key="frame" x="143" y="259" width="159" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <state key="selected" title="selected"/>
+                                <state key="highlighted" title="name"/>
+                                <connections>
+                                    <action selector="clickedWithSender:" destination="L7t-vN-oXa" eventType="touchUpInside" id="Tpv-nm-piH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6oS-re-XKq"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="yMC-iC-wou" id="5aw-ff-crn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VRx-Lq-woW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-12519" y="-72"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="xnn-o2-jc0">
             <objects>
@@ -369,4 +400,5 @@
         <image name="Image1" width="492" height="239"/>
         <image name="Image4" width="285" height="177"/>
     </resources>
+    <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

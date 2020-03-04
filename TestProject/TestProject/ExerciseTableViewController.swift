@@ -86,6 +86,4 @@ extension ExerciseTableViewController: UITableViewDataSource, UITableViewDelegat
         
         tableView.reloadData()
     }
-    
-    
 }
