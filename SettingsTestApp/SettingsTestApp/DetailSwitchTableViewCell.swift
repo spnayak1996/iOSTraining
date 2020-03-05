@@ -1,26 +1,25 @@
 //
-//  MasterSwitchTableViewCell.swift
+//  DetailSwitchTableViewCell.swift
 //  SettingsTestApp
 //
-//  Created by vinsol on 04/03/20.
+//  Created by vinsol on 05/03/20.
 //  Copyright © 2020 vinsol. All rights reserved.
 //
 
 import UIKit
 
-class MasterSwitchTableViewCell: UITableViewCell {
+class DetailSwitchTableViewCell: UITableViewCell {
     
-    static let cellId = "MasterSwitchTableViewCell"
-
+    static let cellId = "DetailSwitchTableViewCell"
+    
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var indicator: UISwitch!
     
-    weak var delegate: MasterSwitchCellDelegate?
-    
+    weak var delegate: DetailViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
         indicator.addTarget(self, action: #selector(switchToggled), for: .touchUpInside)
     }
     
@@ -34,9 +33,9 @@ class MasterSwitchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpCell(title: String, value: Bool) {
+    func setUp(title: String, on: Bool) {
         self.lblTitle.text = title
-        self.indicator.isOn = value
+        self.indicator.isOn = on
     }
 
 }

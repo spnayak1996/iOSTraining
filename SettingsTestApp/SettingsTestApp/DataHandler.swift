@@ -47,31 +47,31 @@ class DataHandler {
         self.doNotDisturb = retrieveData(Constants.doNotDisturb, Bool.self) ?? false
     }
     
-    private(set) var airplaneMode: Bool!
-    private(set) var wifi: Enums.Networks!
-    private(set) var bluetooth: Bool!
-    private(set) var mobileData: Bool!
-    private(set) var carrier: Enums.Carrier!
-    private(set) var notification: Bool!
-    private(set) var doNotDisturb: Bool!
+    var airplaneMode: Bool!
+    var wifi: Enums.Networks!
+    var bluetooth: Bool!
+    var mobileData: Bool!
+    var carrier: Enums.Carrier!
+    var notification: Bool!
+    var doNotDisturb: Bool!
     
-    func saveSettings(detail: Enums.Detail) {
+    static func saveSettings(detail: Enums.Detail) {
         let instance = Self.shared
         switch detail {
         case .airplaneMode:
-            UserDefaults.setValue(instance.airplaneMode, forKey: Constants.airplaneMode)
+            UserDefaults.standard.setValue(instance.airplaneMode, forKey: Constants.airplaneMode)
         case .wifi:
-            UserDefaults.setValue(instance.wifi.rawValue, forKey: Constants.wifi)
+            UserDefaults.standard.setValue(instance.wifi.rawValue, forKey: Constants.wifi)
         case .bluetooth:
-            UserDefaults.setValue(instance.bluetooth, forKey: Constants.bluetooth)
+            UserDefaults.standard.setValue(instance.bluetooth, forKey: Constants.bluetooth)
         case .mobileData:
-            UserDefaults.setValue(instance.mobileData, forKey: Constants.mobileData)
+            UserDefaults.standard.setValue(instance.mobileData, forKey: Constants.mobileData)
         case .carrier:
-            UserDefaults.setValue(instance.carrier.rawValue, forKey: Constants.carrier)
+            UserDefaults.standard.setValue(instance.carrier.rawValue, forKey: Constants.carrier)
         case .notification:
-            UserDefaults.setValue(instance.notification, forKey: Constants.notification)
+            UserDefaults.standard.setValue(instance.notification, forKey: Constants.notification)
         case .donotDisturb:
-            UserDefaults.setValue(instance.doNotDisturb, forKey: Constants.doNotDisturb)
+            UserDefaults.standard.setValue(instance.doNotDisturb, forKey: Constants.doNotDisturb)
         default:
             break
         }
@@ -93,6 +93,22 @@ class DataHandler {
         }
     }
     
+    static func getOnOrOffState(detail: Enums.Detail) -> Bool {
+        let instance = Self.shared
+        switch detail {
+        case .bluetooth:
+            return instance.bluetooth
+        case .mobileData:
+            return instance.mobileData
+        case .notification:
+            return instance.notification
+        case .donotDisturb:
+            return instance.doNotDisturb
+        default:
+            return false
+        }
+    }
+    
     static private func onOrOff(_ val: Bool) -> String {
         return val ? "On" : "Off"
     }
@@ -100,8 +116,8 @@ class DataHandler {
 }
 
 enum Enums {
-    enum Networks: Int {
-        case Network1 = 0, Network2, Network3, Network4, Network5
+    enum Networks: Int, CaseIterable {
+        case Network1, Network2, Network3, Network4, Network5
         
         func description() -> String {
             switch self {
@@ -117,10 +133,14 @@ enum Enums {
                 return "Network 5"
             }
         }
+        
+        static func returnIterator() -> [Networks] {
+            return [.Network1,.Network2,.Network3,.Network4,.Network5]
+        }
     }
     
-    enum Carrier: Int {
-        case Carrier1 = 0, Carrier2, Carrier3, Carrier4, Carrier5
+    enum Carrier: Int, CaseIterable {
+        case Carrier1, Carrier2, Carrier3, Carrier4, Carrier5
         
         func description() -> String {
             switch self {
@@ -135,6 +155,10 @@ enum Enums {
             case .Carrier5:
                 return "Carrier 5"
             }
+        }
+        
+        static func returnIterator() -> [Carrier] {
+            return [.Carrier1,.Carrier2,.Carrier3,.Carrier4,.Carrier5]
         }
     }
     

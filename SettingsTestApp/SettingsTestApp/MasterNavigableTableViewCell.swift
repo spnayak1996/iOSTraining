@@ -14,6 +14,8 @@ class MasterNavigableTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!
+    @IBOutlet weak var arrow: UILabel!
+    private(set) var detail: Enums.Detail!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,10 +25,19 @@ class MasterNavigableTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            contentView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            lblValue.textColor = UIColor.white
+            arrow.textColor = UIColor.white
+        } else {
+            contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            lblValue.textColor = UIColor.lightGray
+            arrow.textColor = UIColor.lightGray
+        }
     }
     
     func setUpCell(title: Enums.Detail, value: String) {
+        self.detail = title
         self.lblTitle.text = title.title()
         switch title {
         case .wifi,.bluetooth,.carrier,.mobileData:

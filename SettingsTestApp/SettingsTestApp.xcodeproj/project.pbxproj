@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		DF4A87AA240FF5F00064A9D8 /* MasterNavigableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4A87A9240FF5F00064A9D8 /* MasterNavigableTableViewCell.swift */; };
+		DF8390BC2410EA34006705A9 /* CustomSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8390BB2410EA34006705A9 /* CustomSplitViewController.swift */; };
+		DF8390BE2410EB4A006705A9 /* DetailSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8390BD2410EB4A006705A9 /* DetailSwitchTableViewCell.swift */; };
+		DF8390C02410EBBF006705A9 /* DetailNavigableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8390BF2410EBBF006705A9 /* DetailNavigableTableViewCell.swift */; };
+		DF8390C22410EBEB006705A9 /* DetailTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8390C12410EBEB006705A9 /* DetailTextTableViewCell.swift */; };
+		DF8390C42410EC06006705A9 /* DetailSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8390C32410EC06006705A9 /* DetailSliderTableViewCell.swift */; };
+		DF8390C62410F2AE006705A9 /* DetailSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8390C52410F2AE006705A9 /* DetailSelectionTableViewCell.swift */; };
 		DFE81E06240FE01600842335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E05240FE01600842335 /* AppDelegate.swift */; };
 		DFE81E08240FE01600842335 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E07240FE01600842335 /* SceneDelegate.swift */; };
 		DFE81E0A240FE01600842335 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E09240FE01600842335 /* MasterViewController.swift */; };
@@ -41,6 +47,12 @@
 
 /* Begin PBXFileReference section */
 		DF4A87A9240FF5F00064A9D8 /* MasterNavigableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterNavigableTableViewCell.swift; sourceTree = "<group>"; };
+		DF8390BB2410EA34006705A9 /* CustomSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitViewController.swift; sourceTree = "<group>"; };
+		DF8390BD2410EB4A006705A9 /* DetailSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		DF8390BF2410EBBF006705A9 /* DetailNavigableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNavigableTableViewCell.swift; sourceTree = "<group>"; };
+		DF8390C12410EBEB006705A9 /* DetailTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextTableViewCell.swift; sourceTree = "<group>"; };
+		DF8390C32410EC06006705A9 /* DetailSliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSliderTableViewCell.swift; sourceTree = "<group>"; };
+		DF8390C52410F2AE006705A9 /* DetailSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		DFE81E02240FE01600842335 /* SettingsTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SettingsTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE81E05240FE01600842335 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE81E07240FE01600842335 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +157,11 @@
 			children = (
 				DFE81E3F240FF03600842335 /* MasterSwitchTableViewCell.swift */,
 				DF4A87A9240FF5F00064A9D8 /* MasterNavigableTableViewCell.swift */,
+				DF8390BD2410EB4A006705A9 /* DetailSwitchTableViewCell.swift */,
+				DF8390BF2410EBBF006705A9 /* DetailNavigableTableViewCell.swift */,
+				DF8390C12410EBEB006705A9 /* DetailTextTableViewCell.swift */,
+				DF8390C32410EC06006705A9 /* DetailSliderTableViewCell.swift */,
+				DF8390C52410F2AE006705A9 /* DetailSelectionTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -154,6 +171,7 @@
 			children = (
 				DFE81E09240FE01600842335 /* MasterViewController.swift */,
 				DFE81E35240FE05B00842335 /* DetailViewController.swift */,
+				DF8390BB2410EA34006705A9 /* CustomSplitViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -314,13 +332,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF8390C42410EC06006705A9 /* DetailSliderTableViewCell.swift in Sources */,
 				DFE81E0A240FE01600842335 /* MasterViewController.swift in Sources */,
+				DF8390BC2410EA34006705A9 /* CustomSplitViewController.swift in Sources */,
 				DF4A87AA240FF5F00064A9D8 /* MasterNavigableTableViewCell.swift in Sources */,
+				DF8390C22410EBEB006705A9 /* DetailTextTableViewCell.swift in Sources */,
 				DFE81E06240FE01600842335 /* AppDelegate.swift in Sources */,
+				DF8390BE2410EB4A006705A9 /* DetailSwitchTableViewCell.swift in Sources */,
 				DFE81E43240FF06200842335 /* RandomColorView.swift in Sources */,
 				DFE81E08240FE01600842335 /* SceneDelegate.swift in Sources */,
 				DFE81E40240FF03600842335 /* MasterSwitchTableViewCell.swift in Sources */,
 				DFE81E36240FE05B00842335 /* DetailViewController.swift in Sources */,
+				DF8390C62410F2AE006705A9 /* DetailSelectionTableViewCell.swift in Sources */,
+				DF8390C02410EBBF006705A9 /* DetailNavigableTableViewCell.swift in Sources */,
 				DFE81E38240FE08600842335 /* DataHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

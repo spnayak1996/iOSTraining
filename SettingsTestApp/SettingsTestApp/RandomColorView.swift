@@ -20,8 +20,6 @@ class RandomColorView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.backgroundColor = randomColor()
     }
     
     private func randomColor() -> UIColor {
@@ -30,5 +28,7 @@ class RandomColorView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
+        self.backgroundColor = randomColor()
     }
 }
