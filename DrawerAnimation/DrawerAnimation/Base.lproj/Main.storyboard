@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--First View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="FirstViewController" id="BYZ-38-t0r" customClass="FirstViewController" customModule="DrawerAnimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eiffel" translatesAutoresizingMaskIntoConstraints="NO" id="ZiZ-Zi-GWV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZiZ-Zi-GWV" secondAttribute="trailing" id="BZb-1h-3IB"/>
+                            <constraint firstItem="ZiZ-Zi-GWV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CCJ-NR-fea"/>
+                            <constraint firstItem="ZiZ-Zi-GWV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Fzr-XA-eRN"/>
+                            <constraint firstAttribute="bottom" secondItem="ZiZ-Zi-GWV" secondAttribute="bottom" id="IT2-75-pN2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="130"/>
+        </scene>
+        <!--Drawer View Controller-->
+        <scene sceneID="9Zg-CJ-HxS">
+            <objects>
+                <viewController storyboardIdentifier="DrawerViewController" id="vts-md-7Jm" customClass="DrawerViewController" customModule="DrawerAnimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WZt-R2-GXB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Knw-3M-Cgv">
+                                <rect key="frame" x="0.0" y="50" width="414" height="812"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FmT-5R-5MH">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfQ-jT-9bV">
+                                        <rect key="frame" x="169.5" y="10" width="75" height="30"/>
+                                        <state key="normal" title="Comments"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="gfQ-jT-9bV" firstAttribute="centerY" secondItem="FmT-5R-5MH" secondAttribute="centerY" id="1jy-Yv-9tJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="gYS-CN-NUH"/>
+                                    <constraint firstItem="gfQ-jT-9bV" firstAttribute="centerX" secondItem="FmT-5R-5MH" secondAttribute="centerX" id="rf2-gK-pAM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Knw-3M-Cgv" firstAttribute="top" secondItem="FmT-5R-5MH" secondAttribute="bottom" id="20y-ka-jnN"/>
+                            <constraint firstItem="FmT-5R-5MH" firstAttribute="top" secondItem="WZt-R2-GXB" secondAttribute="top" id="5Ko-0c-Gu3"/>
+                            <constraint firstItem="FmT-5R-5MH" firstAttribute="leading" secondItem="6be-9I-HnB" secondAttribute="leading" id="6SZ-hW-qnL"/>
+                            <constraint firstItem="Knw-3M-Cgv" firstAttribute="leading" secondItem="6be-9I-HnB" secondAttribute="leading" id="CcG-gE-es1"/>
+                            <constraint firstItem="6be-9I-HnB" firstAttribute="trailing" secondItem="Knw-3M-Cgv" secondAttribute="trailing" id="hUJ-cF-VCn"/>
+                            <constraint firstItem="FmT-5R-5MH" firstAttribute="trailing" secondItem="6be-9I-HnB" secondAttribute="trailing" id="hUi-Jw-RSv"/>
+                            <constraint firstItem="6be-9I-HnB" firstAttribute="bottom" secondItem="Knw-3M-Cgv" secondAttribute="bottom" id="qGk-kc-xXK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6be-9I-HnB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="commentBtn" destination="gfQ-jT-9bV" id="qbt-oE-FOb"/>
+                        <outlet property="handleView" destination="FmT-5R-5MH" id="p6i-JD-pm0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yg4-WM-HtQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871.01449275362324" y="131.91964285714286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="eiffel" width="1080" height="1920"/>
+    </resources>
+</document>
