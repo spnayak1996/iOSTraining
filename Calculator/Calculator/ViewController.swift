@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     private var operand1String: String? {
         didSet {
             operand1 = operand1String != nil ? Double(operand1String!) : nil
-            operand1StringDisplay = convertToStringDisplay(operand1String)
+            operand1StringDisplay = convertToStringDisplay1(operand1String)
         }
     }
     private var operand1StringDisplay: String?
@@ -58,10 +58,16 @@ class ViewController: UIViewController {
     private var operand2String: String? {
         didSet {
             operand2 = operand2String != nil ? Double(operand2String!) : nil
-            operand2StringDisplay = (operand1String == nil && operand2String == nil) ? "0" : (convertToStringDisplay(operand2String) ?? "")
+            operand2StringDisplay = (operand1String == nil && operand2String == nil) ? "0" : (convertToStringDisplay2(operand2String) ?? "")
         }
     }
-    private var operand2StringDisplay: String = "0"
+    private var operand2StringDisplay: String = "0" {
+        willSet {
+            if newValue == operand2StringDisplay {
+                showAlert(message: "Cannot enter more than 10 decimal digits.")
+            }
+        }
+    }
     private var operation: Operation?
 
     override func viewDidLoad() {
@@ -124,15 +130,23 @@ class ViewController: UIViewController {
                 return
             case (_,_,nil):
                 operation = op
+            case (nil,nil,_):
+                rePosition()
+                operation = op
             default:
                 calculateAndUpdate()
-                rePosition()
                 operation = op
             }
         case .val(let val):
+            if operation == nil && operand1String != nil {
+                operand1String = nil
+                operand2String = nil
+            }
             if let currentString = operand2String {
                 if currentString.count < 15 {
                     operand2String = currentString + String(val)
+                } else {
+                    showAlert(message: "Cannot enter more than 14 digits.")
                 }
             } else {
                 operand2String = String(val)
@@ -153,11 +167,16 @@ class ViewController: UIViewController {
         updateResult()
     }
     
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     private func clearAll() {
         operand1String = nil
         operand2String = nil
         operation = nil
-        updateResult()
     }
     
     private func updateResult() {
@@ -181,8 +200,8 @@ class ViewController: UIViewController {
             case .divide:
                 string = String(op1 / op2)
             }
-            operand2String = string
-            operand1String = nil
+            operand1String = string
+            operand2String = nil
             operation = nil
         }
     }
@@ -191,13 +210,27 @@ class ViewController: UIViewController {
         operand1String = operand2String
         operand2String = nil
     }
-    private func convertToStringDisplay(_ val: String?) -> String? {
+    
+    private func convertToStringDisplay1(_ val: String?) -> String? {
+        guard let numString = val else {
+            return nil
+        }
+        if numString.contains("e") {
+            return numString
+        } else {
+            return Double(numString)?.withCommas()
+        }
+    }
+    
+    private func convertToStringDisplay2(_ val: String?) -> String? {
         guard let numString = val else {
             return nil
         }
         // MARK: add conversion
         if numString.contains("e") {
             return numString
+        } else if let (count,flag) = numString.onlyContainsZerosAfterDecimal() {
+            return addRemovedZerosToEnd(Double(numString)?.withCommas() ?? "", count, flag)
         } else {
             if numString.last == "." {
                 return  addDotToEnd(Double(numString)?.withCommas())
@@ -211,10 +244,12 @@ class ViewController: UIViewController {
         if string != nil {
             return string! + "."
         }
-        return nil
+        return "."
     }
-
-
+    
+    private func addRemovedZerosToEnd(_ string: String, _ count: Int, _ flag: Bool) -> String {
+        return string + (flag ? "." : "") + String(repeating: "0", count: count)
+    }
 }
 
 extension Double {
@@ -227,6 +262,26 @@ extension Double {
     
     func extractInt() -> Int {
         return Int(self)
+    }
+}
+
+extension String {
+    func onlyContainsZerosAfterDecimal() -> (Int,Bool)? {
+        if !self.contains(".") {
+            return nil
+        }
+        var string = self
+        var count = 0
+        while true {
+            let last = string.removeLast()
+            if last == "0" {
+                count += 1
+            } else if last == "." {
+                return (count == 0 ? nil : (count,true))
+            } else {
+                return (count == 0 ? nil : (count,false))
+            }
+        }
     }
 }
 
