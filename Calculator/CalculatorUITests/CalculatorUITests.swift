@@ -1,14 +1,14 @@
 //
-//  SettingsAppUITests.swift
-//  SettingsAppUITests
+//  CalculatorUITests.swift
+//  CalculatorUITests
 //
-//  Created by vinsol on 04/03/20.
+//  Created by vinsol on 05/03/20.
 //  Copyright © 2020 vinsol. All rights reserved.
 //
 
 import XCTest
 
-class SettingsAppUITests: XCTestCase {
+class CalculatorUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

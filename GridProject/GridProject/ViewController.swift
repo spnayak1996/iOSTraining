@@ -71,6 +71,8 @@ class ViewController: UIViewController {
             if dataSource.count > 0 {
                 let lastIndex = dataSource.count - 1
                 deleteItem(at: IndexPath(item: lastIndex, section: 0), sender: (i == 2) ? sender : nil)
+            } else {
+                sender?.isUserInteractionEnabled = true
             }
         }
     }
