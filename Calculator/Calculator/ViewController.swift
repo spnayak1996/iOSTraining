@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     private var operand1String: String? {
         didSet {
             operand1 = operand1String != nil ? Double(operand1String!) : nil
-            operand1StringDisplay = convertToStringDisplay1(operand1String)
+            operand1StringDisplay = convertToStringResultDisplay(operand1String)
         }
     }
     private var operand1StringDisplay: String?
@@ -58,16 +58,10 @@ class ViewController: UIViewController {
     private var operand2String: String? {
         didSet {
             operand2 = operand2String != nil ? Double(operand2String!) : nil
-            operand2StringDisplay = (operand1String == nil && operand2String == nil) ? "0" : (convertToStringDisplay2(operand2String) ?? "")
+            operand2StringDisplay = (operand1String == nil && operand2String == nil) ? "0" : (convertToStringEditableDisplay(operand2String) ?? "")
         }
     }
-    private var operand2StringDisplay: String = "0" {
-        willSet {
-            if newValue == operand2StringDisplay {
-                showAlert(message: "Cannot enter more than 10 decimal digits.")
-            }
-        }
-    }
+    private var operand2StringDisplay: String = "0"
     private var operation: Operation?
 
     override func viewDidLoad() {
@@ -120,51 +114,88 @@ class ViewController: UIViewController {
         characterEntered(dataSource[sender.tag])
     }
     
+    private func operatorTapped(_ op: Operation) {
+        switch (operand1,operation,operand2) {
+        case (nil,_,nil):
+            return
+        case (_,_,nil):
+            operation = op
+        case (nil,nil,_):
+            rePosition()
+            operation = op
+        default:
+            calculateAndUpdate()
+            operation = op
+        }
+    }
+    
+    private func intTapped(_ val: Int) {
+        if operation == nil && operand1String != nil {
+            operand1String = nil
+            operand2String = nil
+        }
+        if let currentString = operand2String {
+            switch checkSize(currentString) {
+            case .decimalExceeded:
+                showAlert(message: "Cannot enter more than 10 decimal digits.")
+            case .digitsExceeded:
+                showAlert(message: "Cannot enter more than 15 digits.")
+            case .valid:
+                operand2String = currentString + String(val)
+            }
+        } else {
+            operand2String = String(val)
+        }
+    }
+    
+    private func decimalTapped() {
+        if let currentString = operand2String {
+            if !currentString.contains(".") {
+                operand2String = currentString + "."
+            }
+        } else {
+            operand2String = "."
+        }
+    }
+    
     private func characterEntered(_ char: CalculatorElement) {
         switch char {
         case .equal:
             calculateAndUpdate()
         case .op(let op):
-            switch (operand1,operation,operand2) {
-            case (nil,_,nil):
-                return
-            case (_,_,nil):
-                operation = op
-            case (nil,nil,_):
-                rePosition()
-                operation = op
-            default:
-                calculateAndUpdate()
-                operation = op
-            }
+            operatorTapped(op)
         case .val(let val):
-            if operation == nil && operand1String != nil {
-                operand1String = nil
-                operand2String = nil
-            }
-            if let currentString = operand2String {
-                if currentString.count < 15 {
-                    operand2String = currentString + String(val)
-                } else {
-                    showAlert(message: "Cannot enter more than 14 digits.")
-                }
-            } else {
-                operand2String = String(val)
-            }
+            intTapped(val)
         case .decimal:
-            if let currentString = operand2String {
-                if !currentString.contains(".") {
-                    operand2String = currentString + "."
-                }
-            } else {
-                operand2String = "."
-            }
+            decimalTapped()
         case .empty:
             return
         case .clear:
             clearAll()
         }
         updateResult()
+    }
+    
+    private enum Size {
+        case decimalExceeded, digitsExceeded, valid
+    }
+    
+    private func checkSize(_ string: String) -> Size {
+        if string.contains(".") {
+            if let dotIndex = string.firstIndex(of: ".") {
+                if string.count - dotIndex - 1 >= 10 {
+                    return .decimalExceeded
+                }
+            }
+            if string.count >= 16 {
+                return .digitsExceeded
+            }
+        } else {
+            if string.count >= 15 {
+                return .digitsExceeded
+            }
+        }
+        return .valid
     }
     
     private func showAlert(message: String) {
@@ -211,7 +242,7 @@ class ViewController: UIViewController {
         operand2String = nil
     }
     
-    private func convertToStringDisplay1(_ val: String?) -> String? {
+    private func convertToStringResultDisplay(_ val: String?) -> String? {
         guard let numString = val else {
             return nil
         }
@@ -222,14 +253,14 @@ class ViewController: UIViewController {
         }
     }
     
-    private func convertToStringDisplay2(_ val: String?) -> String? {
+    private func convertToStringEditableDisplay(_ val: String?) -> String? {
         guard let numString = val else {
             return nil
         }
         // MARK: add conversion
         if numString.contains("e") {
             return numString
-        } else if let (count,flag) = numString.onlyContainsZerosAfterDecimal() {
+        } else if let (count,flag) = numString.containsConsecutiveEndZerosAfterDecimal() {
             return addRemovedZerosToEnd(Double(numString)?.withCommas() ?? "", count, flag)
         } else {
             if numString.last == "." {
@@ -266,7 +297,7 @@ extension Double {
 }
 
 extension String {
-    func onlyContainsZerosAfterDecimal() -> (Int,Bool)? {
+    func containsConsecutiveEndZerosAfterDecimal() -> (Int,Bool)? {
         if !self.contains(".") {
             return nil
         }
@@ -282,6 +313,17 @@ extension String {
                 return (count == 0 ? nil : (count,false))
             }
         }
+    }
+    
+    func firstIndex(of element: Character) -> Int? {
+        var count = 0
+        for i in self {
+            if i == element {
+                return count
+            }
+             count += 1
+        }
+        return nil
     }
 }
 
