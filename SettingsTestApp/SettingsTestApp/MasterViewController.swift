@@ -27,6 +27,7 @@ class MasterViewController: UIViewController {
             searchBar.delegate = self
         }
     }
+    @IBOutlet private weak var searchBarHeight: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
@@ -57,6 +58,21 @@ class MasterViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         setPreviouslySelectedCell()
+        setSearchBarVisibility()
+    }
+    
+    private func setSearchBarVisibility() {
+        switch self.traitCollection.horizontalSizeClass {
+        case .compact:
+            searchBar.isHidden = false
+            searchBarHeight.constant = 56
+        case .regular:
+            searchBar.isHidden = true
+            searchBarHeight.constant = 0
+        default:
+            searchBar.isHidden = false
+            searchBarHeight.constant = 56
+        }
     }
   
 //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -86,6 +102,12 @@ extension MasterViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.secondarySystemBackground
+        return view
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

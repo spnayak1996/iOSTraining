@@ -17,7 +17,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fze-EB-HfG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailSwitchTableViewCell" rowHeight="52" id="rcf-oN-nyW" customClass="DetailSwitchTableViewCell" customModule="SettingsTestApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="52"/>
@@ -114,6 +114,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="90E-rn-BPF" secondAttribute="trailing" constant="45" id="KoL-Of-itK"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="lblText" destination="90E-rn-BPF" id="BjM-KU-iAj"/>
                                         </connections>
@@ -218,6 +219,9 @@
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Settings" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Gf-Yx-3FG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="dZe-MD-Swf"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-GJ-hKG">
@@ -347,6 +351,7 @@
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="8Gf-Yx-3FG" id="bnm-ui-1zF"/>
+                        <outlet property="searchBarHeight" destination="dZe-MD-Swf" id="p6g-aI-jY8"/>
                         <outlet property="tableView" destination="QIu-GJ-hKG" id="TRu-q0-XEJ"/>
                         <segue destination="bag-bI-0eJ" kind="showDetail" identifier="showDetail" id="I1k-uE-KeR"/>
                     </connections>

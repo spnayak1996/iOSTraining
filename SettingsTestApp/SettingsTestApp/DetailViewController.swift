@@ -127,6 +127,12 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         return 40
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.secondarySystemBackground
+        return view
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.count
     }
