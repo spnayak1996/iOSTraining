@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 class ImageViewerViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class ImageViewerViewController: UIViewController {
     private var currentViewIndex: Int!
     private var index: Int!
     private var photos: [Photo]!
+    var fbLogin: FBLoginButton?
     
     private var observation: NSKeyValueObservation?
 
@@ -82,4 +84,17 @@ class ImageViewerViewController: UIViewController {
         return (index + count) % count
     }
 
+}
+
+extension ImageViewerViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        return
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        let previousVC = self.navigationController?.viewControllers[0] as? LoginButtonDelegate
+        previousVC?.loginButtonDidLogOut(fbLogin!)
+        fbLogin?.delegate = previousVC
+        self.navigationController?.popViewController(animated: true)
+    }
 }

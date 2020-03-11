@@ -51,28 +51,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="sAW-Sf-pLK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0GX-Nu-Bsd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rb6-Z5-pAr">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="888"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="zQx-ml-bic">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="888"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="regular"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
-                                    </subviews>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -83,65 +61,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OxZ-h6-PNI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Photos" id="7e9-Ub-5rd">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="CT0-iT-ipx">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UKv-om-Jr6">
-                                <rect key="frame" x="20" y="7" width="100" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ADD DEFAULTS"/>
-                                <connections>
-                                    <action selector="addDefaultPhotos:" destination="7Az-Lp-Fe7" eventType="touchUpInside" id="19n-Je-M7H"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="cvR-sd-H93">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="s41-1Z-Sz0">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ADD"/>
-                                <connections>
-                                    <action selector="addPhoto:" destination="7Az-Lp-Fe7" eventType="touchUpInside" id="4Gi-Uw-EXA"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Photos" id="7e9-Ub-5rd"/>
                     <connections>
-                        <outlet property="addPhotoView" destination="WGP-Wg-Wly" id="O5U-0P-IpP"/>
-                        <outlet property="blurView" destination="sAW-Sf-pLK" id="3M5-Oo-Vd2"/>
-                        <outlet property="btnAdd" destination="s41-1Z-Sz0" id="6WM-Zf-ycU"/>
                         <outlet property="collectionView" destination="ATJ-Vk-cTQ" id="5is-hP-VpY"/>
-                        <outlet property="txtField" destination="SEq-26-owU" id="OZS-X5-hrd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G31-db-2Oc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="WGP-Wg-Wly">
-                    <rect key="frame" x="0.0" y="0.0" width="335" height="168"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jca-7n-mbe">
-                            <rect key="frame" x="151.5" y="128" width="32" height="30"/>
-                            <state key="normal" title="ADD"/>
-                            <connections>
-                                <action selector="addAndDismissPopUp:" destination="7Az-Lp-Fe7" eventType="touchUpInside" id="jJp-rQ-iUq"/>
-                            </connections>
-                        </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SEq-26-owU">
-                            <rect key="frame" x="20" y="69" width="295" height="34"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" textContentType="url"/>
-                        </textField>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstItem="Jca-7n-mbe" firstAttribute="centerX" secondItem="AgJ-Cg-m2k" secondAttribute="centerX" id="0Hv-Qn-GBm"/>
-                        <constraint firstItem="SEq-26-owU" firstAttribute="centerX" secondItem="AgJ-Cg-m2k" secondAttribute="centerX" id="5iw-B4-DYF"/>
-                        <constraint firstItem="AgJ-Cg-m2k" firstAttribute="bottom" secondItem="Jca-7n-mbe" secondAttribute="bottom" constant="10" id="IlS-Qd-Wwt"/>
-                        <constraint firstItem="SEq-26-owU" firstAttribute="leading" secondItem="AgJ-Cg-m2k" secondAttribute="leading" constant="20" id="QwE-RZ-sqA"/>
-                        <constraint firstItem="Jca-7n-mbe" firstAttribute="top" secondItem="SEq-26-owU" secondAttribute="bottom" constant="25" id="SZI-ez-NSd"/>
-                        <constraint firstItem="AgJ-Cg-m2k" firstAttribute="top" secondItem="SEq-26-owU" secondAttribute="top" constant="-25" id="mFp-VX-hXQ"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="AgJ-Cg-m2k"/>
-                </view>
             </objects>
             <point key="canvasLocation" x="962.31884057971024" y="375"/>
         </scene>

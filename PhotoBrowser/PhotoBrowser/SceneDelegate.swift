@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -23,6 +24,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             newWindow.rootViewController = UINavigationController(rootViewController: vc)
             window = newWindow
             window?.makeKeyAndVisible()
+        }
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let context = URLContexts.first {
+            ApplicationDelegate.shared.application(UIApplication.shared, open: context.url, sourceApplication: context.options.sourceApplication, annotation: context.options.annotation)
         }
     }
 
