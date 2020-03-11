@@ -13,7 +13,16 @@ class DrawerViewController: UIViewController {
     static let controllerId = "DrawerViewController"
     
     @IBOutlet private(set) weak var handleView: UIView!
-    @IBOutlet private(set) weak var commentBtn: UIButton!
+    @IBOutlet private(set) weak var lblBold: UILabel! {
+        didSet {
+            lblBold.alpha = 0
+        }
+    }
+    @IBOutlet private(set) weak var lblRegular: UILabel! {
+        didSet {
+            lblRegular.alpha = 1
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

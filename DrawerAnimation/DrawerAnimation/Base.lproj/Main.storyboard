@@ -48,16 +48,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FmT-5R-5MH">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfQ-jT-9bV">
-                                        <rect key="frame" x="169.5" y="10" width="75" height="30"/>
-                                        <state key="normal" title="Comments"/>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71G-E1-R0w">
+                                        <rect key="frame" x="173.5" y="16" width="67" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfM-8Y-gwY">
+                                        <rect key="frame" x="160.5" y="13" width="93" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="gfQ-jT-9bV" firstAttribute="centerY" secondItem="FmT-5R-5MH" secondAttribute="centerY" id="1jy-Yv-9tJ"/>
+                                    <constraint firstItem="71G-E1-R0w" firstAttribute="centerY" secondItem="FmT-5R-5MH" secondAttribute="centerY" id="8aT-7R-fQR"/>
+                                    <constraint firstItem="71G-E1-R0w" firstAttribute="centerX" secondItem="FmT-5R-5MH" secondAttribute="centerX" id="Llr-0a-53Z"/>
                                     <constraint firstAttribute="height" constant="50" id="gYS-CN-NUH"/>
-                                    <constraint firstItem="gfQ-jT-9bV" firstAttribute="centerX" secondItem="FmT-5R-5MH" secondAttribute="centerX" id="rf2-gK-pAM"/>
+                                    <constraint firstItem="HfM-8Y-gwY" firstAttribute="centerY" secondItem="FmT-5R-5MH" secondAttribute="centerY" id="lun-ZM-xPS"/>
+                                    <constraint firstItem="HfM-8Y-gwY" firstAttribute="centerX" secondItem="FmT-5R-5MH" secondAttribute="centerX" id="xrG-Kc-TpO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -75,8 +85,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="commentBtn" destination="gfQ-jT-9bV" id="qbt-oE-FOb"/>
                         <outlet property="handleView" destination="FmT-5R-5MH" id="p6i-JD-pm0"/>
+                        <outlet property="lblBold" destination="HfM-8Y-gwY" id="hMX-4U-eA0"/>
+                        <outlet property="lblRegular" destination="71G-E1-R0w" id="iQj-cI-fuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yg4-WM-HtQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

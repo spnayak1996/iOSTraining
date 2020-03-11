@@ -46,6 +46,8 @@ class FirstViewController: UIViewController {
         drawerViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - drawerHandleHeight, width: self.view.frame.width, height: drawerHeight)
         
         drawerViewController.view.clipsToBounds = true
+        
+        addGestures()
     }
     
     private func addGestures() {
@@ -57,7 +59,12 @@ class FirstViewController: UIViewController {
     }
     
     @objc private func handleDrawerTap(recognizer: UITapGestureRecognizer) {
-        
+        switch recognizer.state {
+        case .ended:
+            animateTransitionIfNeeded(state: nextState, duration: 1)
+        default:
+            break
+        }
     }
     
     @objc private func handleDrawerPan(recognizer: UIPanGestureRecognizer) {
@@ -65,7 +72,10 @@ class FirstViewController: UIViewController {
         case .began:
             startInteractiveAnimation(state: nextState, duration: 1)
         case .changed:
-            updateInteractiveAnimation(fractionCompleted: 0)
+            let translation = recognizer.translation(in: self.drawerViewController.handleView)
+            var fractionComplete = translation.y / drawerHeight
+            fractionComplete = drawerVisible ? fractionComplete : -fractionComplete
+            updateInteractiveAnimation(fractionCompleted: fractionComplete)
         case .ended:
             continueInteractiveAnimation()
        default:
@@ -74,6 +84,13 @@ class FirstViewController: UIViewController {
     }
     
     private func animateTransitionIfNeeded(state: DrawerState, duration: TimeInterval) {
+        addDrawerAnimation(state: state, duration: duration)
+        addCornerRadiusAnimation(state: state, duration: duration)
+        addBackGroundBlurAnimation(state: state, duration: duration)
+        addCommentFontChangeAnimation(state: state, duration: duration)
+    }
+    
+    private func addDrawerAnimation(state: DrawerState, duration: TimeInterval) {
         let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
             switch state {
             case .expanded:
@@ -89,6 +106,47 @@ class FirstViewController: UIViewController {
         
         frameAnimator.startAnimation()
         runningAnimations.append(frameAnimator)
+    }
+    
+    private func addCornerRadiusAnimation(state: DrawerState, duration: TimeInterval) {
+        let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
+            switch state {
+            case .collapsed:
+                self.drawerViewController.view.layer.cornerRadius = 0
+            case .expanded:
+                self.drawerViewController.view.layer.cornerRadius = 10
+            }
+        }
+        cornerRadiusAnimator.startAnimation()
+        runningAnimations.append(cornerRadiusAnimator)
+    }
+    
+    private func addBackGroundBlurAnimation(state: DrawerState, duration: TimeInterval) {
+        let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
+            switch state {
+            case .collapsed:
+                self.visualEffectView.effect = nil
+            case .expanded:
+                self.visualEffectView.effect = UIBlurEffect(style: .dark)
+            }
+        }
+        blurAnimator.startAnimation()
+        runningAnimations.append(blurAnimator)
+    }
+    
+    private func addCommentFontChangeAnimation(state: DrawerState, duration: TimeInterval) {
+        let fontChangeAnimation = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
+            switch state {
+            case .collapsed:
+                self.drawerViewController.lblBold.alpha = 0
+                self.drawerViewController.lblRegular.alpha = 1
+            case .expanded:
+                self.drawerViewController.lblBold.alpha = 1
+                self.drawerViewController.lblRegular.alpha = 0
+            }
+        }
+        fontChangeAnimation.startAnimation()
+        runningAnimations.append(fontChangeAnimation)
     }
     
     private func startInteractiveAnimation(state: DrawerState, duration: TimeInterval) {
