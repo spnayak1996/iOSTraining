@@ -66,6 +66,7 @@ class MainViewController: UIViewController {
             break
         case .authorizedWhenInUse:
             setUpMap()
+            centerOnUserLocation()
         @unknown default:
             break
         }
@@ -73,6 +74,16 @@ class MainViewController: UIViewController {
     
     private func setUpMap() {
         mapView.showsUserLocation = true
+    }
+    
+    @IBAction private func centerOnUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: 10000, longitudinalMeters: 10000)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    private func monitorARegion() {
     }
     
     private func showAlert(message: String) {
@@ -94,6 +105,18 @@ extension MainViewController: MKMapViewDelegate {
 }
 
 extension MainViewController: CLLocationManagerDelegate {
-
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else {
+            return
+        }
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 10000, longitudinalMeters: 10000)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorisation()
+    }
 }
 

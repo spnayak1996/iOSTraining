@@ -10,7 +10,7 @@
         <!--Main View Controller-->
         <scene sceneID="XNg-6x-NCv">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" id="HJA-um-klU" customClass="MainViewController" customModule="GeoFencing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="HJA-um-klU" customClass="MainViewController" customModule="geoFencingExercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsl-X1-2t5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,6 +28,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
+                                            <action selector="centerOnUserLocation" destination="HJA-um-klU" eventType="touchUpInside" id="AuR-EW-nqc"/>
                                             <action selector="showCurrentLocation:" destination="HJA-um-klU" eventType="touchUpInside" id="7XJ-Bo-AkO"/>
                                         </connections>
                                     </button>
@@ -109,7 +110,7 @@
         <!--Add View Controller-->
         <scene sceneID="HnK-SN-rkb">
             <objects>
-                <viewController storyboardIdentifier="AddViewController" id="VQ9-PN-NJC" customClass="AddViewController" customModule="GeoFencing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddViewController" id="VQ9-PN-NJC" customClass="AddViewController" customModule="geoFencingExercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p4W-f0-CfP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +196,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxO-q0-8Eg">
                                         <rect key="frame" x="92" y="115" width="100" height="50"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmx-cr-s5X" customClass="RoundView" customModule="GeoFencing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmx-cr-s5X" customClass="RoundView" customModule="geoFencingExercise" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="15" width="20" height="20"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -223,7 +224,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br2-Ve-PSd">
                                         <rect key="frame" x="202" y="115" width="105" height="50"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMm-xW-wu9" customClass="RoundView" customModule="GeoFencing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMm-xW-wu9" customClass="RoundView" customModule="geoFencingExercise" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="15" width="20" height="20"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
