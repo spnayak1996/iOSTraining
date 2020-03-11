@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     
     static let controllerID = "ViewController"
     
-    private var animationTime: Double = 2   //0.4
-    private var itemSize: CGFloat = 50      //207
+    private var animationTime: Double = 2
+    private var itemSize: CGFloat = 50
     private var spacing: CGFloat = 0
     
     @IBOutlet private weak var collectionView: UICollectionView! {
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
             collectionView.delegate = self
         }
     }
-    private var sourceArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    private let sourceArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     private var currentIndex: Int = 0 {
         didSet {
             currentIndex = currentIndex % 26
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         collectionView.insertItems(at: [indexPath])
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.alpha = 0
-        cell?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        cell?.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         UIView.animate(withDuration: animationTime, animations: {
             cell?.alpha = 1
             cell?.transform = CGAffineTransform.identity
@@ -142,6 +142,7 @@ class ViewController: UIViewController {
             performOneAfterOther(first: insert3AtEnd, second: delete3AtBeginning, sender: sender)
         case 7:
             openConfigureMenu()
+            sender.isUserInteractionEnabled = true
         default:
             break
         }

@@ -48,8 +48,21 @@ class MasterViewController: UIViewController {
         super.viewWillAppear(animated)
         filteredDataSource = dataSource
         tableView.reloadData()
+    }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        setPreviouslySelectedCell()
+//    }
+    
+    override func viewWillLayoutSubviews() {
         setPreviouslySelectedCell()
     }
+  
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        tableView.reloadData()
+//        setPreviouslySelectedCell()
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let id = segue.identifier, id == detailSegue, let cell = sender as? MasterNavigableTableViewCell, let navigationVC = segue.destination as? UINavigationController, let dvc = navigationVC.viewControllers.first as? DetailViewController {
@@ -126,8 +139,14 @@ extension MasterViewController: DetailViewControllerDelegate {
     }
     
     private func setPreviouslySelectedCell() {
-        if let indexPath = indexPathForDetail() {
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
+        tableView.reloadData()
+        switch self.traitCollection.horizontalSizeClass {
+        case .regular:
+            if let indexPath = indexPathForDetail() {
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
+            }
+        default:
+            break
         }
     }
     

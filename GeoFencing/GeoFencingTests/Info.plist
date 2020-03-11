@@ -4,16 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need it to run the app.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need it to run the app.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need it to run the app.</string>
-	<key>NSLocationUsageDescription</key>
-	<string>We need it to run the app.</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need it.kjqwndkjqwbdkjqwbdkjqbdkjqwbdkjqwbdkjqwbdqkwjdbqwkjdbqj</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Just need it.qjwdkjqwbdkqwjdbkjqwbdkjqwbdkqjwbdkqwjbdkjqsbkhs ckhw</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
