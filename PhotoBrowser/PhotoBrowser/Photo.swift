@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 enum DownloadError {
-    case INVALID_URL
-    case FAILED
-    case INVALID_IMAGE
+    case invalid_url
+    case failed
+    case invalid_image
 }
 
 typealias PhotoDownloadCompletionBlock = (_ image: Photo?, _ error: DownloadError?) -> Void
@@ -35,18 +35,18 @@ final class Photo {
     
     private func download(completion: @escaping PhotoDownloadCompletionBlock) {
         guard let url = URL(string: self.url) else {
-            completion(nil,.INVALID_URL)
+            completion(nil,.invalid_url)
             return
         }
         
         let task = downloadSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
-                completion(nil, .FAILED)
+                completion(nil, .failed)
             } else if let data = data, let image = UIImage(data: data) {
                 let createdPhoto = Photo(url: self.url, image: image)
                 completion(createdPhoto,nil)
             } else {
-                completion(nil, .INVALID_IMAGE)
+                completion(nil, .invalid_image)
             }
         }
         

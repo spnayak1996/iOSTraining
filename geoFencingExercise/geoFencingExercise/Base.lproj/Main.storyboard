@@ -28,7 +28,6 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="centerOnUserLocation" destination="HJA-um-klU" eventType="touchUpInside" id="AuR-EW-nqc"/>
                                             <action selector="showCurrentLocation:" destination="HJA-um-klU" eventType="touchUpInside" id="7XJ-Bo-AkO"/>
                                         </connections>
                                     </button>
@@ -185,7 +184,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5qh-mR-qs2">
                                         <rect key="frame" x="92" y="75" width="302" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-We-CO5">
                                         <rect key="frame" x="20" y="77" width="56.5" height="21"/>
@@ -193,7 +192,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxO-q0-8Eg">
+                                    <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxO-q0-8Eg">
                                         <rect key="frame" x="92" y="115" width="100" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmx-cr-s5X" customClass="RoundView" customModule="geoFencingExercise" customModuleProvider="target">
@@ -221,12 +220,12 @@
                                             <constraint firstItem="SKM-Gg-Nl8" firstAttribute="centerY" secondItem="YxO-q0-8Eg" secondAttribute="centerY" id="s7g-Mg-q2s"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br2-Ve-PSd">
+                                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br2-Ve-PSd">
                                         <rect key="frame" x="202" y="115" width="105" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMm-xW-wu9" customClass="RoundView" customModule="geoFencingExercise" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="15" width="20" height="20"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="WWi-xJ-FEd"/>
                                                     <constraint firstAttribute="width" constant="20" id="b3N-P3-5Ie"/>

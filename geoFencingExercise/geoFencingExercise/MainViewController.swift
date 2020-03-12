@@ -32,12 +32,18 @@ class MainViewController: UIViewController {
             mapView.delegate = self
         }
     }
+    private var monitoredRegions: [MonitoredRegions]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUpLocationManager()
         checkLocationServices()
+        getMonitoredRegions()
+    }
+    
+    private func getMonitoredRegions() {
+        monitoredRegions = DataHandler.shared.getAllMonitoredRegions()
     }
     
     private func setUpLocationManager() {
@@ -66,7 +72,7 @@ class MainViewController: UIViewController {
             break
         case .authorizedWhenInUse:
             setUpMap()
-            centerOnUserLocation()
+            showCurrentLocation(UIButton())
         @unknown default:
             break
         }
@@ -74,13 +80,6 @@ class MainViewController: UIViewController {
     
     private func setUpMap() {
         mapView.showsUserLocation = true
-    }
-    
-    @IBAction private func centerOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: 10000, longitudinalMeters: 10000)
-            mapView.setRegion(region, animated: true)
-        }
     }
     
     private func monitorARegion() {
@@ -97,6 +96,10 @@ class MainViewController: UIViewController {
     }
     
     @IBAction private func showCurrentLocation(_ sender: UIButton) {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: 10000, longitudinalMeters: 10000)
+            mapView.setRegion(region, animated: true)
+        }
     }
 }
 

@@ -71,11 +71,11 @@ class PhotosViewController: UIViewController {
         let _ = Photo(url: url) { (photo, error) in
             if let error = error {
                 switch error {
-                case .FAILED:
+                case .failed:
                     print("Failed")
-                case .INVALID_URL:
+                case .invalid_url:
                     print("Invalid URL")
-                case .INVALID_IMAGE:
+                case .invalid_image:
                     print("Invalid Image")
                 }
             } else {

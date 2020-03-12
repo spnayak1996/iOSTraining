@@ -34,14 +34,14 @@ class DataHandler {
         if let rawVal = retrieveData(Constants.wifi, Int.self) {
             self.wifi = Enums.Networks(rawValue: rawVal)
         } else {
-            self.wifi = Enums.Networks.Network1
+            self.wifi = Enums.Networks.network1
         }
         self.bluetooth = retrieveData(Constants.bluetooth, Bool.self) ?? false
         self.mobileData = retrieveData(Constants.mobileData, Bool.self) ?? false
         if let rawVal = retrieveData(Constants.carrier, Int.self) {
             self.carrier = Enums.Carrier(rawValue: rawVal)
         } else {
-            self.carrier = Enums.Carrier.Carrier1
+            self.carrier = Enums.Carrier.carrier1
         }
         self.notification = retrieveData(Constants.notification, Bool.self) ?? false
         self.doNotDisturb = retrieveData(Constants.doNotDisturb, Bool.self) ?? false
@@ -117,48 +117,48 @@ class DataHandler {
 
 enum Enums {
     enum Networks: Int, CaseIterable {
-        case Network1, Network2, Network3, Network4, Network5
+        case network1, network2, network3, network4, network5
         
         func description() -> String {
             switch self {
-            case .Network1:
+            case .network1:
                 return "Network 1"
-            case .Network2:
+            case .network2:
                 return "Network 2"
-            case .Network3:
+            case .network3:
                 return "Network 3"
-            case .Network4:
+            case .network4:
                 return "Network 4"
-            case .Network5:
+            case .network5:
                 return "Network 5"
             }
         }
         
         static func returnIterator() -> [Networks] {
-            return [.Network1,.Network2,.Network3,.Network4,.Network5]
+            return [.network1,.network2,.network3,.network4,.network5]
         }
     }
     
     enum Carrier: Int, CaseIterable {
-        case Carrier1, Carrier2, Carrier3, Carrier4, Carrier5
+        case carrier1, carrier2, carrier3, carrier4, carrier5
         
         func description() -> String {
             switch self {
-            case .Carrier1:
+            case .carrier1:
                 return "Carrier 1"
-            case .Carrier2:
+            case .carrier2:
                 return "Carrier 2"
-            case .Carrier3:
+            case .carrier3:
                 return "Carrier 3"
-            case .Carrier4:
+            case .carrier4:
                 return "Carrier 4"
-            case .Carrier5:
+            case .carrier5:
                 return "Carrier 5"
             }
         }
         
         static func returnIterator() -> [Carrier] {
-            return [.Carrier1,.Carrier2,.Carrier3,.Carrier4,.Carrier5]
+            return [.carrier1,.carrier2,.carrier3,.carrier4,.carrier5]
         }
     }
     
