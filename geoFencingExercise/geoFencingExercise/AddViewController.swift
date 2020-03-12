@@ -10,11 +10,19 @@ import UIKit
 import MapKit
 import CoreLocation
 
+protocol AddViewControllerDelegate: UIViewController {
+    func updateView()
+}
+
 class AddViewController: UIViewController {
     
     static let controllerId = "AddViewController"
 
-    @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var mapView: MKMapView! {
+        didSet {
+            mapView.delegate = self
+        }
+    }
     private var pin: CustomPin!
     @IBOutlet private weak var txtViewNote: UITextView! {
         didSet {
@@ -32,6 +40,7 @@ class AddViewController: UIViewController {
     @IBOutlet private weak var vwCheckedExit: RoundView!
     private var monitoredState = MonitoredState.entry
     private let locationManager = CLLocationManager()
+    weak var delegate: AddViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +49,14 @@ class AddViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         addToolbar()
+        setUpLocationManager()
         setTapGesture()
         setEntryExitViewTaps()
+    }
+    
+    private func setUpLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     private func setTapGesture() {
@@ -107,6 +122,9 @@ class AddViewController: UIViewController {
                 showAlert("Region with same note: \"\(pin.note)\" already exists") { (_) in
                     self.txtViewNote.becomeFirstResponder()
                 }
+            } else {
+                delegate?.updateView()
+                closeBtnTapped(UIButton())
             }
         }
     }
@@ -138,7 +156,7 @@ class AddViewController: UIViewController {
     }
     
     private func validateNote() -> String? {
-        if let note = txtViewNote.text, !note.isEmpty {
+        if let note = txtViewNote.text, !note.checkForEmpty() {
             return note
         }
         return nil
@@ -185,8 +203,19 @@ class AddViewController: UIViewController {
         if pin != nil {
             mapView.removeAnnotation(pin)
         }
-        pin = CustomPin(coordinate: coordinates, monitoredState: monitoredState)
+        pin = CustomPin(coordinate: coordinates, monitoredState: monitoredState, radius: validateRadius() ?? 0, note: validateNote() ?? "default")
         mapView.addAnnotation(pin)
+        updateHighloghtedRegion()
+    }
+    
+    private func updateHighloghtedRegion() {
+        if pin != nil {
+            let region = CLCircularRegion(center: pin.coordinate, radius: pin.radius, identifier: pin.note)
+            locationManager.startMonitoring(for: region)
+            let circle = MKCircle(center: pin.coordinate, radius: pin.radius)
+            mapView.removeOverlays(mapView.overlays)
+            mapView.addOverlay(circle)
+        }
     }
 }
 
@@ -196,9 +225,27 @@ extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let radiusString = textField.text, let radius = Double(radiusString) {
+        if let radiusString = textField.text {
+            pin?.setRadius(Double(radiusString) ?? 0)
             //MARK: update mapview circular region
+            updateHighloghtedRegion()
         }
+    }
+}
+
+extension AddViewController: CLLocationManagerDelegate {
+    
+}
+
+extension AddViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let circleOverlay = overlay as? MKCircle else {
+            return MKOverlayRenderer()
+        }
+        let circleRenderer = MKCircleRenderer(overlay: circleOverlay)
+        circleRenderer.fillColor = .blue
+        circleRenderer.alpha = 0.5
+        return circleRenderer
     }
 }
 
@@ -208,9 +255,11 @@ class CustomPin: NSObject, MKAnnotation {
     private(set) var monitoredState = MonitoredState.entry
     private(set) var radius: Double = 0
     
-    init(coordinate: CLLocationCoordinate2D, monitoredState: MonitoredState) {
+    init(coordinate: CLLocationCoordinate2D, monitoredState: MonitoredState, radius: Double, note: String) {
         self.coordinate = coordinate
         self.monitoredState = monitoredState
+        self.radius = radius
+        self.note = note
     }
     
     func setMonitoredState(_ state: MonitoredState) {

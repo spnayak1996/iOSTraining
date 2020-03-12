@@ -67,6 +67,12 @@ class DataHandler {
     
     func delete(_ region: MonitoredRegions) {
         context.delete(region)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Deletion failure")
+        }
     }
     
 }
