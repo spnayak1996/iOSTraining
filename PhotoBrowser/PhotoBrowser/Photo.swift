@@ -62,7 +62,6 @@ final class Photo {
                     return
                 } else {
                     if let fbResult = result as? [String : Any], let resultArray = fbResult["data"] as? [[String : Any]] {
-                        print(fbResult["data"])
                         for item in resultArray {
                             if let images = item["images"] as? [[String : Any]], let url = images[0]["source"] as? String {
                                 self.downloadPhoto(url: url, completion: completion)
