@@ -22,60 +22,56 @@ class PhotosViewController: UIViewController {
     private var photos = [Photo]()
     private var fbLogin: FBLoginButton!
     private let itemsPerRow: CGFloat = 3
-    private let sectionInsets = UIEdgeInsets(top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0)
+    private let sectionInsets = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setCollectionViewItemSize()
+        setCollectionViewItemSize(viewSize: nil)
         addFBLoginButton()
         getPhotos()
     }
     
     private func addFBLoginButton() {
-        fbLogin = FBLoginButton(frame: CGRect(x: self.view.frame.width - 115, y: 7.5, width: 100, height: 30), permissions: [Permission.userPhotos])
+        if fbLogin != nil {
+            fbLogin.removeFromSuperview()
+        }
+        fbLogin = FBLoginButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30), permissions: [Permission.publicProfile, Permission.email,Permission.userPhotos])
         fbLogin.delegate = self
+        resetButtonFrame()
         self.navigationController?.navigationBar.addSubview(fbLogin)
     }
     
-    private func setCollectionViewItemSize() {
-        let width = (self.view.frame.size.width - ((sectionInsets.left + sectionInsets.right) * (itemsPerRow + 1)))/itemsPerRow
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width)
-    }
-    
-    private func getPhotos() {
-        if let userId = AccessToken.current?.userID {
-            GraphRequest(graphPath: "/\(userId)/photos", parameters: ["fields":"images"]).start { (_, result, error) in
-                if error != nil {
-                    print(error ?? "unknown error")
-                    return
-                } else {
-                    if let fbResult = result as? [String: AnyObject], let resultArray = fbResult["data"] as? [[String: AnyObject]] {
-                        
-                        for item in resultArray {
-                            if let images = item["images"] as? [[String:AnyObject]], let url = images[0]["source"] as? String {
-                                self.downloadPhoto(url: url, group: nil)
-                            }
-                        }
-                    }
-                }
-            }
+    private func resetButtonFrame() {
+        if let frame = self.navigationController?.navigationBar.frame {
+            fbLogin.frame = CGRect(x: frame.width - 110, y: (frame.height - 30)/2, width: 100, height: 30)
         }
     }
     
-    private func downloadPhoto(url: String, group: DispatchGroup?) {
-        let _ = Photo(url: url) { (photo, error) in
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if fbLogin != nil {
+            let frame = fbLogin.frame
+            fbLogin.frame = CGRect(x: size.width - 110, y: frame.origin.y, width: 100, height: 30)
+            setCollectionViewItemSize(viewSize: size)
+        }
+    }
+    
+    private func setCollectionViewItemSize(viewSize: CGSize?) {
+        let width = ((viewSize?.width ?? self.view.frame.size.width) - ((sectionInsets.left + sectionInsets.right) * (itemsPerRow + 1)))/itemsPerRow
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.itemSize = CGSize(width: width, height: width)
+        }
+    }
+    
+    private func getPhotos() {
+        downloadAllPhotos { (photo, error) in
             if let error = error {
                 switch error {
                 case .failed:
                     print("Failed")
-                case .invalid_url:
+                case .invalidUrl:
                     print("Invalid URL")
-                case .invalid_image:
+                case .invalidImage:
                     print("Invalid Image")
                 }
             } else {
@@ -84,8 +80,11 @@ class PhotosViewController: UIViewController {
                     self.collectionView.reloadData()
                 }
             }
-            group?.leave()
         }
+    }
+    
+    private func downloadAllPhotos(completion: @escaping PhotoDownloadCompletionBlock) {
+        Photo.downloadAll(completion: completion)
     }
     
     private func navigateToImageViewer(index: Int,_ list: [Photo]) {

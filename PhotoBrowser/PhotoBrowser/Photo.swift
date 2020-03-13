@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
+import FacebookCore
 
 enum DownloadError {
-    case invalid_url
+    case invalidUrl
     case failed
-    case invalid_image
+    case invalidImage
 }
 
 typealias PhotoDownloadCompletionBlock = (_ image: Photo?, _ error: DownloadError?) -> Void
@@ -35,7 +36,7 @@ final class Photo {
     
     private func download(completion: @escaping PhotoDownloadCompletionBlock) {
         guard let url = URL(string: self.url) else {
-            completion(nil,.invalid_url)
+            completion(nil,.invalidUrl)
             return
         }
         
@@ -46,10 +47,34 @@ final class Photo {
                 let createdPhoto = Photo(url: self.url, image: image)
                 completion(createdPhoto,nil)
             } else {
-                completion(nil, .invalid_image)
+                completion(nil, .invalidImage)
             }
         }
         
         task.resume()
+    }
+    
+    static func downloadAll(completion: @escaping PhotoDownloadCompletionBlock) {
+        if let userId = AccessToken.current?.userID, AccessToken.current?.hasGranted(Permission.userPhotos) == true {
+            GraphRequest(graphPath: "/\(userId)/photos/uploaded", parameters: ["fields" : "images"]).start { (_, result, error) in
+                if error != nil {
+                    print(error ?? "unknown error")
+                    return
+                } else {
+                    if let fbResult = result as? [String : Any], let resultArray = fbResult["data"] as? [[String : Any]] {
+                        print(fbResult["data"])
+                        for item in resultArray {
+                            if let images = item["images"] as? [[String : Any]], let url = images[0]["source"] as? String {
+                                self.downloadPhoto(url: url, completion: completion)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private static func downloadPhoto(url: String, completion: @escaping PhotoDownloadCompletionBlock) {
+        let _ = Photo(url: url, completionHandler: completion)
     }
 }

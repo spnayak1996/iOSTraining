@@ -7,15 +7,4 @@ target 'PhotoBrowser' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
 
-  # Pods for PhotoBrowser
-
-  target 'PhotoBrowserTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'PhotoBrowserUITests' do
-    # Pods for testing
-  end
-
 end
