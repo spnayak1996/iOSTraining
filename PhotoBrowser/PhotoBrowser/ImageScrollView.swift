@@ -49,17 +49,18 @@ class ImageScrollView: UIView {
     }
     
     private func setUpImageView() {
-        scrollView.contentSize = imageView.bounds.size
+        scrollView.contentSize = imageView.frame.size
         scrollView.addSubview(imageView)
     }
     
     private func setUpNewZoomScale() {
-        setZoomScale(for: scrollView.bounds.size)
+        setZoomScale(for: scrollView.frame.size)
         scrollView.zoomScale = scrollView.minimumZoomScale
+//        recenterImage()
     }
     
     private func setZoomScale(for scrollViewSize: CGSize) {
-        let imageSize = imageView.bounds.size
+        let imageSize = imageView.frame.size
         let widthScale = scrollViewSize.width/imageSize.width
         let heightScale = scrollViewSize.height/imageSize.height
         let minimumScale = min(heightScale,widthScale)
@@ -69,7 +70,7 @@ class ImageScrollView: UIView {
     }
     
     private func recenterImage() {
-        let scrollViewSize = scrollView.bounds.size
+        let scrollViewSize = scrollView.frame.size
         let imageViewSize = imageView.frame.size
         let horizontalSpace = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width)/2 : 0
         let verticalSpace = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height - extra)/2 : 0

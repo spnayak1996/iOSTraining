@@ -55,7 +55,7 @@ final class Photo {
     }
     
     static func downloadAll(completion: @escaping PhotoDownloadCompletionBlock) {
-        if let userId = AccessToken.current?.userID, AccessToken.current?.hasGranted(Permission.userPhotos) == true {
+        if let userId = AccessToken.current?.userID/*, AccessToken.current?.hasGranted(Permission.userPhotos) == true*/ {
             GraphRequest(graphPath: "/\(userId)/photos/uploaded", parameters: ["fields" : "images"]).start { (_, result, error) in
                 if error != nil {
                     print(error ?? "unknown error")

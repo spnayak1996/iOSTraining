@@ -20,44 +20,57 @@ class PhotosViewController: UIViewController {
         }
     }
     private var photos = [Photo]()
-    private var fbLogin: FBLoginButton!
-    private let itemsPerRow: CGFloat = 3
-    private let sectionInsets = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+    private static let itemsPerRow: CGFloat = 3
+    private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    private var loggedIn = false {
+        didSet {
+            fbLogin?.title = loginBtnTitle()
+        }
+    }
+    private var fbLogin: UIBarButtonItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setLoggedIn()
         setCollectionViewItemSize(viewSize: nil)
-        addFBLoginButton()
+        setUpFBLoginButton()
         getPhotos()
     }
     
-    private func addFBLoginButton() {
-        if fbLogin != nil {
-            fbLogin.removeFromSuperview()
-        }
-        fbLogin = FBLoginButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30), permissions: [Permission.publicProfile, Permission.email,Permission.userPhotos])
-        fbLogin.delegate = self
-        resetButtonFrame()
-        self.navigationController?.navigationBar.addSubview(fbLogin)
-    }
-    
-    private func resetButtonFrame() {
-        if let frame = self.navigationController?.navigationBar.frame {
-            fbLogin.frame = CGRect(x: frame.width - 110, y: (frame.height - 30)/2, width: 100, height: 30)
+    private func setLoggedIn() {
+        if AccessToken.current != nil {
+            loggedIn = true
+        } else {
+            loggedIn = false
         }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if fbLogin != nil {
-            let frame = fbLogin.frame
-            fbLogin.frame = CGRect(x: size.width - 110, y: frame.origin.y, width: 100, height: 30)
-            setCollectionViewItemSize(viewSize: size)
+    private func loginBtnTitle() -> String {
+        return (loggedIn ? "Logout" : "Login")
+    }
+    
+    private func setUpFBLoginButton() {
+        fbLogin = UIBarButtonItem(title: loginBtnTitle(), style: UIBarButtonItem.Style.plain, target: self, action: #selector(loginIntoFB(sender:)))
+        self.navigationItem.rightBarButtonItem = fbLogin
+    }
+    
+    @objc private func loginIntoFB(sender: UIBarButtonItem) {
+        let loginManager = LoginManager()
+        if loggedIn {
+            loginManager.logOut()
+            photos = [Photo]()
+            collectionView.reloadData()
+            loggedIn = false
+        } else {
+            loginManager.logIn(permissions: [.publicProfile, .email, .userPhotos], viewController: self) { (result) in
+                self.getPhotos()
+                self.loggedIn = true
+            }
         }
     }
     
     private func setCollectionViewItemSize(viewSize: CGSize?) {
-        let width = ((viewSize?.width ?? self.view.frame.size.width) - ((sectionInsets.left + sectionInsets.right) * (itemsPerRow + 1)))/itemsPerRow
+        let width = ((viewSize?.width ?? self.view.frame.size.width) - ((sectionInsets.left + sectionInsets.right) * (Self.itemsPerRow + 1)))/Self.itemsPerRow
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = CGSize(width: width, height: width)
         }
@@ -75,9 +88,11 @@ class PhotosViewController: UIViewController {
                     print("Invalid Image")
                 }
             } else {
-                self.photos.append(photo!)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+                if let photo = photo {
+                    self.photos.append(photo)
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
                 }
             }
         }
@@ -90,8 +105,6 @@ class PhotosViewController: UIViewController {
     private func navigateToImageViewer(index: Int,_ list: [Photo]) {
         let vc = self.storyboard?.instantiateViewController(identifier: ImageViewerViewController.controllerId) as! ImageViewerViewController
         vc.setUp(index: index, list: list)
-        vc.fbLogin = self.fbLogin
-        fbLogin.delegate = vc
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -121,18 +134,6 @@ extension PhotosViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.top
-    }
-}
-
-extension PhotosViewController: LoginButtonDelegate {
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("user logged out")
-        photos = [Photo]()
-        collectionView.reloadData()
-    }
-    
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        getPhotos()
     }
 }
 

@@ -17,7 +17,6 @@ class ImageViewerViewController: UIViewController {
     private var currentViewIndex: Int!
     private var index: Int!
     private var photos: [Photo]!
-    var fbLogin: FBLoginButton?
     
     private var observation: NSKeyValueObservation?
 
@@ -32,8 +31,8 @@ class ImageViewerViewController: UIViewController {
     }
     
     private func setUpViews() {
-        let viewHeight: CGFloat = self.view.bounds.size.height
-        let viewWidth: CGFloat = self.view.bounds.size.width
+        let viewHeight: CGFloat = self.view.frame.size.height
+        let viewWidth: CGFloat = self.view.frame.size.width
         let scrollView = createScrollView(viewWidth: viewWidth, viewHeight: viewHeight)
         self.view.addSubview(scrollView)
         
@@ -42,11 +41,11 @@ class ImageViewerViewController: UIViewController {
     
     private func createScrollView(viewWidth: CGFloat, viewHeight: CGFloat) -> UIScrollView {
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: viewHeight))
-        let extra = self.navigationController?.navigationBar.bounds.height
+        let extra = self.navigationController?.navigationBar.bounds.height ?? 0
         scrollView.isPagingEnabled = true
         var xPostion: CGFloat = 0
         for i in 0...2 {
-            let view = ImageScrollView(image: photos[rectifyIndex(index: (index - 1 + i), count: photos.count)].image!, frame: CGRect(x: xPostion, y: 0, width: viewWidth, height: viewHeight), extra: extra ?? 0)
+            let view = ImageScrollView(image: photos[rectifyIndex(index: (index - 1 + i), count: photos.count)].image!, frame: CGRect(x: xPostion, y: 0, width: viewWidth, height: viewHeight), extra: extra)
             xPostion += viewWidth
             views.append(view)
             scrollView.addSubview(view)
@@ -84,17 +83,4 @@ class ImageViewerViewController: UIViewController {
         return (index + count) % count
     }
 
-}
-
-extension ImageViewerViewController: LoginButtonDelegate {
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        return
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        let previousVC = self.navigationController?.viewControllers[0] as? LoginButtonDelegate
-        previousVC?.loginButtonDidLogOut(fbLogin!)
-        fbLogin?.delegate = previousVC
-        self.navigationController?.popViewController(animated: true)
-    }
 }
