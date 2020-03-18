@@ -31,21 +31,21 @@ class ImageViewerViewController: UIViewController {
     }
     
     private func setUpViews() {
-        let viewHeight: CGFloat = self.view.frame.size.height
+        let extra = (self.navigationController?.navigationBar.frame.height ?? 0) + 20
+        let viewHeight: CGFloat = self.view.frame.size.height - extra
         let viewWidth: CGFloat = self.view.frame.size.width
-        let scrollView = createScrollView(viewWidth: viewWidth, viewHeight: viewHeight)
+        let scrollView = createScrollView(viewWidth: viewWidth, viewHeight: viewHeight, extra: extra)
         self.view.addSubview(scrollView)
         
         setUpObserver(view: scrollView)
     }
     
-    private func createScrollView(viewWidth: CGFloat, viewHeight: CGFloat) -> UIScrollView {
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: viewHeight))
-        let extra = self.navigationController?.navigationBar.bounds.height ?? 0
+    private func createScrollView(viewWidth: CGFloat, viewHeight: CGFloat, extra: CGFloat) -> UIScrollView {
+        let scrollView = UIScrollView(frame: CGRect(x: 0, y: extra, width: viewWidth, height: viewHeight))
         scrollView.isPagingEnabled = true
         var xPostion: CGFloat = 0
         for i in 0...2 {
-            let view = ImageScrollView(image: photos[rectifyIndex(index: (index - 1 + i), count: photos.count)].image!, frame: CGRect(x: xPostion, y: 0, width: viewWidth, height: viewHeight), extra: extra)
+            let view = ImageScrollView(image: photos[rectifyIndex(index: (index - 1 + i), count: photos.count)].image!, frame: CGRect(x: xPostion, y: 0, width: viewWidth, height: viewHeight))
             xPostion += viewWidth
             views.append(view)
             scrollView.addSubview(view)

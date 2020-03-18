@@ -12,7 +12,6 @@ class ImageScrollView: UIView {
     
     private var imageView: UIImageView!
     private var scrollView: UIScrollView!
-    private var extra: CGFloat!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -22,10 +21,9 @@ class ImageScrollView: UIView {
         super.init(frame: frame)
     }
     
-    convenience init(image: UIImage, frame: CGRect, extra: CGFloat) {
+    convenience init(image: UIImage, frame: CGRect) {
         self.init(frame: frame)
         imageView = UIImageView(image: image)
-        self.extra = extra
         setupScrollView()
         setUpNewZoomScale()
     }
@@ -73,8 +71,8 @@ class ImageScrollView: UIView {
         let scrollViewSize = scrollView.frame.size
         let imageViewSize = imageView.frame.size
         let horizontalSpace = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width)/2 : 0
-        let verticalSpace = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height - extra)/2 : 0
-        scrollView.contentInset = UIEdgeInsets(top: verticalSpace + extra, left: horizontalSpace, bottom: verticalSpace, right: horizontalSpace)
+        let verticalSpace = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height)/2 : 0
+        scrollView.contentInset = UIEdgeInsets(top: verticalSpace, left: horizontalSpace, bottom: verticalSpace, right: horizontalSpace)
     }
 
 }
