@@ -127,6 +127,7 @@ class ViewController: UIViewController {
     private func openConfigureMenu() {
         let vc = self.storyboard?.instantiateViewController(identifier: ConfigurationViewController.controllerId) as! ConfigurationViewController
         vc.delegate = self
+        vc.setPrefilledValues(time: animationTime, size: Float(itemSize), spacing: Float(spacing))
         self.present(vc, animated: true, completion: nil)
     }
 
