@@ -17,28 +17,9 @@
 		DF698A752418CBA2006BC93E /* geoFencingExercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF698A732418CBA2006BC93E /* geoFencingExercise.xcdatamodeld */; };
 		DF698A772418CBA3006BC93E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF698A762418CBA3006BC93E /* Assets.xcassets */; };
 		DF698A7A2418CBA3006BC93E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF698A782418CBA3006BC93E /* LaunchScreen.storyboard */; };
-		DF698A852418CBA3006BC93E /* geoFencingExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A842418CBA3006BC93E /* geoFencingExerciseTests.swift */; };
-		DF698A902418CBA3006BC93E /* geoFencingExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A8F2418CBA3006BC93E /* geoFencingExerciseUITests.swift */; };
 		DF698A9E2418CC0F006BC93E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A9D2418CC0F006BC93E /* MainViewController.swift */; };
 		DF698AA02418CC65006BC93E /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A9F2418CC65006BC93E /* RoundView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DF698A812418CBA3006BC93E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF698A5F2418CBA2006BC93E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF698A662418CBA2006BC93E;
-			remoteInfo = geoFencingExercise;
-		};
-		DF698A8C2418CBA3006BC93E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF698A5F2418CBA2006BC93E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF698A662418CBA2006BC93E;
-			remoteInfo = geoFencingExercise;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DF0B5BA5241A3E50005D5FD7 /* MonitoredRegions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonitoredRegions+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -53,32 +34,12 @@
 		DF698A762418CBA3006BC93E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF698A792418CBA3006BC93E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF698A7B2418CBA3006BC93E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF698A802418CBA3006BC93E /* geoFencingExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geoFencingExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF698A842418CBA3006BC93E /* geoFencingExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geoFencingExerciseTests.swift; sourceTree = "<group>"; };
-		DF698A862418CBA3006BC93E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF698A8B2418CBA3006BC93E /* geoFencingExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geoFencingExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF698A8F2418CBA3006BC93E /* geoFencingExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geoFencingExerciseUITests.swift; sourceTree = "<group>"; };
-		DF698A912418CBA3006BC93E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF698A9D2418CC0F006BC93E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DF698A9F2418CC65006BC93E /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DF698A642418CBA2006BC93E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF698A7D2418CBA3006BC93E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF698A882418CBA3006BC93E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -92,8 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				DF698A692418CBA2006BC93E /* geoFencingExercise */,
-				DF698A832418CBA3006BC93E /* geoFencingExerciseTests */,
-				DF698A8E2418CBA3006BC93E /* geoFencingExerciseUITests */,
 				DF698A682418CBA2006BC93E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,8 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				DF698A672418CBA2006BC93E /* geoFencingExercise.app */,
-				DF698A802418CBA3006BC93E /* geoFencingExerciseTests.xctest */,
-				DF698A8B2418CBA3006BC93E /* geoFencingExerciseUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,24 +85,6 @@
 			path = geoFencingExercise;
 			sourceTree = "<group>";
 		};
-		DF698A832418CBA3006BC93E /* geoFencingExerciseTests */ = {
-			isa = PBXGroup;
-			children = (
-				DF698A842418CBA3006BC93E /* geoFencingExerciseTests.swift */,
-				DF698A862418CBA3006BC93E /* Info.plist */,
-			);
-			path = geoFencingExerciseTests;
-			sourceTree = "<group>";
-		};
-		DF698A8E2418CBA3006BC93E /* geoFencingExerciseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DF698A8F2418CBA3006BC93E /* geoFencingExerciseUITests.swift */,
-				DF698A912418CBA3006BC93E /* Info.plist */,
-			);
-			path = geoFencingExerciseUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,42 +105,6 @@
 			productReference = DF698A672418CBA2006BC93E /* geoFencingExercise.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DF698A7F2418CBA3006BC93E /* geoFencingExerciseTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DF698A972418CBA3006BC93E /* Build configuration list for PBXNativeTarget "geoFencingExerciseTests" */;
-			buildPhases = (
-				DF698A7C2418CBA3006BC93E /* Sources */,
-				DF698A7D2418CBA3006BC93E /* Frameworks */,
-				DF698A7E2418CBA3006BC93E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DF698A822418CBA3006BC93E /* PBXTargetDependency */,
-			);
-			name = geoFencingExerciseTests;
-			productName = geoFencingExerciseTests;
-			productReference = DF698A802418CBA3006BC93E /* geoFencingExerciseTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		DF698A8A2418CBA3006BC93E /* geoFencingExerciseUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DF698A9A2418CBA3006BC93E /* Build configuration list for PBXNativeTarget "geoFencingExerciseUITests" */;
-			buildPhases = (
-				DF698A872418CBA3006BC93E /* Sources */,
-				DF698A882418CBA3006BC93E /* Frameworks */,
-				DF698A892418CBA3006BC93E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DF698A8D2418CBA3006BC93E /* PBXTargetDependency */,
-			);
-			name = geoFencingExerciseUITests;
-			productName = geoFencingExerciseUITests;
-			productReference = DF698A8B2418CBA3006BC93E /* geoFencingExerciseUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -214,14 +117,6 @@
 				TargetAttributes = {
 					DF698A662418CBA2006BC93E = {
 						CreatedOnToolsVersion = 11.3.1;
-					};
-					DF698A7F2418CBA3006BC93E = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = DF698A662418CBA2006BC93E;
-					};
-					DF698A8A2418CBA3006BC93E = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = DF698A662418CBA2006BC93E;
 					};
 				};
 			};
@@ -239,8 +134,6 @@
 			projectRoot = "";
 			targets = (
 				DF698A662418CBA2006BC93E /* geoFencingExercise */,
-				DF698A7F2418CBA3006BC93E /* geoFencingExerciseTests */,
-				DF698A8A2418CBA3006BC93E /* geoFencingExerciseUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -253,20 +146,6 @@
 				DF698A7A2418CBA3006BC93E /* LaunchScreen.storyboard in Resources */,
 				DF698A772418CBA3006BC93E /* Assets.xcassets in Resources */,
 				DF698A722418CBA2006BC93E /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF698A7E2418CBA3006BC93E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF698A892418CBA3006BC93E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,36 +168,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF698A7C2418CBA3006BC93E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DF698A852418CBA3006BC93E /* geoFencingExerciseTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF698A872418CBA3006BC93E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DF698A902418CBA3006BC93E /* geoFencingExerciseUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DF698A822418CBA3006BC93E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DF698A662418CBA2006BC93E /* geoFencingExercise */;
-			targetProxy = DF698A812418CBA3006BC93E /* PBXContainerItemProxy */;
-		};
-		DF698A8D2418CBA3006BC93E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DF698A662418CBA2006BC93E /* geoFencingExercise */;
-			targetProxy = DF698A8C2418CBA3006BC93E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DF698A702418CBA2006BC93E /* Main.storyboard */ = {
@@ -490,90 +340,6 @@
 			};
 			name = Release;
 		};
-		DF698A982418CBA3006BC93E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = geoFencingExerciseTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.geoFencingExerciseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/geoFencingExercise.app/geoFencingExercise";
-			};
-			name = Debug;
-		};
-		DF698A992418CBA3006BC93E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = geoFencingExerciseTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.geoFencingExerciseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/geoFencingExercise.app/geoFencingExercise";
-			};
-			name = Release;
-		};
-		DF698A9B2418CBA3006BC93E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = geoFencingExerciseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.geoFencingExerciseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = geoFencingExercise;
-			};
-			name = Debug;
-		};
-		DF698A9C2418CBA3006BC93E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = geoFencingExerciseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.geoFencingExerciseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = geoFencingExercise;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -591,24 +357,6 @@
 			buildConfigurations = (
 				DF698A952418CBA3006BC93E /* Debug */,
 				DF698A962418CBA3006BC93E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DF698A972418CBA3006BC93E /* Build configuration list for PBXNativeTarget "geoFencingExerciseTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DF698A982418CBA3006BC93E /* Debug */,
-				DF698A992418CBA3006BC93E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DF698A9A2418CBA3006BC93E /* Build configuration list for PBXNativeTarget "geoFencingExerciseUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DF698A9B2418CBA3006BC93E /* Debug */,
-				DF698A9C2418CBA3006BC93E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
