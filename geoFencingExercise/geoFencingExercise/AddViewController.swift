@@ -38,7 +38,12 @@ class AddViewController: UIViewController {
     @IBOutlet private weak var vwCheckedEntry: RoundView!
     @IBOutlet private weak var vwExit: UIView!
     @IBOutlet private weak var vwCheckedExit: RoundView!
-    private var monitoredState = MonitoredState.entry
+    private var monitoredState = MonitoredState.entry {
+        didSet {
+            updatePinColorForState()
+            updateHighlightedRegion()
+        }
+    }
     private let locationManager = CLLocationManager()
     weak var delegate: AddViewControllerDelegate?
     
@@ -75,13 +80,13 @@ class AddViewController: UIViewController {
         let numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         numberToolbar.barStyle = .default
         numberToolbar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-        UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneWithNumberPad))]
+        UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneWithKeyboard))]
         numberToolbar.sizeToFit()
         txtViewNote.inputAccessoryView = numberToolbar
         txtRadius.inputAccessoryView = numberToolbar
     }
     
-    @objc private func doneWithNumberPad() {
+    @objc private func doneWithKeyboard() {
         self.view.endEditing(true)
     }
     
@@ -101,7 +106,7 @@ class AddViewController: UIViewController {
     
     @IBAction private func currentLocation(_ sender: UIButton) {
         if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: 10000, longitudinalMeters: 10000)
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: MainViewController.meters, longitudinalMeters: MainViewController.meters)
             mapView.setRegion(region, animated: true)
         }
     }
@@ -198,21 +203,33 @@ class AddViewController: UIViewController {
     }
     
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        guard sender.numberOfTouches == 1 else {
+            return
+        }
         let location = sender.location(in: mapView)
         let coordinates = mapView.convert(location, toCoordinateFrom: mapView)
         if pin != nil {
             mapView.removeAnnotation(pin)
         }
-        pin = CustomPin(coordinate: coordinates, monitoredState: monitoredState, radius: validateRadius() ?? 0, note: validateNote() ?? "default")
+        pin = CustomPin.createPin(coordinate: coordinates, monitoredState: monitoredState, radius: validateRadius() ?? 0, note: validateNote() ?? "default")
         mapView.addAnnotation(pin)
-        updateHighloghtedRegion()
+        updateHighlightedRegion()
     }
     
-    private func updateHighloghtedRegion() {
+    private func updatePinColorForState() {
         if pin != nil {
-            let region = CLCircularRegion(center: pin.coordinate, radius: pin.radius, identifier: pin.note)
-            locationManager.startMonitoring(for: region)
-            let circle = MKCircle(center: pin.coordinate, radius: pin.radius)
+            let currentPin = pin
+            mapView.removeAnnotation(pin)
+            
+            currentPin?.setMonitoredState(monitoredState)
+            pin = currentPin
+            mapView.addAnnotation(pin)
+        }
+    }
+    
+    private func updateHighlightedRegion() {
+        if pin != nil {
+            let circle = MyMKCircle(center: pin.coordinate, radius: pin.radius, state: monitoredState)
             mapView.removeOverlays(mapView.overlays)
             mapView.addOverlay(circle)
         }
@@ -228,38 +245,64 @@ extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
         if let radiusString = textField.text {
             pin?.setRadius(Double(radiusString) ?? 0)
             //MARK: update mapview circular region
-            updateHighloghtedRegion()
+            updateHighlightedRegion()
         }
     }
 }
 
 extension AddViewController: CLLocationManagerDelegate {
     
+    
+    
 }
 
 extension AddViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let circleOverlay = overlay as? MKCircle else {
+        guard let circleOverlay = overlay as? MyMKCircle else {
             return MKOverlayRenderer()
         }
         let circleRenderer = MKCircleRenderer(overlay: circleOverlay)
-        circleRenderer.fillColor = .blue
+        circleRenderer.fillColor = circleOverlay.color
         circleRenderer.alpha = 0.5
         return circleRenderer
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let view = MKAnnotationView()
+        if let pin = annotation as? CustomPin {
+            view.image = pin.image
+            view.centerOffset = CGPoint(x: 0, y: -20)
+        }
+        return view
     }
 }
 
 class CustomPin: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     private(set) var note: String = ""
-    private(set) var monitoredState = MonitoredState.entry
+    private(set) var monitoredState = MonitoredState.entry {
+        didSet {
+            setImage()
+        }
+    }
     private(set) var radius: Double = 0
+    private(set) var image: UIImage?
     
     init(coordinate: CLLocationCoordinate2D, monitoredState: MonitoredState, radius: Double, note: String) {
         self.coordinate = coordinate
         self.monitoredState = monitoredState
         self.radius = radius
         self.note = note
+    }
+    
+    static func createPin(coordinate: CLLocationCoordinate2D, monitoredState: MonitoredState, radius: Double, note: String) -> CustomPin {
+        let pin = CustomPin(coordinate: coordinate, monitoredState: monitoredState, radius: radius, note: note)
+        pin.setImage()
+        return pin
+    }
+    
+    func setImage() {
+        image = monitoredState == .entry ? UIImage(named: "bluePin") : UIImage(named: "redPin")
     }
     
     func setMonitoredState(_ state: MonitoredState) {

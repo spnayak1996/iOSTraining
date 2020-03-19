@@ -54,8 +54,13 @@ class DataHandler {
         
     }
     
-    func getAllMonitoredRegions() -> [MonitoredRegions] {
+    func getAllMonitoredRegions(state: MonitoredState?) -> [MonitoredRegions] {
         let fetchRequest: NSFetchRequest<MonitoredRegions> = MonitoredRegions.fetchRequest()
+        if let monitoredState = state {
+            let bool = monitoredState == .entry
+            let predicate = NSPredicate(format: "entry == %@", NSNumber(value: bool))
+            fetchRequest.predicate = predicate
+        }
         
         do {
             let result = try context.fetch(fetchRequest)
@@ -65,13 +70,15 @@ class DataHandler {
         }
     }
     
-    func delete(_ region: MonitoredRegions) {
-        context.delete(region)
-        
-        do {
-            try context.save()
-        } catch {
-            print("Deletion failure")
+    func delete(_ region: MonitoredRegions?) {
+        if let region = region {
+            context.delete(region)
+            
+            do {
+                try context.save()
+            } catch {
+                print("Deletion failure")
+            }
         }
     }
     

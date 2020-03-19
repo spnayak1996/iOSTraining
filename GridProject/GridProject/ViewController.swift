@@ -190,33 +190,13 @@ extension ViewController: ConfigurationViewControllerDelegate {
         if let time = time, time < 5 {
             animationTime = time
         }
+        if let spacing = spacing {
+            self.spacing = CGFloat(spacing)
+        }
         let width = Float(self.view.frame.size.width)
         let height = Float(self.view.frame.size.height)
-        switch (size,spacing) {
-        case (nil,nil):
-            break
-        case (nil,let padding):
-            if let padding = padding {
-                let minSize = Float(self.itemSize) + (padding * 2)
-                if minSize < width, minSize < height {
-                    self.spacing = CGFloat(padding)
-                }
-            }
-        case (let sideLength, nil):
-            if let sideLength = sideLength {
-                let minSize = sideLength + (Float(self.spacing) * 2)
-                if minSize < width, minSize < height {
-                    self.itemSize = CGFloat(sideLength)
-                }
-            }
-        case (let sideLength, let padding):
-            if let sideLength = sideLength, let padding = padding {
-                let minSize = sideLength + (padding * 2)
-                if width >= minSize, height >= minSize {
-                    self.itemSize = CGFloat(sideLength)
-                    self.spacing = CGFloat(padding)
-                }
-            }
+        if let size = size, size <= width, size <= height, size >= 30 {
+            self.itemSize = CGFloat(size)
         }
         collectionView.reloadData()
     }
