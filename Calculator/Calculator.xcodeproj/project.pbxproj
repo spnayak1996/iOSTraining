@@ -16,6 +16,8 @@
 		DFF03787241131E700D2B249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFF03785241131E700D2B249 /* LaunchScreen.storyboard */; };
 		DFF03792241131E700D2B249 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF03791241131E700D2B249 /* CalculatorTests.swift */; };
 		DFF0379D241131E700D2B249 /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF0379C241131E700D2B249 /* CalculatorUITests.swift */; };
+		DFF3184624249DE6002F0B99 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF3184524249DE6002F0B99 /* ButtonView.swift */; };
+		DFF3184824249DF1002F0B99 /* ButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF3184724249DF1002F0B99 /* ButtonView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		DFF03798241131E700D2B249 /* CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF0379C241131E700D2B249 /* CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITests.swift; sourceTree = "<group>"; };
 		DFF0379E241131E700D2B249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFF3184524249DE6002F0B99 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		DFF3184724249DF1002F0B99 /* ButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				DFF03785241131E700D2B249 /* LaunchScreen.storyboard */,
 				DFF03788241131E700D2B249 /* Info.plist */,
 				DF2ECDBF24123AF300B261E1 /* RoundButton.swift */,
+				DFF3184524249DE6002F0B99 /* ButtonView.swift */,
+				DFF3184724249DF1002F0B99 /* ButtonView.xib */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 			files = (
 				DFF03787241131E700D2B249 /* LaunchScreen.storyboard in Resources */,
 				DFF03784241131E700D2B249 /* Assets.xcassets in Resources */,
+				DFF3184824249DF1002F0B99 /* ButtonView.xib in Resources */,
 				DFF03782241131E600D2B249 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +271,7 @@
 			files = (
 				DF2ECDC024123AF300B261E1 /* RoundButton.swift in Sources */,
 				DFF0377F241131E600D2B249 /* ViewController.swift in Sources */,
+				DFF3184624249DE6002F0B99 /* ButtonView.swift in Sources */,
 				DFF0377B241131E600D2B249 /* AppDelegate.swift in Sources */,
 				DFF0377D241131E600D2B249 /* SceneDelegate.swift in Sources */,
 			);

@@ -34,18 +34,40 @@ class ViewController: UIViewController {
         case decimal
         case empty
         case equal
+        
+        func represtation() -> String {
+            switch self {
+            case .val(let val):
+                return String(val)
+            case .op(let op):
+                return op.description()
+            case .clear:
+                return "AC"
+            case .decimal:
+                return "."
+            case .equal:
+                return "="
+            default:
+                return ""
+            }
+        }
     }
     
-    @IBOutlet private weak var potraitStack: UIStackView!
-    @IBOutlet private weak var lblPotraitResult: UILabel!
-    @IBOutlet private weak var landscapeStack: UIStackView!
-    @IBOutlet private weak var lblLandscapeResult: UILabel!
-    private let potraitDataSource: [CalculatorElement] =    [.clear,.empty,.empty,.equal,.val(1),.val(2),.val(3),.op(.add),.val(4),.val(5),.val(6),.op(.subtract),.val(7),.val(8),.val(9),.op(.multiply),.decimal,.val(0),.empty,.op(.divide)]
-    private let landscapeDataSource: [CalculatorElement] = [.clear,.val(1),.val(2),.val(3),.equal,.op(.add),.decimal,.val(4),.val(5),.val(6),.empty,.op(.subtract),.val(0),.val(7),.val(8),.val(9),.op(.divide),.op(.multiply)]
-    private var dataSource: [CalculatorElement]!
+    typealias Colors = (bgColor: UIColor, txtColor: UIColor)
+    private struct buttonAttributes {
+        static let white: Colors = (#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
+        static let dark: Colors = (#colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+        static let yellow: Colors = (#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+    }
+    
+    @IBOutlet private weak var lblResult: UILabel!
+    @IBOutlet private weak var resultView: UIView!
+    private var buttonsStackView: UIStackView!
+    private let potraitDataSource: [(CalculatorElement,Colors)] =    [(.clear,buttonAttributes.white),(.empty,buttonAttributes.white),(.empty,buttonAttributes.white),(.equal,buttonAttributes.yellow),(.val(1),buttonAttributes.dark),(.val(2),buttonAttributes.dark),(.val(3),buttonAttributes.dark),(.op(.add),buttonAttributes.yellow),(.val(4),buttonAttributes.dark),(.val(5),buttonAttributes.dark),(.val(6),buttonAttributes.dark),(.op(.subtract),buttonAttributes.yellow),(.val(7),buttonAttributes.dark),(.val(8),buttonAttributes.dark),(.val(9),buttonAttributes.dark),(.op(.multiply),buttonAttributes.yellow),(.decimal,buttonAttributes.dark),(.val(0),buttonAttributes.dark),(.empty,buttonAttributes.dark),(.op(.divide),buttonAttributes.yellow)]
+    private let landscapeDataSource: [(CalculatorElement,Colors)] = [(.clear,buttonAttributes.white),(.val(1),buttonAttributes.dark),(.val(2),buttonAttributes.dark),(.val(3),buttonAttributes.dark),(.equal,buttonAttributes.yellow),(.op(.add),buttonAttributes.yellow),(.decimal,buttonAttributes.dark),(.val(4),buttonAttributes.dark),(.val(5),buttonAttributes.dark),(.val(6),buttonAttributes.dark),(.empty,buttonAttributes.yellow),(.op(.subtract),buttonAttributes.yellow),(.val(0),buttonAttributes.dark),(.val(7),buttonAttributes.dark),(.val(8),buttonAttributes.dark),(.val(9),buttonAttributes.dark),(.op(.divide),buttonAttributes.yellow),(.op(.multiply),buttonAttributes.yellow)]
+    private var dataSource: [(CalculatorElement,Colors)]!
     
     private var operand1: Double?
-    //MARK:- add didset for both display and double
     private var operand1String: String? {
         didSet {
             operand1 = operand1String != nil ? Double(operand1String!) : nil
@@ -54,7 +76,6 @@ class ViewController: UIViewController {
     }
     private var operand1StringDisplay: String?
     private var operand2: Double?
-    //MARK:- add didset for both display and double
     private var operand2String: String? {
         didSet {
             operand2 = operand2String != nil ? Double(operand2String!) : nil
@@ -88,30 +109,67 @@ class ViewController: UIViewController {
     
     private func setLandscape() {
         dataSource = landscapeDataSource
-        landscapeStack.isHidden = false
-        lblLandscapeResult.isHidden = false
-        potraitStack.isHidden = true
-        lblPotraitResult.isHidden = true
+        //MARK: to be added
+        removeAlreadySetStack()
+        setStackView(rows: 3, columns: 6)
     }
     
     private func setPotrait() {
         dataSource = potraitDataSource
-        potraitStack.isHidden = false
-        lblPotraitResult.isHidden = false
-        landscapeStack.isHidden = true
-        lblLandscapeResult.isHidden = true
+        //MARK: to be added
+        removeAlreadySetStack()
+        setStackView(rows: 5, columns: 4)
+    }
+    
+    private func removeAlreadySetStack() {
+        if buttonsStackView != nil {
+            buttonsStackView.removeFromSuperview()
+            buttonsStackView = nil
+        }
+    }
+    
+    private func setStackView(rows: Int, columns: Int) {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        for row in 0..<rows {
+            let rowStackView = setSingleLineStackView(row: row, columns: columns)
+            stackView.addArrangedSubview(rowStackView)
+        }
+        buttonsStackView = stackView
+        self.view.addSubview(buttonsStackView)
+        setConstraintsForStackView()
+    }
+    
+    private func setSingleLineStackView(row: Int, columns: Int) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        let startIndex = row * columns
+        for index in 0..<columns {
+            if let view = ButtonView.loadViewFromNib(owner: self) {
+                let finalIndex = startIndex + index
+                let data = dataSource[finalIndex]
+                view.setUp(index: finalIndex, text: data.0.represtation(), bgColor: data.1.bgColor, txtColor: data.1.txtColor)
+                view.delegate = self
+                stackView.addArrangedSubview(view)
+            }
+        }
+        return stackView
+    }
+    
+    private func setConstraintsForStackView() {
+        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStackView.topAnchor.constraint(equalTo: resultView.bottomAnchor, constant: 0).isActive = true
+        buttonsStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+        buttonsStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+        buttonsStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         setDataSource()
-    }
-    
-    private func returnValForButtonClicked(tag: Int) -> CalculatorElement {
-        return dataSource[tag]
-    }
-    
-    @IBAction private func btnClicked(sender: UIButton) {
-        characterEntered(dataSource[sender.tag])
     }
     
     private func operatorTapped(_ op: Operation) {
@@ -214,8 +272,7 @@ class ViewController: UIViewController {
         var displayString = (operand1StringDisplay ?? "")
         displayString += operation != nil ? " \((operation!.description())) " : ""
         displayString += operand2StringDisplay
-        lblPotraitResult.text = displayString
-        lblLandscapeResult.text = displayString
+        lblResult.text = displayString
     }
     
     private func calculateAndUpdate() {
@@ -257,7 +314,6 @@ class ViewController: UIViewController {
         guard let numString = val else {
             return nil
         }
-        // MARK: add conversion
         if numString.contains("e") {
             return numString
         } else if let (count,flag) = numString.containsConsecutiveEndZerosAfterDecimal() {
@@ -280,6 +336,12 @@ class ViewController: UIViewController {
     
     private func addRemovedZerosToEnd(_ string: String, _ count: Int, _ flag: Bool) -> String {
         return string + (flag ? "." : "") + String(repeating: "0", count: count)
+    }
+}
+
+extension ViewController: ButtonViewDelegate {
+    func buttonTapped(_ index: Int) {
+        characterEntered(dataSource[index].0)
     }
 }
 
