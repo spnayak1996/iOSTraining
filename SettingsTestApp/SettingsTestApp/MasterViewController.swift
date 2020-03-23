@@ -74,11 +74,6 @@ class MasterViewController: UIViewController {
             searchBarHeight.constant = 56
         }
     }
-  
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        tableView.reloadData()
-//        setPreviouslySelectedCell()
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let id = segue.identifier, id == detailSegue, let cell = sender as? MasterNavigableTableViewCell, let navigationVC = segue.destination as? UINavigationController, let dvc = navigationVC.viewControllers.first as? DetailViewController {
@@ -200,6 +195,14 @@ extension MasterViewController: UISearchBarDelegate {
         }
         return array
         
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

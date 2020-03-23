@@ -217,19 +217,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Settings" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Gf-Yx-3FG">
+                            <searchBar contentMode="redraw" placeholder="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="8Gf-Yx-3FG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="dZe-MD-Swf"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-GJ-hKG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-GJ-hKG">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
-                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MasterSwitchTableViewCell" rowHeight="61" id="NGL-BB-aMS" customClass="MasterSwitchTableViewCell" customModule="SettingsTestApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="61"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NGL-BB-aMS" id="rWN-Tr-Fn6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
@@ -273,7 +273,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="MasterNavigableTableViewCell" rowHeight="61" id="HRv-xA-HsZ" customClass="MasterNavigableTableViewCell" customModule="SettingsTestApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="89" width="414" height="61"/>
+                                        <rect key="frame" x="0.0" y="116.5" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HRv-xA-HsZ" id="tit-yp-miY">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>

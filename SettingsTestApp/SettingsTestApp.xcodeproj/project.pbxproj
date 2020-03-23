@@ -20,30 +20,11 @@
 		DFE81E0D240FE01600842335 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE81E0B240FE01600842335 /* Main.storyboard */; };
 		DFE81E0F240FE01600842335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE81E0E240FE01600842335 /* Assets.xcassets */; };
 		DFE81E12240FE01600842335 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE81E10240FE01600842335 /* LaunchScreen.storyboard */; };
-		DFE81E1D240FE01700842335 /* SettingsTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E1C240FE01700842335 /* SettingsTestAppTests.swift */; };
-		DFE81E28240FE01700842335 /* SettingsTestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E27240FE01700842335 /* SettingsTestAppUITests.swift */; };
 		DFE81E36240FE05B00842335 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E35240FE05B00842335 /* DetailViewController.swift */; };
 		DFE81E38240FE08600842335 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E37240FE08600842335 /* DataHandler.swift */; };
 		DFE81E40240FF03600842335 /* MasterSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E3F240FF03600842335 /* MasterSwitchTableViewCell.swift */; };
 		DFE81E43240FF06200842335 /* RandomColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE81E42240FF06200842335 /* RandomColorView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DFE81E19240FE01700842335 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DFE81DFA240FE01600842335 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DFE81E01240FE01600842335;
-			remoteInfo = SettingsTestApp;
-		};
-		DFE81E24240FE01700842335 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DFE81DFA240FE01600842335 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DFE81E01240FE01600842335;
-			remoteInfo = SettingsTestApp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DF4A87A9240FF5F00064A9D8 /* MasterNavigableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterNavigableTableViewCell.swift; sourceTree = "<group>"; };
@@ -61,12 +42,6 @@
 		DFE81E0E240FE01600842335 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFE81E11240FE01600842335 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFE81E13240FE01600842335 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DFE81E18240FE01700842335 /* SettingsTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFE81E1C240FE01700842335 /* SettingsTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTestAppTests.swift; sourceTree = "<group>"; };
-		DFE81E1E240FE01700842335 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DFE81E23240FE01700842335 /* SettingsTestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsTestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFE81E27240FE01700842335 /* SettingsTestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTestAppUITests.swift; sourceTree = "<group>"; };
-		DFE81E29240FE01700842335 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFE81E35240FE05B00842335 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DFE81E37240FE08600842335 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		DFE81E3F240FF03600842335 /* MasterSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -81,20 +56,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DFE81E15240FE01700842335 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DFE81E20240FE01700842335 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -102,8 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				DFE81E04240FE01600842335 /* SettingsTestApp */,
-				DFE81E1B240FE01700842335 /* SettingsTestAppTests */,
-				DFE81E26240FE01700842335 /* SettingsTestAppUITests */,
 				DFE81E03240FE01600842335 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,8 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				DFE81E02240FE01600842335 /* SettingsTestApp.app */,
-				DFE81E18240FE01700842335 /* SettingsTestAppTests.xctest */,
-				DFE81E23240FE01700842335 /* SettingsTestAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,24 +89,6 @@
 				DFE81E3E240FEE2800842335 /* Model */,
 			);
 			path = SettingsTestApp;
-			sourceTree = "<group>";
-		};
-		DFE81E1B240FE01700842335 /* SettingsTestAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				DFE81E1C240FE01700842335 /* SettingsTestAppTests.swift */,
-				DFE81E1E240FE01700842335 /* Info.plist */,
-			);
-			path = SettingsTestAppTests;
-			sourceTree = "<group>";
-		};
-		DFE81E26240FE01700842335 /* SettingsTestAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DFE81E27240FE01700842335 /* SettingsTestAppUITests.swift */,
-				DFE81E29240FE01700842335 /* Info.plist */,
-			);
-			path = SettingsTestAppUITests;
 			sourceTree = "<group>";
 		};
 		DFE81E3B240FEDF700842335 /* Cells */ = {
@@ -221,42 +160,6 @@
 			productReference = DFE81E02240FE01600842335 /* SettingsTestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DFE81E17240FE01700842335 /* SettingsTestAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DFE81E2F240FE01700842335 /* Build configuration list for PBXNativeTarget "SettingsTestAppTests" */;
-			buildPhases = (
-				DFE81E14240FE01700842335 /* Sources */,
-				DFE81E15240FE01700842335 /* Frameworks */,
-				DFE81E16240FE01700842335 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DFE81E1A240FE01700842335 /* PBXTargetDependency */,
-			);
-			name = SettingsTestAppTests;
-			productName = SettingsTestAppTests;
-			productReference = DFE81E18240FE01700842335 /* SettingsTestAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		DFE81E22240FE01700842335 /* SettingsTestAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DFE81E32240FE01700842335 /* Build configuration list for PBXNativeTarget "SettingsTestAppUITests" */;
-			buildPhases = (
-				DFE81E1F240FE01700842335 /* Sources */,
-				DFE81E20240FE01700842335 /* Frameworks */,
-				DFE81E21240FE01700842335 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DFE81E25240FE01700842335 /* PBXTargetDependency */,
-			);
-			name = SettingsTestAppUITests;
-			productName = SettingsTestAppUITests;
-			productReference = DFE81E23240FE01700842335 /* SettingsTestAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -269,14 +172,6 @@
 				TargetAttributes = {
 					DFE81E01240FE01600842335 = {
 						CreatedOnToolsVersion = 11.3.1;
-					};
-					DFE81E17240FE01700842335 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = DFE81E01240FE01600842335;
-					};
-					DFE81E22240FE01700842335 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = DFE81E01240FE01600842335;
 					};
 				};
 			};
@@ -294,8 +189,6 @@
 			projectRoot = "";
 			targets = (
 				DFE81E01240FE01600842335 /* SettingsTestApp */,
-				DFE81E17240FE01700842335 /* SettingsTestAppTests */,
-				DFE81E22240FE01700842335 /* SettingsTestAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -308,20 +201,6 @@
 				DFE81E12240FE01600842335 /* LaunchScreen.storyboard in Resources */,
 				DFE81E0F240FE01600842335 /* Assets.xcassets in Resources */,
 				DFE81E0D240FE01600842335 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DFE81E16240FE01700842335 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DFE81E21240FE01700842335 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,36 +228,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DFE81E14240FE01700842335 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DFE81E1D240FE01700842335 /* SettingsTestAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DFE81E1F240FE01700842335 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DFE81E28240FE01700842335 /* SettingsTestAppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DFE81E1A240FE01700842335 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DFE81E01240FE01600842335 /* SettingsTestApp */;
-			targetProxy = DFE81E19240FE01700842335 /* PBXContainerItemProxy */;
-		};
-		DFE81E25240FE01700842335 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DFE81E01240FE01600842335 /* SettingsTestApp */;
-			targetProxy = DFE81E24240FE01700842335 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DFE81E0B240FE01600842335 /* Main.storyboard */ = {
@@ -550,90 +400,6 @@
 			};
 			name = Release;
 		};
-		DFE81E30240FE01700842335 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = SettingsTestAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.SettingsTestAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SettingsTestApp.app/SettingsTestApp";
-			};
-			name = Debug;
-		};
-		DFE81E31240FE01700842335 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = SettingsTestAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.SettingsTestAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SettingsTestApp.app/SettingsTestApp";
-			};
-			name = Release;
-		};
-		DFE81E33240FE01700842335 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = SettingsTestAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.SettingsTestAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SettingsTestApp;
-			};
-			name = Debug;
-		};
-		DFE81E34240FE01700842335 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = SettingsTestAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.SettingsTestAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SettingsTestApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -651,24 +417,6 @@
 			buildConfigurations = (
 				DFE81E2D240FE01700842335 /* Debug */,
 				DFE81E2E240FE01700842335 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DFE81E2F240FE01700842335 /* Build configuration list for PBXNativeTarget "SettingsTestAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DFE81E30240FE01700842335 /* Debug */,
-				DFE81E31240FE01700842335 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DFE81E32240FE01700842335 /* Build configuration list for PBXNativeTarget "SettingsTestAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DFE81E33240FE01700842335 /* Debug */,
-				DFE81E34240FE01700842335 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

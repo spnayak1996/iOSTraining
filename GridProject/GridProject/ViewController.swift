@@ -93,14 +93,17 @@ class ViewController: UIViewController {
     
     private func updateIndex2Cell(sender: UIButton?) {
         let changedValue = sourceArray[currentIndex]
-        dataSource[2] = changedValue
-        let cell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0))
-        UIView.transition(with: cell!, duration: animationTime, options: .transitionFlipFromTop, animations: {
-            (cell as! MyCollectionViewCell).setUp(changedValue)
-        }, completion: { (_) in
+        if let cell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0)) {
+            dataSource[2] = changedValue
+            UIView.transition(with: cell, duration: animationTime, options: .transitionFlipFromTop, animations: {
+                (cell as! MyCollectionViewCell).setUp(changedValue)
+            }, completion: { (_) in
+                sender?.isUserInteractionEnabled = true
+            })
+            currentIndex += 1
+        } else {
             sender?.isUserInteractionEnabled = true
-        })
-        currentIndex += 1
+        }
     }
     
     private func moveEToLast(sender: UIButton?) {
