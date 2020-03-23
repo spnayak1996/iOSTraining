@@ -67,9 +67,8 @@ class ConfigurationViewController: UIViewController {
     }
     
     private func validateItemSize(errorString: inout String) -> Float? {
-        let width = Float(self.view.frame.size.width)
-        let height = Float(self.view.frame.size.height)
-        if let size = Float(txtSize.text ?? ""), size <= width, size <= height, size >= 30 {
+        let maxSize = min(Float(self.view.frame.size.width), Float(self.view.frame.size.height))
+        if let size = Float(txtSize.text ?? ""), size <= maxSize, size >= 30 {
             return size
         } else {
             if !errorString.isEmpty {
