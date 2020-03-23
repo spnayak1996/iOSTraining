@@ -51,10 +51,11 @@ class MasterViewController: UIViewController {
         tableView.reloadData()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        setPreviouslySelectedCell()
-//    }
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        if newCollection.horizontalSizeClass == .compact {
+            performSegue(withIdentifier: detailSegue, sender: selectedDetail)
+        }
+    }
     
     override func viewWillLayoutSubviews() {
         setPreviouslySelectedCell()
@@ -73,11 +74,16 @@ class MasterViewController: UIViewController {
             searchBar.isHidden = false
             searchBarHeight.constant = 56
         }
+        self.searchBarCancelButtonClicked(searchBar)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let id = segue.identifier, id == detailSegue, let cell = sender as? MasterNavigableTableViewCell, let navigationVC = segue.destination as? UINavigationController, let dvc = navigationVC.viewControllers.first as? DetailViewController {
-            dvc.setUp(detail: cell.detail)
+        if let id = segue.identifier, id == detailSegue, let navigationVC = segue.destination as? UINavigationController, let dvc = navigationVC.viewControllers.first as? DetailViewController {
+            if let cell = sender as? MasterNavigableTableViewCell {
+                dvc.setUp(detail: cell.detail)
+            } else if let detail = sender as? Enums.Detail {
+                dvc.setUp(detail: detail)
+            }
             dvc.delegate = self
             searchBar.resignFirstResponder()
         }
@@ -203,6 +209,7 @@ extension MasterViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
