@@ -19,6 +19,7 @@ class FirstViewController: UIViewController {
     
     private var drawerHeight: CGFloat!
     private var drawerHandleHeight: CGFloat = 50
+    private var bottomInset: CGFloat!
     
     private var drawerVisible: Bool = false
     private var nextState: DrawerState {
@@ -31,24 +32,30 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        drawerHeight = self.view.frame.height - 100
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
         setUpViews()
     }
     
     private func setUpViews() {
+        bottomInset = self.view.safeAreaInsets.bottom
+        drawerHeight = self.view.frame.height - 100
         visualEffectView = UIVisualEffectView()
         visualEffectView.frame = self.view.frame
         self.view.addSubview(visualEffectView)
         
-        drawerViewController = self.storyboard?.instantiateViewController(identifier: DrawerViewController.controllerId) as! DrawerViewController
+        drawerViewController = (self.storyboard?.instantiateViewController(identifier: DrawerViewController.controllerId) as! DrawerViewController)
         self.addChild(drawerViewController)
         self.view.addSubview(drawerViewController.view)
-        drawerViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - drawerHandleHeight, width: self.view.frame.width, height: drawerHeight)
+        drawerViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - drawerHandleHeight - bottomInset, width: self.view.frame.width, height: drawerHeight + bottomInset)
         
         drawerViewController.view.clipsToBounds = true
         
         addGestures()
     }
+    
+    
     
     private func addGestures() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDrawerTap(recognizer:)))
@@ -77,7 +84,16 @@ class FirstViewController: UIViewController {
             fractionComplete = drawerVisible ? fractionComplete : -fractionComplete
             updateInteractiveAnimation(fractionCompleted: fractionComplete)
         case .ended:
-            continueInteractiveAnimation()
+            let translation = recognizer.translation(in: self.drawerViewController.handleView)
+            let fractionComplete = (translation.y / drawerHeight).absolute()
+            if fractionComplete < 0.1 {
+                reverseRunningAnimations()
+                continueInteractiveAnimation()
+                self.drawerVisible = !self.drawerVisible
+            } else {
+                continueInteractiveAnimation()
+            }
+            
        default:
             break
         }
@@ -96,7 +112,7 @@ class FirstViewController: UIViewController {
             case .expanded:
                 self.drawerViewController.view.frame.origin.y = self.view.frame.height - self.drawerHeight
             case .collapsed:
-                self.drawerViewController.view.frame.origin.y = self.view.frame.height - self.drawerHandleHeight
+                self.drawerViewController.view.frame.origin.y = self.view.frame.height - self.drawerHandleHeight - self.bottomInset
             }
         }
         frameAnimator.addCompletion { (_) in
@@ -165,12 +181,28 @@ class FirstViewController: UIViewController {
         }
     }
     
+    private func reverseRunningAnimations() {
+        for animator in runningAnimations {
+            animator.isReversed = true
+        }
+    }
+    
     private func continueInteractiveAnimation() {
         for animator in runningAnimations {
-            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0.6)
         }
     }
 
 
+}
+
+extension CGFloat {
+    func absolute() -> CGFloat {
+        if self < 0 {
+            return -self
+        } else {
+            return self
+        }
+    }
 }
 
