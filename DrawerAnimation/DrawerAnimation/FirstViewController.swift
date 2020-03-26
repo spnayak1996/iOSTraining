@@ -20,15 +20,23 @@ class FirstViewController: UIViewController {
     private var drawerHeight: CGFloat!
     private var drawerHandleHeight: CGFloat = 50
     private var bottomInset: CGFloat!
-    
     private var drawerVisible: Bool = false
     private var nextState: DrawerState {
         return drawerVisible ? .collapsed : .expanded
     }
-    
+    private var colorState = false {
+        didSet {
+            if colorState {
+                self.drawerViewController?.lblBold.textColor = .black
+            } else {
+                self.drawerViewController?.lblBold.textColor = .systemBlue
+            }
+        }
+    }
     private var runningAnimations = [UIViewPropertyAnimator]()
     private var animationProgressWhenInterrupted: CGFloat = 0
-
+    private var previousFractionComplete: CGFloat = 0
+    private var reverse = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -81,22 +89,32 @@ class FirstViewController: UIViewController {
         case .changed:
             let translation = recognizer.translation(in: self.drawerViewController.handleView)
             var fractionComplete = translation.y / drawerHeight
+            setReverseFlag(fraction: fractionComplete.absolute())
             fractionComplete = drawerVisible ? fractionComplete : -fractionComplete
             updateInteractiveAnimation(fractionCompleted: fractionComplete)
         case .ended:
-            let translation = recognizer.translation(in: self.drawerViewController.handleView)
-            let fractionComplete = (translation.y / drawerHeight).absolute()
-            if fractionComplete < 0.1 {
+            if reverse {
                 reverseRunningAnimations()
-                continueInteractiveAnimation()
                 self.drawerVisible = !self.drawerVisible
+                continueInteractiveAnimation()
+                colorState = !colorState
             } else {
                 continueInteractiveAnimation()
+                reverse = false
             }
             
        default:
             break
         }
+    }
+    
+    private func setReverseFlag(fraction: CGFloat) {
+        if fraction > previousFractionComplete {
+            reverse = false
+        } else if fraction < previousFractionComplete {
+            reverse = true
+        }
+        previousFractionComplete = fraction
     }
     
     private func animateTransitionIfNeeded(state: DrawerState, duration: TimeInterval) {
@@ -154,11 +172,11 @@ class FirstViewController: UIViewController {
         let fontChangeAnimation = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
             switch state {
             case .collapsed:
-                self.drawerViewController.lblBold.alpha = 0
-                self.drawerViewController.lblRegular.alpha = 1
+                self.drawerViewController.lblBold.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+                self.colorState = false
             case .expanded:
-                self.drawerViewController.lblBold.alpha = 1
-                self.drawerViewController.lblRegular.alpha = 0
+                self.drawerViewController.lblBold.transform = CGAffineTransform.identity
+                self.colorState = true
             }
         }
         fontChangeAnimation.startAnimation()
