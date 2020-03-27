@@ -86,15 +86,11 @@ class MainViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
             showAlert(message: "Your location services are restricted for our app due to parental controls or some other reason.")
-        case .denied:
-            break
-        case .authorizedAlways:
-            break
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
             locationManager.startUpdatingLocation()
             showCurrentLocation(UIButton())
-        @unknown default:
+        default:
             break
         }
     }
