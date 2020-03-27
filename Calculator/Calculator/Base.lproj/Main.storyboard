@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +15,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Qe-LD-xh1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qe-LD-xh1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="165"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcr-bv-8i7">
-                                        <rect key="frame" x="380" y="54" width="19" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tcr-bv-8i7">
+                                        <rect key="frame" x="353" y="82.5" width="46" height="82.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="riQ-vv-UVT">
+                                        <rect key="frame" x="399" y="0.0" width="0.0" height="82.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYH-fX-clk">
+                                        <rect key="frame" x="394" y="82.5" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -28,22 +40,31 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="tcr-bv-8i7" secondAttribute="trailing" constant="15" id="N6E-f8-7es"/>
-                                    <constraint firstAttribute="height" constant="100" id="ia8-47-fTN"/>
+                                    <constraint firstItem="xYH-fX-clk" firstAttribute="centerY" secondItem="7Qe-LD-xh1" secondAttribute="centerY" id="Nl1-Fx-qMu"/>
+                                    <constraint firstAttribute="height" constant="165" id="ScE-5i-cad"/>
+                                    <constraint firstItem="tcr-bv-8i7" firstAttribute="top" secondItem="xYH-fX-clk" secondAttribute="bottom" id="X4p-8h-FVG"/>
+                                    <constraint firstItem="riQ-vv-UVT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Qe-LD-xh1" secondAttribute="leading" constant="15" id="Yr5-78-Uae"/>
+                                    <constraint firstItem="xYH-fX-clk" firstAttribute="top" secondItem="riQ-vv-UVT" secondAttribute="bottom" id="ddf-ig-Ewi"/>
+                                    <constraint firstAttribute="trailing" secondItem="xYH-fX-clk" secondAttribute="trailing" constant="20" id="izP-e7-RPO"/>
                                     <constraint firstItem="tcr-bv-8i7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Qe-LD-xh1" secondAttribute="leading" constant="15" id="of3-nj-qo5"/>
-                                    <constraint firstAttribute="bottom" secondItem="tcr-bv-8i7" secondAttribute="bottom" constant="10" id="qsP-Lb-HBI"/>
+                                    <constraint firstItem="riQ-vv-UVT" firstAttribute="top" secondItem="7Qe-LD-xh1" secondAttribute="top" id="qE5-fB-Cgi"/>
+                                    <constraint firstAttribute="bottom" secondItem="tcr-bv-8i7" secondAttribute="bottom" id="qsP-Lb-HBI"/>
+                                    <constraint firstItem="riQ-vv-UVT" firstAttribute="trailing" secondItem="tcr-bv-8i7" secondAttribute="trailing" id="xAp-7L-aym"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7Qe-LD-xh1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" id="10a-AQ-3dP"/>
                             <constraint firstItem="7Qe-LD-xh1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LzY-R8-W4z"/>
-                            <constraint firstItem="7Qe-LD-xh1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jiV-TI-Kom"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Qe-LD-xh1" secondAttribute="trailing" id="pc4-NH-zxX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="lblResult" destination="tcr-bv-8i7" id="dew-Wb-JMe"/>
+                        <outlet property="lblOp1" destination="riQ-vv-UVT" id="iZM-f3-S02"/>
+                        <outlet property="lblOp2" destination="tcr-bv-8i7" id="g8m-Xw-J5J"/>
+                        <outlet property="lblOperator" destination="xYH-fX-clk" id="5J5-eC-PdR"/>
                         <outlet property="resultView" destination="7Qe-LD-xh1" id="dTY-oQ-z4i"/>
                     </connections>
                 </viewController>

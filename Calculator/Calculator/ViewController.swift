@@ -60,7 +60,9 @@ class ViewController: UIViewController {
         static let yellow: Colors = (#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
     }
     
-    @IBOutlet private weak var lblResult: UILabel!
+    @IBOutlet private weak var lblOp1: UILabel!
+    @IBOutlet private weak var lblOperator: UILabel!
+    @IBOutlet private weak var lblOp2: UILabel!
     @IBOutlet private weak var resultView: UIView!
     private var buttonsStackView: UIStackView!
     private let potraitDataSource: [(CalculatorElement,Colors)] =    [(.clear,buttonAttributes.white),(.empty,buttonAttributes.white),(.empty,buttonAttributes.white),(.equal,buttonAttributes.yellow),(.val(1),buttonAttributes.dark),(.val(2),buttonAttributes.dark),(.val(3),buttonAttributes.dark),(.op(.add),buttonAttributes.yellow),(.val(4),buttonAttributes.dark),(.val(5),buttonAttributes.dark),(.val(6),buttonAttributes.dark),(.op(.subtract),buttonAttributes.yellow),(.val(7),buttonAttributes.dark),(.val(8),buttonAttributes.dark),(.val(9),buttonAttributes.dark),(.op(.multiply),buttonAttributes.yellow),(.decimal,buttonAttributes.dark),(.val(0),buttonAttributes.dark),(.empty,buttonAttributes.dark),(.op(.divide),buttonAttributes.yellow)]
@@ -139,7 +141,7 @@ class ViewController: UIViewController {
         }
         buttonsStackView = stackView
         self.view.addSubview(buttonsStackView)
-        setConstraintsForStackView()
+        setConstraintsForStackView(rows: rows, columns: columns)
     }
     
     private func setSingleLineStackView(row: Int, columns: Int) -> UIStackView {
@@ -160,12 +162,26 @@ class ViewController: UIViewController {
         return stackView
     }
     
-    private func setConstraintsForStackView() {
+    private func setConstraintsForStackView(rows: Int, columns: Int) {
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStackView.topAnchor.constraint(equalTo: resultView.bottomAnchor, constant: 0).isActive = true
         buttonsStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
         buttonsStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
         buttonsStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        let heightForStack = getPotraitWidth() * (CGFloat(rows) / CGFloat(columns))
+        if rows == 5 && heightForStack < getPotraitHeight() - 170 {
+            buttonsStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: heightForStack).isActive = true
+        } else {
+            buttonsStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: getPotraitHeight() - 165).isActive = true
+        }
+        buttonsStackView.topAnchor.constraint(equalTo: resultView.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    private func getPotraitWidth() -> CGFloat {
+        return min(self.view.frame.width, self.view.frame.height)
+    }
+    
+    private func getPotraitHeight() -> CGFloat {
+        return max(self.view.frame.width, self.view.frame.height)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -188,10 +204,7 @@ class ViewController: UIViewController {
     }
     
     private func intTapped(_ val: Int) {
-        if operation == nil && operand1String != nil {
-            operand1String = nil
-            operand2String = nil
-        }
+        resetOperandsAfterEqual()
         if let currentString = operand2String {
             switch checkSize(currentString) {
             case .decimalExceeded:
@@ -206,7 +219,15 @@ class ViewController: UIViewController {
         }
     }
     
+    private func resetOperandsAfterEqual() {
+        if operation == nil && operand1String != nil {
+            operand1String = nil
+            operand2String = nil
+        }
+    }
+    
     private func decimalTapped() {
+        resetOperandsAfterEqual()
         if let currentString = operand2String {
             if !currentString.contains(".") {
                 operand2String = currentString + "."
@@ -269,10 +290,15 @@ class ViewController: UIViewController {
     }
     
     private func updateResult() {
-        var displayString = (operand1StringDisplay ?? "")
-        displayString += operation != nil ? " \((operation!.description())) " : ""
-        displayString += operand2StringDisplay
-        lblResult.text = displayString
+        if let op1 = operand1StringDisplay, (operand2StringDisplay == "0" || operand2StringDisplay == "") && operation == nil {
+            lblOp2.text = op1
+            lblOp1.text = nil
+            lblOperator.text = nil
+        } else {
+            lblOp1.text = (operand1StringDisplay ?? "")
+            lblOperator.text = operation != nil ? " \((operation!.description())) " : ""
+            lblOp2.text = operand2StringDisplay
+        }
     }
     
     private func calculateAndUpdate() {
