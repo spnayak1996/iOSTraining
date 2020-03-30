@@ -24,3 +24,9 @@ class DetailSliderTableViewCell: UITableViewCell {
     }
 
 }
+
+class CustomSlider: UISlider {
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: bounds.origin.x, y: bounds.midY, width: bounds.width, height: 1)
+    }
+}

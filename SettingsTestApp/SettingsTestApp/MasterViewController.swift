@@ -19,12 +19,14 @@ class MasterViewController: UIViewController {
     
     private let data = DataHandler.shared
     private let dataSource: [[Enums.Detail]] = [[.airplaneMode,.wifi,.bluetooth,.mobileData,.carrier],[.notification,.donotDisturb],[.general,.wallpaper,.display]]
-    private var filteredDataSource: [[Enums.Detail]]!
+    private var filteredDataSource: [[Enums.Detail]] = [[.airplaneMode,.wifi,.bluetooth,.mobileData,.carrier],[.notification,.donotDisturb],[.general,.wallpaper,.display]]
     private var selectedDetail: Enums.Detail? = Enums.Detail.general
     
     @IBOutlet private weak var searchBar: UISearchBar! {
         didSet {
             searchBar.delegate = self
+            searchBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            searchBar.searchTextField.backgroundColor = .white
         }
     }
     @IBOutlet private weak var searchBarHeight: NSLayoutConstraint!
@@ -45,15 +47,9 @@ class MasterViewController: UIViewController {
         self.title = "Settings"
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        filteredDataSource = dataSource
-        tableView.reloadData()
-    }
-    
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         if newCollection.horizontalSizeClass == .compact {
-            performSegue(withIdentifier: detailSegue, sender: selectedDetail)
+            
         }
     }
     
@@ -98,42 +94,43 @@ extension MasterViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredDataSource[section].count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return filteredDataSource[section].count + 1
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = UIColor.secondarySystemBackground
-        return view
+        return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let detail = filteredDataSource[indexPath.section][indexPath.row]
-        switch detail {
-        case .airplaneMode:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MasterSwitchTableViewCell.cellId) as! MasterSwitchTableViewCell
-            cell.setUpCell(title: Enums.Detail.airplaneMode.title(), value: data.airplaneMode)
-            cell.delegate = self
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeaderCell", for: indexPath)
             return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MasterNavigableTableViewCell.cellId) as! MasterNavigableTableViewCell
-            cell.setUpCell(title: detail, value: DataHandler.getValueString(detail: detail))
-            if selectedDetail == detail {
-                cell.isSelected = true
-                cell.setSelected(true, animated: false)
+        } else {
+            let detail = filteredDataSource[indexPath.section][indexPath.row - 1]
+            switch detail {
+            case .airplaneMode:
+                let cell = tableView.dequeueReusableCell(withIdentifier: MasterSwitchTableViewCell.cellId) as! MasterSwitchTableViewCell
+                cell.setUpCell(title: Enums.Detail.airplaneMode.title(), value: data.airplaneMode)
+                cell.delegate = self
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: MasterNavigableTableViewCell.cellId) as! MasterNavigableTableViewCell
+                cell.setUpCell(title: detail, value: DataHandler.getValueString(detail: detail))
+                if selectedDetail == detail {
+                    cell.isSelected = true
+                    cell.setSelected(true, animated: false)
+                }
+                return cell
             }
-            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if filteredDataSource[indexPath.section][indexPath.row] != .airplaneMode {
+        if indexPath.row == 0 {
+            setPreviouslySelectedCell()
+        } else if filteredDataSource[indexPath.section][indexPath.row - 1] != .airplaneMode {
             let cell = tableView.cellForRow(at: indexPath)
-            selectedDetail = filteredDataSource[indexPath.section][indexPath.row]
+            selectedDetail = filteredDataSource[indexPath.section][indexPath.row - 1]
             performSegue(withIdentifier: detailSegue, sender: cell)
         } else {
             setPreviouslySelectedCell()
@@ -177,7 +174,7 @@ extension MasterViewController: DetailViewControllerDelegate {
         for (i, detailList) in filteredDataSource.enumerated() {
             for (j, detail) in detailList.enumerated() {
                 if detail == selectedDetail {
-                    return IndexPath(row: j, section: i)
+                    return IndexPath(row: j + 1, section: i)
                 }
             }
         }
