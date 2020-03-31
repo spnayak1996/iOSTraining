@@ -27,31 +27,31 @@ class DetailViewController: UIViewController {
     }
     
     private struct Texts {
-        static let general: [(String, [DetailCellType])] = [("", [DetailCellType.text(detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")])]
-        static let wallpaper: [(String, [DetailCellType])] = [("", [DetailCellType.text(detail: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).")])]
-        static let display: [(String, [DetailCellType])] = [("BRIGHTNESS", [DetailCellType.slider]),("",[DetailCellType.navigable(title: "Night Shift", detail: "Off")]),("",[DetailCellType.navigable(title: "Auto-Lock", detail: "1 Minute")]),("",[DetailCellType.navigable(title: "Text Size", detail: ""),DetailCellType.indicator(title: "Bold Text")]),("DISPLAY ZOOM",[DetailCellType.navigable(title: "View", detail: "Standard")])]
-        static let bluetooth: [(String, [DetailCellType])] = [("",[DetailCellType.indicator(title: "Bluetooth")])]
-        static let mobileData: [(String, [DetailCellType])] = [("",[DetailCellType.indicator(title: "Mobile Data"),DetailCellType.navigable(title: "Mobile Data Options", detail: "Roaming On"),DetailCellType.text(detail: "Turn off mobile data to restrict all data to Wifi, including email, web browsing, and push notifications.")])]
-        static let notification: [(String, [DetailCellType])] = [("",[DetailCellType.indicator(title: "Notification")])]
-        static let doNotDisturb: [(String, [DetailCellType])] = [("",[DetailCellType.indicator(title: "Do Not Disturb"),DetailCellType.text(detail: "When Do Not Disturb is enabled, calls and alerts that arrive while locked will be silenced, and a moon icon will appear in the status bar.")])]
+        static let general: [(String, [DetailCellType], String)] = [("", [DetailCellType.text(detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")], "")]
+        static let wallpaper: [(String, [DetailCellType], String)] = [("", [DetailCellType.text(detail: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).")], "")]
+        static let display: [(String, [DetailCellType], String)] = [("BRIGHTNESS", [DetailCellType.slider], ""),("",[DetailCellType.navigable(title: "Night Shift", detail: "Off")], ""),("",[DetailCellType.navigable(title: "Auto-Lock", detail: "1 Minute")], ""),("",[DetailCellType.navigable(title: "Text Size", detail: ""),DetailCellType.indicator(title: "Bold Text")], ""),("DISPLAY ZOOM",[DetailCellType.navigable(title: "View", detail: "Standard")], "Choose a view for iPhone. Zoomed shows larger controls.\nStandard shows more content.")]
+        static let bluetooth: [(String, [DetailCellType], String)] = [("",[DetailCellType.indicator(title: "Bluetooth")], "")]
+        static let mobileData: [(String, [DetailCellType], String)] = [("",[DetailCellType.indicator(title: "Mobile Data"),DetailCellType.navigable(title: "Mobile Data Options", detail: "Roaming On")], "Turn off mobile data to restrict all data to Wifi, including email, web browsing, and push notifications.")]
+        static let notification: [(String, [DetailCellType], String)] = [("",[DetailCellType.indicator(title: "Notification")], "")]
+        static let doNotDisturb: [(String, [DetailCellType], String)] = [("",[DetailCellType.indicator(title: "Do Not Disturb")], "When Do Not Disturb is enabled, calls and alerts that arrive while locked will be silenced, and a moon icon will appear in the status bar.")]
         
         
-        static func generateCarrierArray() -> [(String, [DetailCellType])] {
+        static func generateCarrierArray() -> [(String, [DetailCellType], String)] {
             var array = [DetailCellType]()
             
             for carrier in Enums.Carrier.returnIterator() {
                 array.append(DetailCellType.selection(detail: carrier.description()))
             }
-            return [("",array)]
+            return [("", array, "")]
         }
         
-        static func generateNetworkArray() -> [(String, [DetailCellType])] {
+        static func generateNetworkArray() -> [(String, [DetailCellType], String)] {
             var array = [DetailCellType]()
             
             for network in Enums.Networks.returnIterator() {
                 array.append(DetailCellType.selection(detail: network.description()))
             }
-            return [("",array)]
+            return [("", array, "")]
         }
         
     }
@@ -64,22 +64,46 @@ class DetailViewController: UIViewController {
     }
     private var data = DataHandler.shared
     
-    private var dataSource: [(String, [DetailCellType])] = Texts.general
+    private var dataSource: [(String, [DetailCellType], String)] = Texts.general
     
-    @IBOutlet private weak var tableView: UITableView! {
-        didSet {
-            tableView.dataSource = self
-            tableView.delegate = self
-        }
-    }
+    private var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setTitle()
+        configureTableView()
     }
     
+    private func configureTableView() {
+        if tableView != nil {
+            tableView.removeFromSuperview()
+        }
+        let tbl = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: self.traitCollection.horizontalSizeClass == .compact ? .grouped : .insetGrouped)
+        tableView = tbl
+        registerCells()
+        tableView.dataSource = self
+        tableView.delegate = self
+        self.view.addSubview(tableView)
+    }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        configureTableView()
+    }
+    
+    private func setConstraints() {
+        
+    }
+    
+    private func registerCells() {
+        tableView.register(UINib(nibName: DetailTextTableViewCell.cellId, bundle: nil), forCellReuseIdentifier: DetailTextTableViewCell.cellId)
+        tableView.register(UINib(nibName: DetailSliderTableViewCell.cellId, bundle: nil), forCellReuseIdentifier: DetailSliderTableViewCell.cellId)
+        tableView.register(UINib(nibName: DetailSwitchTableViewCell.cellId, bundle: nil), forCellReuseIdentifier: DetailSwitchTableViewCell.cellId)
+        tableView.register(UINib(nibName: DetailNavigableTableViewCell.cellId, bundle: nil), forCellReuseIdentifier: DetailNavigableTableViewCell.cellId)
+        tableView.register(UINib(nibName: DetailSelectionTableViewCell.cellId, bundle: nil), forCellReuseIdentifier: DetailSelectionTableViewCell.cellId)
+    }
     
     private func setTitle() {
         self.title = detail.title()
@@ -122,14 +146,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         return dataSource[section].0
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = UIColor.secondarySystemBackground
-        return view
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return dataSource[section].2
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

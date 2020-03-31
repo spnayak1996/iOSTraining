@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailSliderTableViewCell" rowHeight="52" id="2pk-ME-UMG" customClass="DetailSliderTableViewCell" customModule="SettingsTestApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2pk-ME-UMG" id="Yao-VF-f7y">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="sun.min.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PRm-54-SjG">
+                        <rect key="frame" x="15" y="16.5" width="20" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="A6v-B3-uam"/>
+                            <constraint firstAttribute="width" constant="20" id="rhc-Nh-uGG"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="sun.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="q6U-Yi-2Pl">
+                        <rect key="frame" x="379" y="15.5" width="20" height="20.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="eaH-Fm-oNp"/>
+                            <constraint firstAttribute="width" constant="20" id="o0a-DQ-nNR"/>
+                        </constraints>
+                    </imageView>
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WiY-9A-X8p" customClass="CustomSlider" customModule="SettingsTestApp" customModuleProvider="target">
+                        <rect key="frame" x="40" y="10" width="334" height="33"/>
+                    </slider>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="WiY-9A-X8p" firstAttribute="leading" secondItem="PRm-54-SjG" secondAttribute="trailing" constant="7" id="1f3-rS-Lmz"/>
+                    <constraint firstItem="PRm-54-SjG" firstAttribute="centerY" secondItem="Yao-VF-f7y" secondAttribute="centerY" id="7CY-uA-DVz"/>
+                    <constraint firstItem="WiY-9A-X8p" firstAttribute="top" secondItem="Yao-VF-f7y" secondAttribute="top" constant="10" id="C6F-Ei-VMQ"/>
+                    <constraint firstItem="q6U-Yi-2Pl" firstAttribute="leading" secondItem="WiY-9A-X8p" secondAttribute="trailing" constant="7" id="Fel-VE-uHx"/>
+                    <constraint firstAttribute="trailing" secondItem="q6U-Yi-2Pl" secondAttribute="trailing" constant="15" id="ONm-Eq-4vd"/>
+                    <constraint firstItem="PRm-54-SjG" firstAttribute="leading" secondItem="Yao-VF-f7y" secondAttribute="leading" constant="15" id="XsJ-cJ-ri6"/>
+                    <constraint firstItem="WiY-9A-X8p" firstAttribute="centerY" secondItem="Yao-VF-f7y" secondAttribute="centerY" id="bfy-E1-pBf"/>
+                    <constraint firstItem="q6U-Yi-2Pl" firstAttribute="centerY" secondItem="Yao-VF-f7y" secondAttribute="centerY" id="sO9-UR-coH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="139" y="118"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sun.max.fill" catalog="system" width="128" height="124"/>
+        <image name="sun.min.fill" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

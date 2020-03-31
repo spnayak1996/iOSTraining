@@ -26,7 +26,7 @@ class MasterNavigableTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         if selected {
-            contentView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            contentView.backgroundColor = #colorLiteral(red: 0, green: 0.6451065379, blue: 1, alpha: 1)
             lblTitle.textColor = UIColor.white
             lblValue.textColor = UIColor.white
             arrow.textColor = UIColor.white
