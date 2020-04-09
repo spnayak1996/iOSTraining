@@ -14,6 +14,7 @@ class MasterSwitchTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var indicator: UISwitch!
+    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
     
     weak var delegate: MasterSwitchCellDelegate?
     
@@ -34,9 +35,10 @@ class MasterSwitchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpCell(title: String, value: Bool) {
+    func setUpCell(title: String, value: Bool, leftInset: CGFloat) {
         self.lblTitle.text = title
         self.indicator.isOn = value
+        leftConstraint.constant = (leftInset == 0 ? 20 : leftInset)
     }
 
 }

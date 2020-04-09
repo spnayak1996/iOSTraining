@@ -13,8 +13,10 @@ class MasterNavigableTableViewCell: UITableViewCell {
     static let cellId = "MasterNavigableTableViewCell"
 
     @IBOutlet private weak var lblTitle: UILabel!
-    @IBOutlet weak var lblValue: UILabel!
-    @IBOutlet weak var arrow: UILabel!
+    @IBOutlet private weak var lblValue: UILabel!
+    @IBOutlet private weak var arrow: UILabel!
+    @IBOutlet private weak var separatorView: UIView!
+    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
     private(set) var detail: Enums.Detail!
     
     override func awakeFromNib() {
@@ -38,7 +40,7 @@ class MasterNavigableTableViewCell: UITableViewCell {
         }
     }
     
-    func setUpCell(title: Enums.Detail, value: String) {
+    func setUpCell(title: Enums.Detail, value: String, last: Bool, leftInset: CGFloat) {
         self.detail = title
         self.lblTitle.text = title.title()
         switch title {
@@ -48,6 +50,12 @@ class MasterNavigableTableViewCell: UITableViewCell {
         default:
             lblValue.isHidden = true
         }
+        if last {
+            separatorView.isHidden = true
+        } else {
+            separatorView.isHidden = false
+        }
+        leftConstraint.constant = (leftInset == 0 ? 20 : leftInset)
     }
 
 }

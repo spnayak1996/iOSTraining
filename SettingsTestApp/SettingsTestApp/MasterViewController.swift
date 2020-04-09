@@ -36,6 +36,8 @@ class MasterViewController: UIViewController {
             tableView.delegate = self
         }
     }
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    private var leftInset: CGFloat = 0
     
     override func awakeFromNib() {
         splitViewController?.delegate = self
@@ -45,32 +47,52 @@ class MasterViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.title = "Settings"
+        addKeyboardObservers()
+    }
+    
+    private func addKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillOpen(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillClose(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        leftInset = self.view.safeAreaInsets.left
+        tableView.reloadData()
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        if newCollection.horizontalSizeClass == .compact {
-            
+        self.view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillOpen(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            bottomConstraint.constant = keyboardSize.height
+        }
+    }
+    
+    @objc private func keyboardWillClose(notification: NSNotification) {
+        if bottomConstraint.constant != 0 {
+            bottomConstraint.constant = 0
+        }
+    }
+    
+    @objc private func keyBoardWillChangeFrame(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            bottomConstraint.constant = keyboardSize.height
+        }
+    }
+    
+    private func checkIfPotrait() -> Bool {
+        if self.traitCollection.horizontalSizeClass == .compact && (self.view.frame.height > self.view.frame.width) {
+            return true
+        } else {
+            return false
         }
     }
     
     override func viewWillLayoutSubviews() {
         setPreviouslySelectedCell()
-        setSearchBarVisibility()
-    }
-    
-    private func setSearchBarVisibility() {
-        switch self.traitCollection.horizontalSizeClass {
-        case .compact:
-            searchBar.isHidden = false
-            searchBarHeight.constant = 56
-        case .regular:
-            searchBar.isHidden = true
-            searchBarHeight.constant = 0
-        default:
-            searchBar.isHidden = false
-            searchBarHeight.constant = 56
-        }
-        self.searchBarCancelButtonClicked(searchBar)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +124,7 @@ extension MasterViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
+        if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeaderCell", for: indexPath)
             return cell
         } else {
@@ -110,12 +132,12 @@ extension MasterViewController: UITableViewDataSource, UITableViewDelegate {
             switch detail {
             case .airplaneMode:
                 let cell = tableView.dequeueReusableCell(withIdentifier: MasterSwitchTableViewCell.cellId) as! MasterSwitchTableViewCell
-                cell.setUpCell(title: Enums.Detail.airplaneMode.title(), value: data.airplaneMode)
+                cell.setUpCell(title: Enums.Detail.airplaneMode.title(), value: data.airplaneMode, leftInset: self.leftInset)
                 cell.delegate = self
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: MasterNavigableTableViewCell.cellId) as! MasterNavigableTableViewCell
-                cell.setUpCell(title: detail, value: DataHandler.getValueString(detail: detail))
+                cell.setUpCell(title: detail, value: DataHandler.getValueString(detail: detail), last: indexPath.row == dataSource[indexPath.section].count, leftInset: self.leftInset)
                 if selectedDetail == detail {
                     cell.isSelected = true
                     cell.setSelected(true, animated: false)
