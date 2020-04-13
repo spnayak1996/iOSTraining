@@ -12,7 +12,7 @@ class RoundButton: UIButton {
     
     private var cornerRadius: CGFloat = 0 {
         didSet {
-            self.layer.cornerRadius = self.frame.size.width/2
+            self.layer.cornerRadius = cornerRadius
         }
     }
     

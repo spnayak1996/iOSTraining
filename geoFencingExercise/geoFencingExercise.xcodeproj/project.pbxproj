@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF0B5BA7241A3E50005D5FD7 /* MonitoredRegions+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B5BA5241A3E50005D5FD7 /* MonitoredRegions+CoreDataClass.swift */; };
-		DF0B5BA8241A3E50005D5FD7 /* MonitoredRegions+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B5BA6241A3E50005D5FD7 /* MonitoredRegions+CoreDataProperties.swift */; };
 		DF0B5BAA241A402D005D5FD7 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B5BA9241A402D005D5FD7 /* DataHandler.swift */; };
 		DF698A6B2418CBA2006BC93E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A6A2418CBA2006BC93E /* AppDelegate.swift */; };
 		DF698A6D2418CBA2006BC93E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A6C2418CBA2006BC93E /* SceneDelegate.swift */; };
@@ -19,11 +17,11 @@
 		DF698A7A2418CBA3006BC93E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF698A782418CBA3006BC93E /* LaunchScreen.storyboard */; };
 		DF698A9E2418CC0F006BC93E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A9D2418CC0F006BC93E /* MainViewController.swift */; };
 		DF698AA02418CC65006BC93E /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A9F2418CC65006BC93E /* RoundView.swift */; };
+		DF97B5D72440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97B5D52440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift */; };
+		DF97B5D82440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97B5D62440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DF0B5BA5241A3E50005D5FD7 /* MonitoredRegions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonitoredRegions+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DF0B5BA6241A3E50005D5FD7 /* MonitoredRegions+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonitoredRegions+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DF0B5BA9241A402D005D5FD7 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		DF698A672418CBA2006BC93E /* geoFencingExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geoFencingExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF698A6A2418CBA2006BC93E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +34,8 @@
 		DF698A7B2418CBA3006BC93E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF698A9D2418CC0F006BC93E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DF698A9F2418CC65006BC93E /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		DF97B5D52440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonitoredRegions+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DF97B5D62440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonitoredRegions+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +68,6 @@
 		DF698A692418CBA2006BC93E /* geoFencingExercise */ = {
 			isa = PBXGroup;
 			children = (
-				DF0B5BA5241A3E50005D5FD7 /* MonitoredRegions+CoreDataClass.swift */,
-				DF0B5BA6241A3E50005D5FD7 /* MonitoredRegions+CoreDataProperties.swift */,
 				DF698A6A2418CBA2006BC93E /* AppDelegate.swift */,
 				DF698A6C2418CBA2006BC93E /* SceneDelegate.swift */,
 				DF698A702418CBA2006BC93E /* Main.storyboard */,
@@ -80,6 +78,8 @@
 				DF698A6E2418CBA2006BC93E /* AddViewController.swift */,
 				DF698A9F2418CC65006BC93E /* RoundView.swift */,
 				DF698A732418CBA2006BC93E /* geoFencingExercise.xcdatamodeld */,
+				DF97B5D52440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift */,
+				DF97B5D62440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift */,
 				DF0B5BA9241A402D005D5FD7 /* DataHandler.swift */,
 			);
 			path = geoFencingExercise;
@@ -156,15 +156,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF0B5BA7241A3E50005D5FD7 /* MonitoredRegions+CoreDataClass.swift in Sources */,
 				DF698A752418CBA2006BC93E /* geoFencingExercise.xcdatamodeld in Sources */,
 				DF698AA02418CC65006BC93E /* RoundView.swift in Sources */,
 				DF698A6F2418CBA2006BC93E /* AddViewController.swift in Sources */,
+				DF97B5D72440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift in Sources */,
 				DF0B5BAA241A402D005D5FD7 /* DataHandler.swift in Sources */,
 				DF698A6B2418CBA2006BC93E /* AppDelegate.swift in Sources */,
+				DF97B5D82440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift in Sources */,
 				DF698A6D2418CBA2006BC93E /* SceneDelegate.swift in Sources */,
 				DF698A9E2418CC0F006BC93E /* MainViewController.swift in Sources */,
-				DF0B5BA8241A3E50005D5FD7 /* MonitoredRegions+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +311,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XHG2BAA6R;
 				INFOPLIST_FILE = geoFencingExercise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -329,6 +330,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XHG2BAA6R;
 				INFOPLIST_FILE = geoFencingExercise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

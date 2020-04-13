@@ -176,14 +176,11 @@ class AddViewController: UIViewController {
     
     @objc private func entryOrExitViewSelected(_ sender: UITapGestureRecognizer) {
         if let tag = sender.view?.tag {
-            removeViewSelection()
             switch tag {
             case 1:
-                vwCheckedEntry.backgroundColor = UIColor.systemGreen
-                self.monitoredState = .entry
+                entryViewTapped()
             case 2:
-                vwCheckedExit.backgroundColor = UIColor.systemGreen
-                self.monitoredState = .exit
+                exitViewTapped()
             default:
                 break
             }
@@ -191,15 +188,30 @@ class AddViewController: UIViewController {
         }
     }
     
+    private func entryViewTapped() {
+        if self.monitoredState == .both {
+            vwCheckedEntry.backgroundColor = UIColor.lightGray
+            self.monitoredState = .exit
+        } else if self.monitoredState == .exit {
+            vwCheckedEntry.backgroundColor = UIColor.systemGreen
+            self.monitoredState = .both
+        }
+    }
+    
+    private func exitViewTapped() {
+        if self.monitoredState == .both {
+            vwCheckedExit.backgroundColor = UIColor.lightGray
+            self.monitoredState = .entry
+        } else if self.monitoredState == .entry {
+            vwCheckedExit.backgroundColor = UIColor.systemGreen
+            self.monitoredState = .both
+        }
+    }
+    
     private func setEntryOrExitForPin() {
         if pin != nil {
             self.pin.setMonitoredState(monitoredState)
         }
-    }
-    
-    private func removeViewSelection() {
-        vwCheckedEntry.backgroundColor = UIColor.lightGray
-        vwCheckedExit.backgroundColor = UIColor.lightGray
     }
     
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
@@ -268,12 +280,13 @@ extension AddViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let view = MKAnnotationView()
         if let pin = annotation as? CustomPin {
+            let view = MKAnnotationView()
             view.image = pin.image
-            view.centerOffset = CGPoint(x: 0, y: -20)
+            view.centerOffset = CGPoint(x: 0, y: -(view.frame.height/2))
+            return view
         }
-        return view
+        return nil
     }
 }
 
@@ -302,7 +315,7 @@ class CustomPin: NSObject, MKAnnotation {
     }
     
     func setImage() {
-        image = monitoredState == .entry ? UIImage(named: "bluePin") : UIImage(named: "redPin")
+        image = monitoredState.pinImage()
     }
     
     func setMonitoredState(_ state: MonitoredState) {
@@ -319,8 +332,38 @@ class CustomPin: NSObject, MKAnnotation {
     
 }
 
-enum MonitoredState {
-    case entry, exit
+enum MonitoredState: Int64 {
+    case entry, exit, both
+    
+    static func fromRawValue(_ val: Int64?) -> MonitoredState {
+        if let val = val, let state = MonitoredState(rawValue: val) {
+            return state
+        } else {
+            return .both
+        }
+    }
+    
+    func color() -> UIColor {
+        switch self {
+        case .entry:
+            return .blue
+        case .exit:
+            return .red
+        case .both:
+            return .black
+        }
+    }
+    
+    func pinImage() -> UIImage? {
+        switch self {
+        case .entry:
+            return UIImage(named: "bluePin")
+        case .exit:
+            return UIImage(named: "redPin")
+        case .both:
+            return UIImage(named: "blackPin")
+        }
+    }
 }
 
 extension String {

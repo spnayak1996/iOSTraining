@@ -31,7 +31,7 @@ class ButtonView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        buttonHeightConstraint.constant = min(bounds.width, bounds.height) - 5
+        buttonHeightConstraint.constant = min(bounds.width, bounds.height) - 15
     }
     
     func setUp(index: Int, text: String, bgColor: UIColor, txtColor: UIColor) {

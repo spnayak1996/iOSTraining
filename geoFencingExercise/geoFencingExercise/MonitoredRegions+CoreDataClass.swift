@@ -2,7 +2,7 @@
 //  MonitoredRegions+CoreDataClass.swift
 //  geoFencingExercise
 //
-//  Created by vinsol on 12/03/20.
+//  Created by vinsol on 10/04/20.
 //  Copyright © 2020 vinsol. All rights reserved.
 //
 //

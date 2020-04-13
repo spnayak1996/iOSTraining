@@ -26,7 +26,7 @@ class DataHandler {
         monitoredRegion.longitude = pin.coordinate.longitude
         monitoredRegion.note = pin.note
         monitoredRegion.radius = pin.radius
-        monitoredRegion.entry = (pin.monitoredState == .entry)
+        monitoredRegion.entry = pin.monitoredState.rawValue
         
         do {
             try context.save()
@@ -55,12 +55,28 @@ class DataHandler {
     }
     
     func getAllMonitoredRegions(state: MonitoredState?) -> [MonitoredRegions] {
-        let fetchRequest: NSFetchRequest<MonitoredRegions> = MonitoredRegions.fetchRequest()
         if let monitoredState = state {
-            let bool = monitoredState == .entry
-            let predicate = NSPredicate(format: "entry == %@", NSNumber(value: bool))
-            fetchRequest.predicate = predicate
+            return getMonitoredRegionsFor(state: monitoredState) + getMonitoredRegionsFor(state: .both)
+        } else {
+            return getAllMonitoredRegions()
         }
+    }
+    
+    private func getAllMonitoredRegions() -> [MonitoredRegions] {
+        let fetchRequest: NSFetchRequest<MonitoredRegions> = MonitoredRegions.fetchRequest()
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            return result
+        } catch {
+            return [MonitoredRegions]()
+        }
+    }
+    
+    private func getMonitoredRegionsFor(state: MonitoredState) -> [MonitoredRegions] {
+        let fetchRequest: NSFetchRequest<MonitoredRegions> = MonitoredRegions.fetchRequest()
+        let predicate = NSPredicate(format: "entry == %@", NSNumber(value: state.rawValue))
+        fetchRequest.predicate = predicate
         
         do {
             let result = try context.fetch(fetchRequest)

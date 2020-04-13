@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HJA-um-klU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HJA-um-klU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,7 +81,7 @@
                                 </constraints>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VTb-Q8-XQN">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
                                 <connections>
                                     <outlet property="delegate" destination="HJA-um-klU" id="xt8-9V-SrE"/>
                                 </connections>
@@ -92,7 +92,7 @@
                             <constraint firstItem="ZXL-hS-faO" firstAttribute="trailing" secondItem="nYc-Vc-aEf" secondAttribute="trailing" id="1QT-kF-pU4"/>
                             <constraint firstItem="ZXL-hS-faO" firstAttribute="trailing" secondItem="VTb-Q8-XQN" secondAttribute="trailing" id="GLV-a7-lTD"/>
                             <constraint firstItem="VTb-Q8-XQN" firstAttribute="top" secondItem="nYc-Vc-aEf" secondAttribute="bottom" id="L8s-oG-GUV"/>
-                            <constraint firstItem="ZXL-hS-faO" firstAttribute="bottom" secondItem="VTb-Q8-XQN" secondAttribute="bottom" id="LR4-EI-lAp"/>
+                            <constraint firstAttribute="bottom" secondItem="VTb-Q8-XQN" secondAttribute="bottom" id="LR4-EI-lAp"/>
                             <constraint firstItem="nYc-Vc-aEf" firstAttribute="leading" secondItem="ZXL-hS-faO" secondAttribute="leading" id="Ral-4L-rxa"/>
                             <constraint firstItem="VTb-Q8-XQN" firstAttribute="leading" secondItem="ZXL-hS-faO" secondAttribute="leading" id="eSs-Db-s3M"/>
                             <constraint firstItem="nYc-Vc-aEf" firstAttribute="top" secondItem="ZXL-hS-faO" secondAttribute="top" id="rJP-UP-XrU"/>
@@ -185,18 +185,18 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5qh-mR-qs2">
-                                        <rect key="frame" x="92" y="75" width="302" height="25"/>
+                                        <rect key="frame" x="92" y="75" width="302" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-We-CO5">
-                                        <rect key="frame" x="20" y="77" width="56.5" height="21"/>
+                                        <rect key="frame" x="20" y="78" width="56.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxO-q0-8Eg">
-                                        <rect key="frame" x="92" y="115" width="100" height="50"/>
+                                        <rect key="frame" x="92" y="116.5" width="100" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmx-cr-s5X" customClass="RoundView" customModule="geoFencingExercise" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="15" width="20" height="20"/>
@@ -224,7 +224,7 @@
                                         </constraints>
                                     </view>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br2-Ve-PSd">
-                                        <rect key="frame" x="202" y="115" width="105" height="50"/>
+                                        <rect key="frame" x="202" y="116.5" width="105" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMm-xW-wu9" customClass="RoundView" customModule="geoFencingExercise" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="15" width="20" height="20"/>
@@ -252,7 +252,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEw-u4-E7F">
-                                        <rect key="frame" x="20" y="185" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="186.5" width="374" height="40"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="c7k-ZC-w4Q"/>
@@ -326,6 +326,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pin" catalog="system" width="58" height="64"/>
+        <image name="pin" catalog="system" width="119" height="128"/>
     </resources>
 </document>

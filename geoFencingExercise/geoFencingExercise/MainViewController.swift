@@ -12,6 +12,12 @@ import CoreLocation
 
 class MainViewController: UIViewController {
     
+    private struct Constants {
+        static let locationServicesOff = "You need to switch on location services in your phone settings."
+        static let permissionRestricted = "Your location services are restricted for our app due to parental controls or some other reason."
+        static let permissionDenied = "Location services are denied for this app. Please allow location services for this app in settings."
+    }
+    
     static let controllerId = "MainViewController"
     
     private let locationManager = CLLocationManager()
@@ -42,11 +48,12 @@ class MainViewController: UIViewController {
     private var currentlyMonitoredRegions = [CLRegion]()
     private var pins = [CustomPin]()
     static let meters: CLLocationDistance = 30000
+    private var monitoringAlert: (entered: [String], exited: [String]) = ([], [])
+    private var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setUpLocationManager()
         checkLocationServices()
         setUpBothMonitorAndOverlay()
     }
@@ -76,7 +83,7 @@ class MainViewController: UIViewController {
         if CLLocationManager.locationServicesEnabled() {
             checkLocationAuthorisation()
         } else {
-            showAlert(message: "You need to switch on location services in your phone settings.")
+            showAlert(message: Constants.locationServicesOff)
         }
     }
     
@@ -85,11 +92,14 @@ class MainViewController: UIViewController {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-            showAlert(message: "Your location services are restricted for our app due to parental controls or some other reason.")
+            showAlert(message: Constants.permissionRestricted)
+        case .denied:
+            showAlert(message: Constants.permissionDenied)
         case .authorizedWhenInUse:
+            setUpLocationManager()
             mapView.showsUserLocation = true
+            mapView.userLocation.title = nil
             locationManager.startUpdatingLocation()
-            showCurrentLocation(UIButton())
         default:
             break
         }
@@ -129,11 +139,11 @@ class MainViewController: UIViewController {
     }
     
     private func addOverlay(_ region: MonitoredRegions) {
-        let pin = CustomPin.createPin(coordinate: CLLocationCoordinate2D(latitude: region.latitude, longitude: region.longitude), monitoredState: region.entry ? .entry : .exit, radius: region.radius, note: region.note!)
+        let pin = CustomPin.createPin(coordinate: CLLocationCoordinate2D(latitude: region.latitude, longitude: region.longitude), monitoredState: MonitoredState.fromRawValue(region.entry), radius: region.radius, note: region.note!)
         mapView.addAnnotation(pin)
         pins.append(pin)
         
-        let circle = MyMKCircle(center: CLLocationCoordinate2D(latitude: region.latitude, longitude: region.longitude), radius: region.radius, state: (region.entry ? .entry : .exit))
+        let circle = MyMKCircle(center: CLLocationCoordinate2D(latitude: region.latitude, longitude: region.longitude), radius: region.radius, state: MonitoredState.fromRawValue(region.entry))
         mapView.addOverlay(circle)
     }
     
@@ -150,9 +160,9 @@ class MainViewController: UIViewController {
     }
     
     @IBAction private func showCurrentLocation(_ sender: UIButton) {
+        checkLocationServices()
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion(center: location, latitudinalMeters: Self.meters, longitudinalMeters: Self.meters)
-            mapView.showsUserLocation = true
             mapView.setRegion(region, animated: true)
         }
     }
@@ -183,12 +193,13 @@ extension MainViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let view = MKAnnotationView()
         if let pin = annotation as? CustomPin {
+            let view = MKAnnotationView()
             view.image = pin.image
-            view.centerOffset = CGPoint(x: 0, y: -20)
+            view.centerOffset = CGPoint(x: 0, y: -view.frame.height/2)
+            return view
         }
-        return view
+        return nil
     }
 }
 
@@ -197,7 +208,7 @@ extension MainViewController: CLLocationManagerDelegate {
 //        guard let location = locations.last else {
 //            return
 //        }
-//        
+//
 //        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 //        let region = MKCoordinateRegion(center: center, latitudinalMeters: Self.meters, longitudinalMeters: Self.meters)
 //        mapView.setRegion(region, animated: true)
@@ -210,8 +221,9 @@ extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if let index = currentlyMonitoredRegions.firstIndex(of: region) {
             let monitoredRegion = monitoredRegions[index]
-            if monitoredRegion.entry {
-                showAlert(message: "entered \(monitoredRegion.note!)")
+            let state = MonitoredState.fromRawValue(monitoredRegion.entry)
+            if state != .exit {
+                addAlertForRegion(note: monitoredRegion.note!, entered: true)
             }
         }
     }
@@ -219,15 +231,53 @@ extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if let index = currentlyMonitoredRegions.firstIndex(of: region) {
             let monitoredRegion = monitoredRegions[index]
-            if !monitoredRegion.entry {
-                showAlert(message: "exited \(monitoredRegion.note!)")
+            let state = MonitoredState.fromRawValue(monitoredRegion.entry)
+            if state != .entry {
+                addAlertForRegion(note: monitoredRegion.note!, entered: false)
             }
         }
     }
     
+    private func addAlertForRegion(note: String, entered: Bool) {
+        timer?.invalidate()
+        if entered {
+            monitoringAlert = (monitoringAlert.entered + [note], monitoringAlert.exited)
+        } else {
+            monitoringAlert = (monitoringAlert.entered, monitoringAlert.exited + [note])
+        }
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self](_) in
+            self?.displayAlert()
+        })
+    }
+    
+    private func displayAlert() {
+        var enteredString = ""
+        var exitedString = ""
+        if !monitoringAlert.entered.isEmpty {
+            enteredString  = "entered " + appendAllStrings(monitoringAlert.entered)
+        }
+        if !monitoringAlert.exited.isEmpty {
+            exitedString  = "exited " + appendAllStrings(monitoringAlert.exited)
+        }
+        monitoringAlert = ([], [])
+        showAlert(message: (enteredString.isEmpty ? exitedString : "\(enteredString)\n\(exitedString)"))
+    }
+    
+    private func appendAllStrings(_ array: [String]) -> String {
+        var result = ""
+        let count = array.count
+        for (i, string) in array.enumerated() {
+            result = result + string
+            if i < count - 1 {
+                result = result + ", "
+            }
+        }
+        return result
+    }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let pin = view.annotation as? CustomPin, let index = pins.firstIndex(of: pin) {
-            let actionSheet = UIAlertController(title: "Options", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+            let actionSheet = UIAlertController(title: pin.note, message: "", preferredStyle: UIAlertController.Style.actionSheet)
             actionSheet.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { [weak self] (_) in
                 DataHandler.shared.delete(self?.monitoredRegions[index])
                 self?.setAllMonitoredRegions()
@@ -254,7 +304,7 @@ class MyMKCircle: MKCircle {
     convenience init(center: CLLocationCoordinate2D, radius: CLLocationDistance, state: MonitoredState) {
         self.init(center: center, radius: radius)
         self.state = state
-        self.color = (state == .entry ? .blue : .red)
+        self.color = state.color()
     }
 }
 
