@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,65 +12,827 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qe-LD-xh1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="165"/>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Qe-LD-xh1">
+                                <rect key="frame" x="44" y="0.0" width="808" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tcr-bv-8i7">
-                                        <rect key="frame" x="353" y="82.5" width="46" height="82.5"/>
+                                        <rect key="frame" x="747" y="0.0" width="46" height="100"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="75"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="riQ-vv-UVT">
-                                        <rect key="frame" x="399" y="0.0" width="0.0" height="82.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="75"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYH-fX-clk">
-                                        <rect key="frame" x="394" y="82.5" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="tcr-bv-8i7" firstAttribute="centerY" secondItem="7Qe-LD-xh1" secondAttribute="centerY" id="E4y-oe-TDI"/>
                                     <constraint firstAttribute="trailing" secondItem="tcr-bv-8i7" secondAttribute="trailing" constant="15" id="N6E-f8-7es"/>
-                                    <constraint firstItem="xYH-fX-clk" firstAttribute="centerY" secondItem="7Qe-LD-xh1" secondAttribute="centerY" id="Nl1-Fx-qMu"/>
-                                    <constraint firstAttribute="height" constant="165" id="ScE-5i-cad"/>
-                                    <constraint firstItem="tcr-bv-8i7" firstAttribute="top" secondItem="xYH-fX-clk" secondAttribute="bottom" id="X4p-8h-FVG"/>
-                                    <constraint firstItem="riQ-vv-UVT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Qe-LD-xh1" secondAttribute="leading" constant="15" id="Yr5-78-Uae"/>
-                                    <constraint firstItem="xYH-fX-clk" firstAttribute="top" secondItem="riQ-vv-UVT" secondAttribute="bottom" id="ddf-ig-Ewi"/>
-                                    <constraint firstAttribute="trailing" secondItem="xYH-fX-clk" secondAttribute="trailing" constant="20" id="izP-e7-RPO"/>
+                                    <constraint firstAttribute="height" constant="100" id="ScE-5i-cad"/>
                                     <constraint firstItem="tcr-bv-8i7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Qe-LD-xh1" secondAttribute="leading" constant="15" id="of3-nj-qo5"/>
-                                    <constraint firstItem="riQ-vv-UVT" firstAttribute="top" secondItem="7Qe-LD-xh1" secondAttribute="top" id="qE5-fB-Cgi"/>
                                     <constraint firstAttribute="bottom" secondItem="tcr-bv-8i7" secondAttribute="bottom" id="qsP-Lb-HBI"/>
-                                    <constraint firstItem="riQ-vv-UVT" firstAttribute="trailing" secondItem="tcr-bv-8i7" secondAttribute="trailing" id="xAp-7L-aym"/>
                                 </constraints>
+                            </view>
+                            <view tag="16" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eub-4g-TYk" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="44" y="100" width="134.5" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eub-4g-TYk" secondAttribute="height" multiplier="1:1" id="GsU-WM-emz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="AC"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="GsU-WM-emz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="GsU-WM-emz"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="b8H-Ef-Squ"/>
+                                </connections>
+                            </view>
+                            <view tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQa-7w-QtL" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="103.5" y="344.5" width="103.5" height="103.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="dk9-Yl-ows"/>
+                                </connections>
+                            </view>
+                            <view tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geO-6a-C04" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="207" y="344.5" width="103.5" height="103.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="BJV-ST-4A9"/>
+                                </connections>
+                            </view>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQi-oP-nt1" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="178.5" y="100" width="135" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PwU-4K-5Cc"/>
+                                </connections>
+                            </view>
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVU-Ls-XDx" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="313.5" y="100" width="134.5" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="2"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352941176467" green="0.2605243921" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="OHz-bp-Qm8"/>
+                                </connections>
+                            </view>
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wje-Md-LXI" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="448" y="100" width="134.5" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="3"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Xvg-I4-eTX"/>
+                                </connections>
+                            </view>
+                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-uT-zt5" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="178.5" y="197.5" width="135" height="98"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="4"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cxz-mf-IFo"/>
+                                </connections>
+                            </view>
+                            <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hS9-m9-Pi5" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="313.5" y="197.5" width="134.5" height="98"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="5"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Mdp-YP-h0a"/>
+                                </connections>
+                            </view>
+                            <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AcN-TG-jjO" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="448" y="197.5" width="134.5" height="98"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="6"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="SDz-hp-hlN"/>
+                                </connections>
+                            </view>
+                            <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S0x-ej-5JI" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="178.5" y="295.5" width="135" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="7"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Wd1-2K-KfA"/>
+                                </connections>
+                            </view>
+                            <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDY-uJ-Ldp" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="313.5" y="295.5" width="134.5" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="8"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tjd-6l-Ab7"/>
+                                </connections>
+                            </view>
+                            <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEU-ch-CP4" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="448" y="295.5" width="134.5" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="9"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vIl-z8-mWU"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSz-FB-6i0" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="44" y="295.5" width="134.5" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="0"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cUS-UH-yEC"/>
+                                </connections>
+                            </view>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gr6-ka-q88" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="44" y="197.5" width="134.5" height="98"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="."/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bj5-rL-64S"/>
+                                </connections>
+                            </view>
+                            <view tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBv-8p-CqG" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="207" y="758.5" width="103.5" height="103.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.25882352939999997" green="0.2605243921" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="sQU-pi-mAu"/>
+                                </connections>
+                            </view>
+                            <view tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klm-R2-mup" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="582.5" y="100" width="135" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="="/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.8901960784313725" green="0.63921568627450975" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Wfs-hT-eOO"/>
+                                </connections>
+                            </view>
+                            <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTE-9b-Ecn" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="717.5" y="100" width="134.5" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="+"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.8901960784313725" green="0.63921568627450975" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2tO-0Q-0Ns"/>
+                                </connections>
+                            </view>
+                            <view tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1b-qP-o5U" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="582.5" y="197.5" width="135" height="98"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.89019607840000003" green="0.63921568630000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="zkz-u3-nmV"/>
+                                </connections>
+                            </view>
+                            <view tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yTK-Lk-CNa" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="717.5" y="197.5" width="134.5" height="98"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="-"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.8901960784313725" green="0.63921568627450975" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2uW-us-A8n"/>
+                                </connections>
+                            </view>
+                            <view tag="14" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMQ-Cn-Rcd" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="717.5" y="295.5" width="134.5" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="÷"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.8901960784313725" green="0.63921568627450975" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="yGR-la-sY9"/>
+                                </connections>
+                            </view>
+                            <view tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVx-AG-T5g" customClass="ButtonXIBView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="582.5" y="295.5" width="135" height="97.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="×"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.8901960784313725" green="0.63921568627450975" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="3xN-oU-DXN"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LQa-7w-QtL" firstAttribute="bottom" secondItem="geO-6a-C04" secondAttribute="bottom" id="0pt-kf-bd1"/>
                             <constraint firstItem="7Qe-LD-xh1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" id="10a-AQ-3dP"/>
+                            <constraint firstItem="gDY-uJ-Ldp" firstAttribute="width" secondItem="yEU-ch-CP4" secondAttribute="width" id="1Xn-tP-aAP"/>
+                            <constraint firstItem="DVx-AG-T5g" firstAttribute="bottom" secondItem="VMQ-Cn-Rcd" secondAttribute="bottom" id="2Ia-o2-3ho"/>
+                            <constraint firstItem="yEU-ch-CP4" firstAttribute="bottom" secondItem="DVx-AG-T5g" secondAttribute="bottom" id="2L6-vc-eN2"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="bottom" secondItem="S0x-ej-5JI" secondAttribute="bottom" id="2MV-N5-VGI"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="top" secondItem="gDY-uJ-Ldp" secondAttribute="top" id="2VI-bY-ppX"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="width" secondItem="qQi-oP-nt1" secondAttribute="width" id="2tC-AC-DeG"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="bottom" secondItem="gDY-uJ-Ldp" secondAttribute="bottom" id="39C-7h-4uc"/>
+                            <constraint firstItem="Wje-Md-LXI" firstAttribute="bottom" secondItem="zTE-9b-Ecn" secondAttribute="bottom" id="3Ng-zp-SBz"/>
+                            <constraint firstItem="Wje-Md-LXI" firstAttribute="leading" secondItem="LVU-Ls-XDx" secondAttribute="trailing" id="3Nu-iQ-J5x"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="top" secondItem="qQi-oP-nt1" secondAttribute="top" id="3jA-lE-JhC"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="42o-NJ-gPj"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="width" secondItem="S0x-ej-5JI" secondAttribute="width" id="4lY-gK-4Mt"/>
+                            <constraint firstItem="Wje-Md-LXI" firstAttribute="top" secondItem="klm-R2-mup" secondAttribute="top" id="5BA-Ww-ncT"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="top" secondItem="gXs-uT-zt5" secondAttribute="top" id="5hd-cs-kuB"/>
+                            <constraint firstItem="Wje-Md-LXI" firstAttribute="top" secondItem="zTE-9b-Ecn" secondAttribute="top" id="6jW-9n-ECy"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="bottom" secondItem="gXs-uT-zt5" secondAttribute="bottom" id="6kS-8S-z69"/>
+                            <constraint firstItem="Wje-Md-LXI" firstAttribute="width" secondItem="klm-R2-mup" secondAttribute="width" id="6lz-Bt-nXR"/>
+                            <constraint firstItem="AcN-TG-jjO" firstAttribute="bottom" secondItem="a1b-qP-o5U" secondAttribute="bottom" id="7bk-Y9-PCF"/>
+                            <constraint firstItem="AcN-TG-jjO" firstAttribute="leading" secondItem="hS9-m9-Pi5" secondAttribute="trailing" id="8QE-Rq-ief"/>
+                            <constraint firstItem="hS9-m9-Pi5" firstAttribute="bottom" secondItem="AcN-TG-jjO" secondAttribute="bottom" id="8ri-ui-hw3"/>
+                            <constraint firstItem="a1b-qP-o5U" firstAttribute="leading" secondItem="AcN-TG-jjO" secondAttribute="trailing" id="93U-Ln-ARZ"/>
+                            <constraint firstItem="hS9-m9-Pi5" firstAttribute="leading" secondItem="gXs-uT-zt5" secondAttribute="trailing" id="9Fg-bg-IX0"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="leading" secondItem="eub-4g-TYk" secondAttribute="trailing" id="A4n-wc-pR5"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ak2-nI-C8Q"/>
+                            <constraint firstItem="LVU-Ls-XDx" firstAttribute="width" secondItem="Wje-Md-LXI" secondAttribute="width" id="B0w-kC-aIp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gr6-ka-q88" secondAttribute="bottom" id="BUd-Di-uSg"/>
+                            <constraint firstItem="yEU-ch-CP4" firstAttribute="top" secondItem="DVx-AG-T5g" secondAttribute="top" id="Bwv-tp-5HR"/>
+                            <constraint firstItem="yEU-ch-CP4" firstAttribute="leading" secondItem="gDY-uJ-Ldp" secondAttribute="trailing" id="CJh-ux-78A"/>
+                            <constraint firstItem="zTE-9b-Ecn" firstAttribute="leading" secondItem="klm-R2-mup" secondAttribute="trailing" id="CRa-YY-Z9d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zTE-9b-Ecn" secondAttribute="trailing" id="CwC-EZ-9TM"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="width" secondItem="LVU-Ls-XDx" secondAttribute="width" id="DNq-a8-hZK"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="top" secondItem="gr6-ka-q88" secondAttribute="bottom" id="DQg-e3-eJ7"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="bottom" secondItem="hS9-m9-Pi5" secondAttribute="bottom" id="EvH-2D-MZj"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="leading" secondItem="gr6-ka-q88" secondAttribute="trailing" id="FP9-D4-V3R"/>
+                            <constraint firstItem="yEU-ch-CP4" firstAttribute="top" secondItem="DVx-AG-T5g" secondAttribute="top" id="G3i-IO-8u2"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="top" secondItem="UBv-8p-CqG" secondAttribute="top" id="G9z-dg-mHQ"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="height" secondItem="eub-4g-TYk" secondAttribute="height" id="GC6-34-hOk"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="top" secondItem="QSz-FB-6i0" secondAttribute="top" id="Gry-t8-TPl"/>
+                            <constraint firstItem="geO-6a-C04" firstAttribute="leading" secondItem="LQa-7w-QtL" secondAttribute="trailing" id="GtA-9b-W7h"/>
+                            <constraint firstItem="DVx-AG-T5g" firstAttribute="top" secondItem="VMQ-Cn-Rcd" secondAttribute="top" id="GyJ-Oj-tmv"/>
+                            <constraint firstItem="hS9-m9-Pi5" firstAttribute="top" secondItem="AcN-TG-jjO" secondAttribute="top" id="HFg-oi-lLa"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="leading" secondItem="QSz-FB-6i0" secondAttribute="trailing" id="HKX-r1-DFr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VMQ-Cn-Rcd" secondAttribute="trailing" id="HZE-E5-6IA"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="bottom" secondItem="qQi-oP-nt1" secondAttribute="bottom" id="Hzo-Y6-RCu"/>
+                            <constraint firstItem="Wje-Md-LXI" firstAttribute="bottom" secondItem="klm-R2-mup" secondAttribute="bottom" id="IXD-mi-L1P"/>
+                            <constraint firstItem="LVU-Ls-XDx" firstAttribute="top" secondItem="Wje-Md-LXI" secondAttribute="top" id="J8L-qZ-5AE"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="top" secondItem="S0x-ej-5JI" secondAttribute="top" id="JLd-PL-2rN"/>
+                            <constraint firstItem="LVU-Ls-XDx" firstAttribute="leading" secondItem="qQi-oP-nt1" secondAttribute="trailing" id="KL1-tz-qH6"/>
+                            <constraint firstItem="hS9-m9-Pi5" firstAttribute="width" secondItem="AcN-TG-jjO" secondAttribute="width" id="KWp-sM-UZE"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="top" secondItem="7Qe-LD-xh1" secondAttribute="bottom" id="LYR-fU-6fi"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="top" secondItem="eub-4g-TYk" secondAttribute="bottom" id="Ljj-oK-puF"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="top" secondItem="gXs-uT-zt5" secondAttribute="bottom" id="LrE-h5-294"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Lti-01-hRP"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="height" secondItem="gXs-uT-zt5" secondAttribute="height" id="Lwz-n2-ri8"/>
                             <constraint firstItem="7Qe-LD-xh1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LzY-R8-W4z"/>
+                            <constraint firstItem="yEU-ch-CP4" firstAttribute="bottom" secondItem="DVx-AG-T5g" secondAttribute="bottom" id="M1g-Wz-41W"/>
+                            <constraint firstItem="klm-R2-mup" firstAttribute="bottom" secondItem="zTE-9b-Ecn" secondAttribute="bottom" id="MA6-dF-EMP"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="width" secondItem="UBv-8p-CqG" secondAttribute="width" id="Mbn-sx-7z2"/>
+                            <constraint firstItem="LVU-Ls-XDx" firstAttribute="bottom" secondItem="Wje-Md-LXI" secondAttribute="bottom" id="NPi-Rs-LdP"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Nb4-er-226"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Nck-qE-IPb"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="width" secondItem="gDY-uJ-Ldp" secondAttribute="width" id="Ngp-9Q-FrR"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="width" secondItem="geO-6a-C04" secondAttribute="width" id="OnU-4r-HoY"/>
+                            <constraint firstItem="UBv-8p-CqG" firstAttribute="width" secondItem="VMQ-Cn-Rcd" secondAttribute="width" id="Oq5-hB-uXx"/>
+                            <constraint firstItem="AcN-TG-jjO" firstAttribute="bottom" secondItem="yTK-Lk-CNa" secondAttribute="bottom" id="P6y-m6-Jpg"/>
+                            <constraint firstItem="gDY-uJ-Ldp" firstAttribute="bottom" secondItem="yEU-ch-CP4" secondAttribute="bottom" id="PBY-Fj-OCd"/>
+                            <constraint firstItem="yEU-ch-CP4" firstAttribute="width" secondItem="DVx-AG-T5g" secondAttribute="width" id="Phi-KP-exL"/>
+                            <constraint firstItem="Wje-Md-LXI" firstAttribute="width" secondItem="zTE-9b-Ecn" secondAttribute="width" id="Qw8-Es-lfD"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="leading" secondItem="gr6-ka-q88" secondAttribute="leading" id="R0F-hu-UAI"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="top" secondItem="S0x-ej-5JI" secondAttribute="bottom" id="R8u-Ds-9kt"/>
+                            <constraint firstItem="Wje-Md-LXI" firstAttribute="leading" secondItem="LVU-Ls-XDx" secondAttribute="trailing" id="RGj-e6-i14"/>
+                            <constraint firstItem="DVx-AG-T5g" firstAttribute="width" secondItem="VMQ-Cn-Rcd" secondAttribute="width" id="Rla-GD-UND"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="bottom" secondItem="QSz-FB-6i0" secondAttribute="bottom" id="SJn-C3-dIZ"/>
+                            <constraint firstItem="VMQ-Cn-Rcd" firstAttribute="leading" secondItem="UBv-8p-CqG" secondAttribute="trailing" id="SN3-pD-8RK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yTK-Lk-CNa" secondAttribute="trailing" id="SNM-so-Ze3"/>
+                            <constraint firstItem="DVx-AG-T5g" firstAttribute="leading" secondItem="yEU-ch-CP4" secondAttribute="trailing" id="SeZ-ez-u7X"/>
+                            <constraint firstItem="klm-R2-mup" firstAttribute="leading" secondItem="geO-6a-C04" secondAttribute="trailing" id="Sp4-jx-X2P"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="bottom" secondItem="UBv-8p-CqG" secondAttribute="bottom" id="Ssq-ME-une"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="bottom" secondItem="LQa-7w-QtL" secondAttribute="bottom" id="T0A-61-ncn"/>
+                            <constraint firstItem="LQa-7w-QtL" firstAttribute="top" secondItem="geO-6a-C04" secondAttribute="top" id="U29-tQ-gdq"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="top" secondItem="LQa-7w-QtL" secondAttribute="top" id="UIu-Bm-H9d"/>
+                            <constraint firstItem="geO-6a-C04" firstAttribute="bottom" secondItem="klm-R2-mup" secondAttribute="bottom" id="Wwo-qw-AVN"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="height" secondItem="gr6-ka-q88" secondAttribute="height" id="XOe-fs-y5Q"/>
+                            <constraint firstItem="yTK-Lk-CNa" firstAttribute="leading" secondItem="a1b-qP-o5U" secondAttribute="trailing" id="XYe-ID-0uH"/>
+                            <constraint firstItem="a1b-qP-o5U" firstAttribute="bottom" secondItem="yTK-Lk-CNa" secondAttribute="bottom" id="XZ9-eT-7S1"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="width" secondItem="klm-R2-mup" secondAttribute="width" id="Xni-pa-ARy"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="top" secondItem="LVU-Ls-XDx" secondAttribute="top" id="Xoq-Xj-msL"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="bottom" secondItem="LVU-Ls-XDx" secondAttribute="bottom" id="XqZ-4r-71M"/>
+                            <constraint firstItem="AcN-TG-jjO" firstAttribute="leading" secondItem="hS9-m9-Pi5" secondAttribute="trailing" id="YBc-70-Arg"/>
+                            <constraint firstItem="DVx-AG-T5g" firstAttribute="leading" secondItem="yEU-ch-CP4" secondAttribute="trailing" id="YYx-A0-98c"/>
+                            <constraint firstItem="AcN-TG-jjO" firstAttribute="width" secondItem="yTK-Lk-CNa" secondAttribute="width" id="Yya-7h-Iee"/>
+                            <constraint firstItem="gDY-uJ-Ldp" firstAttribute="bottom" secondItem="yEU-ch-CP4" secondAttribute="bottom" id="ZC6-0F-VwK"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="height" secondItem="gXs-uT-zt5" secondAttribute="height" id="Zu0-L6-HYt"/>
+                            <constraint firstItem="hS9-m9-Pi5" firstAttribute="width" secondItem="AcN-TG-jjO" secondAttribute="width" id="Zy4-9W-nN9"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="top" secondItem="hS9-m9-Pi5" secondAttribute="top" id="aCH-x3-6fb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="klm-R2-mup" secondAttribute="trailing" id="atp-GW-Po5"/>
+                            <constraint firstItem="LVU-Ls-XDx" firstAttribute="bottom" secondItem="Wje-Md-LXI" secondAttribute="bottom" id="bCu-2A-eZS"/>
+                            <constraint firstItem="hS9-m9-Pi5" firstAttribute="bottom" secondItem="AcN-TG-jjO" secondAttribute="bottom" id="bLF-pE-fcg"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="top" secondItem="gDY-uJ-Ldp" secondAttribute="top" id="bXu-7J-BuD"/>
+                            <constraint firstItem="hS9-m9-Pi5" firstAttribute="leading" secondItem="gXs-uT-zt5" secondAttribute="trailing" id="bZZ-Q6-N3k"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="bottom" secondItem="hS9-m9-Pi5" secondAttribute="bottom" id="bpT-a4-63q"/>
+                            <constraint firstItem="gDY-uJ-Ldp" firstAttribute="width" secondItem="yEU-ch-CP4" secondAttribute="width" id="ce1-mW-b5W"/>
+                            <constraint firstItem="klm-R2-mup" firstAttribute="top" secondItem="zTE-9b-Ecn" secondAttribute="top" id="dlk-Vr-b29"/>
+                            <constraint firstItem="AcN-TG-jjO" firstAttribute="width" secondItem="a1b-qP-o5U" secondAttribute="width" id="ds3-he-tyy"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="height" secondItem="eub-4g-TYk" secondAttribute="height" id="eBr-bm-ijy"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="bottom" secondItem="gDY-uJ-Ldp" secondAttribute="bottom" id="eVv-R4-Aji"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="top" secondItem="qQi-oP-nt1" secondAttribute="bottom" id="fGT-LS-t6c"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="width" secondItem="QSz-FB-6i0" secondAttribute="width" id="fNr-Gn-5tw"/>
+                            <constraint firstItem="a1b-qP-o5U" firstAttribute="top" secondItem="yTK-Lk-CNa" secondAttribute="top" id="fqr-pw-9ob"/>
+                            <constraint firstItem="AcN-TG-jjO" firstAttribute="top" secondItem="yTK-Lk-CNa" secondAttribute="top" id="gCa-uW-KW4"/>
+                            <constraint firstItem="UBv-8p-CqG" firstAttribute="bottom" secondItem="VMQ-Cn-Rcd" secondAttribute="bottom" id="gP7-Zw-TKd"/>
+                            <constraint firstItem="AcN-TG-jjO" firstAttribute="top" secondItem="a1b-qP-o5U" secondAttribute="top" id="gVy-e6-AFY"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="width" secondItem="hS9-m9-Pi5" secondAttribute="width" id="gZd-AV-AAo"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="leading" secondItem="gr6-ka-q88" secondAttribute="trailing" id="hYN-q8-oOS"/>
+                            <constraint firstItem="7Qe-LD-xh1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hvs-DT-73q"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="top" secondItem="7Qe-LD-xh1" secondAttribute="bottom" id="iXn-tq-5K4"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="width" secondItem="gXs-uT-zt5" secondAttribute="width" id="jTb-vN-VaF"/>
+                            <constraint firstItem="hS9-m9-Pi5" firstAttribute="top" secondItem="AcN-TG-jjO" secondAttribute="top" id="kAy-M1-ZbK"/>
+                            <constraint firstItem="eub-4g-TYk" firstAttribute="width" secondItem="LQa-7w-QtL" secondAttribute="width" id="kcp-yU-7Nc"/>
+                            <constraint firstItem="klm-R2-mup" firstAttribute="width" secondItem="zTE-9b-Ecn" secondAttribute="width" id="kjq-2o-cwZ"/>
+                            <constraint firstItem="gDY-uJ-Ldp" firstAttribute="leading" secondItem="S0x-ej-5JI" secondAttribute="trailing" id="lRg-qf-ZLQ"/>
+                            <constraint firstItem="zTE-9b-Ecn" firstAttribute="leading" secondItem="Wje-Md-LXI" secondAttribute="trailing" id="lXr-UQ-hWT"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="width" secondItem="gDY-uJ-Ldp" secondAttribute="width" id="mFg-7I-wzt"/>
+                            <constraint firstItem="yEU-ch-CP4" firstAttribute="width" secondItem="DVx-AG-T5g" secondAttribute="width" id="mQc-bY-UKi"/>
+                            <constraint firstItem="gDY-uJ-Ldp" firstAttribute="top" secondItem="yEU-ch-CP4" secondAttribute="top" id="mXj-If-2s6"/>
+                            <constraint firstItem="yTK-Lk-CNa" firstAttribute="leading" secondItem="AcN-TG-jjO" secondAttribute="trailing" id="miJ-Pt-cDK"/>
+                            <constraint firstItem="a1b-qP-o5U" firstAttribute="width" secondItem="yTK-Lk-CNa" secondAttribute="width" id="mzX-Fx-VDg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zTE-9b-Ecn" secondAttribute="trailing" id="nnK-Ar-9rI"/>
+                            <constraint firstItem="QSz-FB-6i0" firstAttribute="height" secondItem="gr6-ka-q88" secondAttribute="height" id="nq2-XW-6zo"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="bottom" secondItem="LVU-Ls-XDx" secondAttribute="bottom" id="nsY-wc-ZLD"/>
+                            <constraint firstItem="gDY-uJ-Ldp" firstAttribute="leading" secondItem="S0x-ej-5JI" secondAttribute="trailing" id="oPa-9F-8Mc"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="top" secondItem="LVU-Ls-XDx" secondAttribute="top" id="owD-vP-lqX"/>
+                            <constraint firstItem="LVU-Ls-XDx" firstAttribute="top" secondItem="Wje-Md-LXI" secondAttribute="top" id="pQw-nM-AHb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Qe-LD-xh1" secondAttribute="trailing" id="pc4-NH-zxX"/>
+                            <constraint firstItem="VMQ-Cn-Rcd" firstAttribute="leading" secondItem="DVx-AG-T5g" secondAttribute="trailing" id="pqM-fe-3xs"/>
+                            <constraint firstItem="yEU-ch-CP4" firstAttribute="leading" secondItem="gDY-uJ-Ldp" secondAttribute="trailing" id="q7U-OX-Cna"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="eub-4g-TYk" secondAttribute="leading" id="rB1-2N-ddq"/>
+                            <constraint firstItem="UBv-8p-CqG" firstAttribute="leading" secondItem="QSz-FB-6i0" secondAttribute="trailing" id="seQ-TE-97o"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="top" secondItem="hS9-m9-Pi5" secondAttribute="top" id="tS3-zc-nox"/>
+                            <constraint firstItem="gr6-ka-q88" firstAttribute="leading" secondItem="eub-4g-TYk" secondAttribute="leading" id="td5-Qz-cox"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="width" secondItem="LVU-Ls-XDx" secondAttribute="width" id="tik-pO-9RM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yTK-Lk-CNa" secondAttribute="trailing" id="uhX-t0-UuF"/>
+                            <constraint firstItem="gDY-uJ-Ldp" firstAttribute="top" secondItem="yEU-ch-CP4" secondAttribute="top" id="ujA-gU-LUb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VMQ-Cn-Rcd" secondAttribute="trailing" id="vdS-Ap-Bne"/>
+                            <constraint firstItem="LVU-Ls-XDx" firstAttribute="leading" secondItem="qQi-oP-nt1" secondAttribute="trailing" id="w9c-au-ylc"/>
+                            <constraint firstItem="LQa-7w-QtL" firstAttribute="leading" secondItem="eub-4g-TYk" secondAttribute="trailing" id="wym-Sj-dqw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DVx-AG-T5g" secondAttribute="trailing" id="x8f-li-bfA"/>
+                            <constraint firstItem="klm-R2-mup" firstAttribute="leading" secondItem="Wje-Md-LXI" secondAttribute="trailing" id="xCD-xt-Ewi"/>
+                            <constraint firstItem="geO-6a-C04" firstAttribute="top" secondItem="klm-R2-mup" secondAttribute="top" id="xlb-bQ-dxe"/>
+                            <constraint firstItem="S0x-ej-5JI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xwW-rs-YMX"/>
+                            <constraint firstItem="UBv-8p-CqG" firstAttribute="top" secondItem="VMQ-Cn-Rcd" secondAttribute="top" id="yox-dH-Fcs"/>
+                            <constraint firstItem="gXs-uT-zt5" firstAttribute="width" secondItem="hS9-m9-Pi5" secondAttribute="width" id="ys3-Pw-ffj"/>
+                            <constraint firstItem="qQi-oP-nt1" firstAttribute="top" secondItem="eub-4g-TYk" secondAttribute="bottom" id="z5I-4J-lDw"/>
+                            <constraint firstItem="LVU-Ls-XDx" firstAttribute="width" secondItem="Wje-Md-LXI" secondAttribute="width" id="zXN-cb-5Nc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="LQa-7w-QtL"/>
+                                <exclude reference="geO-6a-C04"/>
+                                <exclude reference="UBv-8p-CqG"/>
+                                <exclude reference="a1b-qP-o5U"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0pt-kf-bd1"/>
+                                <exclude reference="U29-tQ-gdq"/>
+                                <exclude reference="wym-Sj-dqw"/>
+                                <exclude reference="GtA-9b-W7h"/>
+                                <exclude reference="Wwo-qw-AVN"/>
+                                <exclude reference="xlb-bQ-dxe"/>
+                                <exclude reference="BUd-Di-uSg"/>
+                                <exclude reference="CwC-EZ-9TM"/>
+                                <exclude reference="HZE-E5-6IA"/>
+                                <exclude reference="SNM-so-Ze3"/>
+                                <exclude reference="atp-GW-Po5"/>
+                                <exclude reference="nnK-Ar-9rI"/>
+                                <exclude reference="rB1-2N-ddq"/>
+                                <exclude reference="uhX-t0-UuF"/>
+                                <exclude reference="vdS-Ap-Bne"/>
+                                <exclude reference="x8f-li-bfA"/>
+                                <exclude reference="10a-AQ-3dP"/>
+                                <exclude reference="hvs-DT-73q"/>
+                                <exclude reference="2tC-AC-DeG"/>
+                                <exclude reference="3jA-lE-JhC"/>
+                                <exclude reference="42o-NJ-gPj"/>
+                                <exclude reference="Hzo-Y6-RCu"/>
+                                <exclude reference="LYR-fU-6fi"/>
+                                <exclude reference="OnU-4r-HoY"/>
+                                <exclude reference="T0A-61-ncn"/>
+                                <exclude reference="UIu-Bm-H9d"/>
+                                <exclude reference="Xni-pa-ARy"/>
+                                <exclude reference="iXn-tq-5K4"/>
+                                <exclude reference="kcp-yU-7Nc"/>
+                                <exclude reference="5hd-cs-kuB"/>
+                                <exclude reference="6kS-8S-z69"/>
+                                <exclude reference="Ak2-nI-C8Q"/>
+                                <exclude reference="Gry-t8-TPl"/>
+                                <exclude reference="Ljj-oK-puF"/>
+                                <exclude reference="R8u-Ds-9kt"/>
+                                <exclude reference="SJn-C3-dIZ"/>
+                                <exclude reference="eBr-bm-ijy"/>
+                                <exclude reference="fNr-Gn-5tw"/>
+                                <exclude reference="jTb-vN-VaF"/>
+                                <exclude reference="td5-Qz-cox"/>
+                                <exclude reference="A4n-wc-pR5"/>
+                                <exclude reference="DNq-a8-hZK"/>
+                                <exclude reference="GC6-34-hOk"/>
+                                <exclude reference="Nck-qE-IPb"/>
+                                <exclude reference="Xoq-Xj-msL"/>
+                                <exclude reference="XqZ-4r-71M"/>
+                                <exclude reference="Zu0-L6-HYt"/>
+                                <exclude reference="nsY-wc-ZLD"/>
+                                <exclude reference="owD-vP-lqX"/>
+                                <exclude reference="tik-pO-9RM"/>
+                                <exclude reference="z5I-4J-lDw"/>
+                                <exclude reference="EvH-2D-MZj"/>
+                                <exclude reference="Nb4-er-226"/>
+                                <exclude reference="aCH-x3-6fb"/>
+                                <exclude reference="bpT-a4-63q"/>
+                                <exclude reference="fGT-LS-t6c"/>
+                                <exclude reference="gZd-AV-AAo"/>
+                                <exclude reference="hYN-q8-oOS"/>
+                                <exclude reference="tS3-zc-nox"/>
+                                <exclude reference="ys3-Pw-ffj"/>
+                                <exclude reference="2MV-N5-VGI"/>
+                                <exclude reference="4lY-gK-4Mt"/>
+                                <exclude reference="DQg-e3-eJ7"/>
+                                <exclude reference="FP9-D4-V3R"/>
+                                <exclude reference="G9z-dg-mHQ"/>
+                                <exclude reference="JLd-PL-2rN"/>
+                                <exclude reference="Lti-01-hRP"/>
+                                <exclude reference="Mbn-sx-7z2"/>
+                                <exclude reference="R0F-hu-UAI"/>
+                                <exclude reference="Ssq-ME-une"/>
+                                <exclude reference="nq2-XW-6zo"/>
+                                <exclude reference="B0w-kC-aIp"/>
+                                <exclude reference="J8L-qZ-5AE"/>
+                                <exclude reference="KL1-tz-qH6"/>
+                                <exclude reference="NPi-Rs-LdP"/>
+                                <exclude reference="bCu-2A-eZS"/>
+                                <exclude reference="pQw-nM-AHb"/>
+                                <exclude reference="w9c-au-ylc"/>
+                                <exclude reference="zXN-cb-5Nc"/>
+                                <exclude reference="2VI-bY-ppX"/>
+                                <exclude reference="39C-7h-4uc"/>
+                                <exclude reference="HKX-r1-DFr"/>
+                                <exclude reference="LrE-h5-294"/>
+                                <exclude reference="Lwz-n2-ri8"/>
+                                <exclude reference="Ngp-9Q-FrR"/>
+                                <exclude reference="XOe-fs-y5Q"/>
+                                <exclude reference="bXu-7J-BuD"/>
+                                <exclude reference="eVv-R4-Aji"/>
+                                <exclude reference="mFg-7I-wzt"/>
+                                <exclude reference="xwW-rs-YMX"/>
+                                <exclude reference="8ri-ui-hw3"/>
+                                <exclude reference="9Fg-bg-IX0"/>
+                                <exclude reference="HFg-oi-lLa"/>
+                                <exclude reference="KWp-sM-UZE"/>
+                                <exclude reference="Zy4-9W-nN9"/>
+                                <exclude reference="bLF-pE-fcg"/>
+                                <exclude reference="bZZ-Q6-N3k"/>
+                                <exclude reference="kAy-M1-ZbK"/>
+                                <exclude reference="1Xn-tP-aAP"/>
+                                <exclude reference="PBY-Fj-OCd"/>
+                                <exclude reference="ZC6-0F-VwK"/>
+                                <exclude reference="ce1-mW-b5W"/>
+                                <exclude reference="lRg-qf-ZLQ"/>
+                                <exclude reference="mXj-If-2s6"/>
+                                <exclude reference="oPa-9F-8Mc"/>
+                                <exclude reference="ujA-gU-LUb"/>
+                                <exclude reference="gP7-Zw-TKd"/>
+                                <exclude reference="seQ-TE-97o"/>
+                                <exclude reference="yox-dH-Fcs"/>
+                                <exclude reference="3Ng-zp-SBz"/>
+                                <exclude reference="3Nu-iQ-J5x"/>
+                                <exclude reference="5BA-Ww-ncT"/>
+                                <exclude reference="6jW-9n-ECy"/>
+                                <exclude reference="6lz-Bt-nXR"/>
+                                <exclude reference="IXD-mi-L1P"/>
+                                <exclude reference="Qw8-Es-lfD"/>
+                                <exclude reference="RGj-e6-i14"/>
+                                <exclude reference="7bk-Y9-PCF"/>
+                                <exclude reference="8QE-Rq-ief"/>
+                                <exclude reference="P6y-m6-Jpg"/>
+                                <exclude reference="YBc-70-Arg"/>
+                                <exclude reference="Yya-7h-Iee"/>
+                                <exclude reference="ds3-he-tyy"/>
+                                <exclude reference="gCa-uW-KW4"/>
+                                <exclude reference="gVy-e6-AFY"/>
+                                <exclude reference="2L6-vc-eN2"/>
+                                <exclude reference="Bwv-tp-5HR"/>
+                                <exclude reference="CJh-ux-78A"/>
+                                <exclude reference="G3i-IO-8u2"/>
+                                <exclude reference="M1g-Wz-41W"/>
+                                <exclude reference="Phi-KP-exL"/>
+                                <exclude reference="mQc-bY-UKi"/>
+                                <exclude reference="q7U-OX-Cna"/>
+                                <exclude reference="Oq5-hB-uXx"/>
+                                <exclude reference="MA6-dF-EMP"/>
+                                <exclude reference="Sp4-jx-X2P"/>
+                                <exclude reference="dlk-Vr-b29"/>
+                                <exclude reference="kjq-2o-cwZ"/>
+                                <exclude reference="xCD-xt-Ewi"/>
+                                <exclude reference="2Ia-o2-3ho"/>
+                                <exclude reference="GyJ-Oj-tmv"/>
+                                <exclude reference="Rla-GD-UND"/>
+                                <exclude reference="SeZ-ez-u7X"/>
+                                <exclude reference="YYx-A0-98c"/>
+                                <exclude reference="93U-Ln-ARZ"/>
+                                <exclude reference="XZ9-eT-7S1"/>
+                                <exclude reference="fqr-pw-9ob"/>
+                                <exclude reference="mzX-Fx-VDg"/>
+                                <exclude reference="CRa-YY-Z9d"/>
+                                <exclude reference="lXr-UQ-hWT"/>
+                                <exclude reference="SN3-pD-8RK"/>
+                                <exclude reference="pqM-fe-3xs"/>
+                                <exclude reference="XYe-ID-0uH"/>
+                                <exclude reference="miJ-Pt-cDK"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <include reference="a1b-qP-o5U"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="HZE-E5-6IA"/>
+                                <include reference="SNM-so-Ze3"/>
+                                <include reference="nnK-Ar-9rI"/>
+                                <include reference="rB1-2N-ddq"/>
+                                <include reference="hvs-DT-73q"/>
+                                <include reference="2tC-AC-DeG"/>
+                                <include reference="3jA-lE-JhC"/>
+                                <include reference="Hzo-Y6-RCu"/>
+                                <include reference="iXn-tq-5K4"/>
+                                <include reference="5hd-cs-kuB"/>
+                                <include reference="6kS-8S-z69"/>
+                                <include reference="Ljj-oK-puF"/>
+                                <include reference="eBr-bm-ijy"/>
+                                <include reference="jTb-vN-VaF"/>
+                                <include reference="td5-Qz-cox"/>
+                                <include reference="A4n-wc-pR5"/>
+                                <include reference="DNq-a8-hZK"/>
+                                <include reference="XqZ-4r-71M"/>
+                                <include reference="owD-vP-lqX"/>
+                                <include reference="EvH-2D-MZj"/>
+                                <include reference="aCH-x3-6fb"/>
+                                <include reference="gZd-AV-AAo"/>
+                                <include reference="hYN-q8-oOS"/>
+                                <include reference="2MV-N5-VGI"/>
+                                <include reference="4lY-gK-4Mt"/>
+                                <include reference="DQg-e3-eJ7"/>
+                                <include reference="JLd-PL-2rN"/>
+                                <include reference="Lti-01-hRP"/>
+                                <include reference="R0F-hu-UAI"/>
+                                <include reference="nq2-XW-6zo"/>
+                                <include reference="B0w-kC-aIp"/>
+                                <include reference="bCu-2A-eZS"/>
+                                <include reference="pQw-nM-AHb"/>
+                                <include reference="w9c-au-ylc"/>
+                                <include reference="39C-7h-4uc"/>
+                                <include reference="HKX-r1-DFr"/>
+                                <include reference="Ngp-9Q-FrR"/>
+                                <include reference="bXu-7J-BuD"/>
+                                <include reference="9Fg-bg-IX0"/>
+                                <include reference="Zy4-9W-nN9"/>
+                                <include reference="bLF-pE-fcg"/>
+                                <include reference="kAy-M1-ZbK"/>
+                                <include reference="1Xn-tP-aAP"/>
+                                <include reference="ZC6-0F-VwK"/>
+                                <include reference="mXj-If-2s6"/>
+                                <include reference="oPa-9F-8Mc"/>
+                                <include reference="3Nu-iQ-J5x"/>
+                                <include reference="5BA-Ww-ncT"/>
+                                <include reference="6lz-Bt-nXR"/>
+                                <include reference="IXD-mi-L1P"/>
+                                <include reference="7bk-Y9-PCF"/>
+                                <include reference="YBc-70-Arg"/>
+                                <include reference="ds3-he-tyy"/>
+                                <include reference="gVy-e6-AFY"/>
+                                <include reference="2L6-vc-eN2"/>
+                                <include reference="Bwv-tp-5HR"/>
+                                <include reference="Phi-KP-exL"/>
+                                <include reference="q7U-OX-Cna"/>
+                                <include reference="MA6-dF-EMP"/>
+                                <include reference="dlk-Vr-b29"/>
+                                <include reference="kjq-2o-cwZ"/>
+                                <include reference="xCD-xt-Ewi"/>
+                                <include reference="2Ia-o2-3ho"/>
+                                <include reference="GyJ-Oj-tmv"/>
+                                <include reference="Rla-GD-UND"/>
+                                <include reference="YYx-A0-98c"/>
+                                <include reference="93U-Ln-ARZ"/>
+                                <include reference="XZ9-eT-7S1"/>
+                                <include reference="fqr-pw-9ob"/>
+                                <include reference="mzX-Fx-VDg"/>
+                                <include reference="CRa-YY-Z9d"/>
+                                <include reference="pqM-fe-3xs"/>
+                                <include reference="XYe-ID-0uH"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="LQa-7w-QtL"/>
+                                <include reference="geO-6a-C04"/>
+                                <include reference="UBv-8p-CqG"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0pt-kf-bd1"/>
+                                <include reference="U29-tQ-gdq"/>
+                                <include reference="wym-Sj-dqw"/>
+                                <include reference="GtA-9b-W7h"/>
+                                <include reference="Wwo-qw-AVN"/>
+                                <include reference="xlb-bQ-dxe"/>
+                                <include reference="CwC-EZ-9TM"/>
+                                <include reference="atp-GW-Po5"/>
+                                <include reference="uhX-t0-UuF"/>
+                                <include reference="42o-NJ-gPj"/>
+                                <include reference="OnU-4r-HoY"/>
+                                <include reference="T0A-61-ncn"/>
+                                <include reference="UIu-Bm-H9d"/>
+                                <include reference="Xni-pa-ARy"/>
+                                <include reference="kcp-yU-7Nc"/>
+                                <include reference="GC6-34-hOk"/>
+                                <include reference="Nck-qE-IPb"/>
+                                <include reference="Xoq-Xj-msL"/>
+                                <include reference="Zu0-L6-HYt"/>
+                                <include reference="nsY-wc-ZLD"/>
+                                <include reference="tik-pO-9RM"/>
+                                <include reference="z5I-4J-lDw"/>
+                                <include reference="Nb4-er-226"/>
+                                <include reference="fGT-LS-t6c"/>
+                                <include reference="J8L-qZ-5AE"/>
+                                <include reference="KL1-tz-qH6"/>
+                                <include reference="NPi-Rs-LdP"/>
+                                <include reference="zXN-cb-5Nc"/>
+                                <include reference="bZZ-Q6-N3k"/>
+                                <include reference="3Ng-zp-SBz"/>
+                                <include reference="6jW-9n-ECy"/>
+                                <include reference="Qw8-Es-lfD"/>
+                                <include reference="RGj-e6-i14"/>
+                                <include reference="Sp4-jx-X2P"/>
+                                <include reference="lXr-UQ-hWT"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="BUd-Di-uSg"/>
+                                <include reference="vdS-Ap-Bne"/>
+                                <include reference="x8f-li-bfA"/>
+                                <include reference="10a-AQ-3dP"/>
+                                <include reference="LYR-fU-6fi"/>
+                                <include reference="Ak2-nI-C8Q"/>
+                                <include reference="Gry-t8-TPl"/>
+                                <include reference="R8u-Ds-9kt"/>
+                                <include reference="SJn-C3-dIZ"/>
+                                <include reference="fNr-Gn-5tw"/>
+                                <include reference="bpT-a4-63q"/>
+                                <include reference="tS3-zc-nox"/>
+                                <include reference="ys3-Pw-ffj"/>
+                                <include reference="FP9-D4-V3R"/>
+                                <include reference="G9z-dg-mHQ"/>
+                                <include reference="Mbn-sx-7z2"/>
+                                <include reference="Ssq-ME-une"/>
+                                <include reference="2VI-bY-ppX"/>
+                                <include reference="LrE-h5-294"/>
+                                <include reference="Lwz-n2-ri8"/>
+                                <include reference="XOe-fs-y5Q"/>
+                                <include reference="eVv-R4-Aji"/>
+                                <include reference="mFg-7I-wzt"/>
+                                <include reference="xwW-rs-YMX"/>
+                                <include reference="8ri-ui-hw3"/>
+                                <include reference="HFg-oi-lLa"/>
+                                <include reference="KWp-sM-UZE"/>
+                                <include reference="PBY-Fj-OCd"/>
+                                <include reference="ce1-mW-b5W"/>
+                                <include reference="lRg-qf-ZLQ"/>
+                                <include reference="ujA-gU-LUb"/>
+                                <include reference="gP7-Zw-TKd"/>
+                                <include reference="seQ-TE-97o"/>
+                                <include reference="yox-dH-Fcs"/>
+                                <include reference="8QE-Rq-ief"/>
+                                <include reference="P6y-m6-Jpg"/>
+                                <include reference="Yya-7h-Iee"/>
+                                <include reference="gCa-uW-KW4"/>
+                                <include reference="CJh-ux-78A"/>
+                                <include reference="G3i-IO-8u2"/>
+                                <include reference="M1g-Wz-41W"/>
+                                <include reference="mQc-bY-UKi"/>
+                                <include reference="Oq5-hB-uXx"/>
+                                <include reference="SeZ-ez-u7X"/>
+                                <include reference="SN3-pD-8RK"/>
+                                <include reference="miJ-Pt-cDK"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="lblOp1" destination="riQ-vv-UVT" id="iZM-f3-S02"/>
-                        <outlet property="lblOp2" destination="tcr-bv-8i7" id="g8m-Xw-J5J"/>
-                        <outlet property="lblOperator" destination="xYH-fX-clk" id="5J5-eC-PdR"/>
+                        <outlet property="lblResult" destination="tcr-bv-8i7" id="4fD-DX-JmH"/>
                         <outlet property="resultView" destination="7Qe-LD-xh1" id="dTY-oQ-z4i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
+            <point key="canvasLocation" x="137.27678571428569" y="126.08695652173914"/>
         </scene>
     </scenes>
 </document>
