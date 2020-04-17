@@ -13,10 +13,17 @@ class DrawerViewController: UIViewController {
     static let controllerId = "DrawerViewController"
     
     @IBOutlet private(set) weak var handleView: UIView!
-    @IBOutlet private(set) weak var lblBold: UILabel! {
+    @IBOutlet private(set) weak var lblBlue: UILabel! {
         didSet {
-            lblBold.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-            lblBold.textColor = .systemBlue
+            lblBlue.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+            lblBlue.textColor = .systemBlue
+        }
+    }
+    @IBOutlet private(set) weak var lblBlack: UILabel! {
+        didSet {
+            lblBlack.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+            lblBlack.textColor = .black
+            lblBlack.alpha = 0
         }
     }
 
