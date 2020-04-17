@@ -8,34 +8,6 @@
 
 import Foundation
 
-enum Operation {
-    case add, subtract, multiply, divide
-    
-    func description() -> String {
-        switch self {
-        case .add:
-            return "+"
-        case .subtract:
-            return "-"
-        case .multiply:
-            return "×"
-        case .divide:
-            return "÷"
-        }
-    }
-    
-    func precedence() -> Int {
-        switch self {
-        case .add, .subtract:
-            return 0
-        case .multiply:
-            return 1
-        case .divide:
-            return 2
-        }
-    }
-}
-
 class Calculator {
     
     private enum CalculatorElement {
@@ -192,7 +164,7 @@ class Calculator {
             expression.append(currentElement)
             currentElement = .op(op)
         }
-        resultString = op.description()
+//        resultString = op.description()
     }
 
     private func intTapped(_ val: Int) -> Size? {
@@ -249,12 +221,13 @@ class Calculator {
         trimExpression()
         let evaluator = Evaluator(expression: expression)
         clearAll()
-        let result = String(evaluator.result)
-        entryString = result
-        resultString = convertToStringResultDisplay(result) ?? "Error"
+        let result = evaluator.result
+        let stringResult = String(evaluator.result)
+        entryString = result.toEntryStringFormat() ?? ""
+        resultString = convertToStringResultDisplay(stringResult) ?? "Error"
     }
 
-    func characterEntered(_ char: ViewController.ButtonElement) throws -> String {
+    func characterEntered(_ char: ButtonElement) throws -> String {
         switch char {
         case .equal:
             displayResult()
@@ -341,50 +314,6 @@ class Calculator {
             if string.count >= 15 {
                 return .digitsExceeded
             }
-        }
-        return nil
-    }
-}
-
-extension Double {
-    func withCommas() -> String? {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 10
-        return formatter.string(from: NSNumber(value: self))
-    }
-    
-    func extractInt() -> Int {
-        return Int(self)
-    }
-}
-
-extension String {
-    func containsConsecutiveEndZerosAfterDecimal() -> (Int,Bool)? {
-        if !self.contains(".") {
-            return nil
-        }
-        var string = self
-        var count = 0
-        while true {
-            let last = string.removeLast()
-            if last == "0" {
-                count += 1
-            } else if last == "." {
-                return (count == 0 ? nil : (count,true))
-            } else {
-                return (count == 0 ? nil : (count,false))
-            }
-        }
-    }
-    
-    func firstIndex(of element: Character) -> Int? {
-        var count = 0
-        for i in self {
-            if i == element {
-                return count
-            }
-             count += 1
         }
         return nil
     }

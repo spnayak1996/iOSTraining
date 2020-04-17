@@ -48,8 +48,9 @@ class MainViewController: UIViewController {
     private var currentlyMonitoredRegions = [CLRegion]()
     private var pins = [CustomPin]()
     static let meters: CLLocationDistance = 30000
-    private var monitoringAlert: (entered: [String], exited: [String]) = ([], [])
-    private var timer: Timer?
+    private var toBeShownAlerts: (entered: [String], exited: [String]) = ([], [])
+    private var alertTimer: Timer?
+    private var shownMonitoringAlert: UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,8 +149,15 @@ class MainViewController: UIViewController {
     }
     
     private func showAlert(message: String) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    private func showMonitoringAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        shownMonitoringAlert = alert
         self.present(alert, animated: true)
     }
 
@@ -239,13 +247,13 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     
     private func addAlertForRegion(note: String, entered: Bool) {
-        timer?.invalidate()
+        alertTimer?.invalidate()
         if entered {
-            monitoringAlert = (monitoringAlert.entered + [note], monitoringAlert.exited)
+            toBeShownAlerts = (toBeShownAlerts.entered + [note], toBeShownAlerts.exited)
         } else {
-            monitoringAlert = (monitoringAlert.entered, monitoringAlert.exited + [note])
+            toBeShownAlerts = (toBeShownAlerts.entered, toBeShownAlerts.exited + [note])
         }
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self](_) in
+        alertTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self](_) in
             self?.displayAlert()
         })
     }
@@ -253,26 +261,20 @@ extension MainViewController: CLLocationManagerDelegate {
     private func displayAlert() {
         var enteredString = ""
         var exitedString = ""
-        if !monitoringAlert.entered.isEmpty {
-            enteredString  = "entered " + appendAllStrings(monitoringAlert.entered)
+        if !toBeShownAlerts.entered.isEmpty {
+            enteredString  = "entered " + toBeShownAlerts.entered.joined(separator: ", ")
         }
-        if !monitoringAlert.exited.isEmpty {
-            exitedString  = "exited " + appendAllStrings(monitoringAlert.exited)
+        if !toBeShownAlerts.exited.isEmpty {
+            exitedString  = "exited " + toBeShownAlerts.exited.joined(separator: ", ")
         }
-        monitoringAlert = ([], [])
-        showAlert(message: (enteredString.isEmpty ? exitedString : "\(enteredString)\n\(exitedString)"))
-    }
-    
-    private func appendAllStrings(_ array: [String]) -> String {
-        var result = ""
-        let count = array.count
-        for (i, string) in array.enumerated() {
-            result = result + string
-            if i < count - 1 {
-                result = result + ", "
-            }
+        toBeShownAlerts = ([], [])
+        if shownMonitoringAlert != nil {
+            shownMonitoringAlert?.dismiss(animated: true, completion: {
+                self.showMonitoringAlert(message: (enteredString.isEmpty ? exitedString : "\(enteredString)\n\n\(exitedString)"))
+            })
+        } else {
+            showMonitoringAlert(message: (enteredString.isEmpty ? exitedString : "\(enteredString)\n\n\(exitedString)"))
         }
-        return result
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

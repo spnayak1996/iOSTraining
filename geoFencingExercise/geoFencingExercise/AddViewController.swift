@@ -301,7 +301,7 @@ class CustomPin: NSObject, MKAnnotation {
     private(set) var radius: Double = 0
     private(set) var image: UIImage?
     
-    init(coordinate: CLLocationCoordinate2D, monitoredState: MonitoredState, radius: Double, note: String) {
+    private init(coordinate: CLLocationCoordinate2D, monitoredState: MonitoredState, radius: Double, note: String) {
         self.coordinate = coordinate
         self.monitoredState = monitoredState
         self.radius = radius
