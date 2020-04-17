@@ -13,27 +13,8 @@
 		DF74C8E024167BF200761021 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF74C8DE24167BF200761021 /* Main.storyboard */; };
 		DF74C8E224167BF200761021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF74C8E124167BF200761021 /* Assets.xcassets */; };
 		DF74C8E524167BF200761021 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF74C8E324167BF200761021 /* LaunchScreen.storyboard */; };
-		DF74C8F024167BF200761021 /* DrawerAnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74C8EF24167BF200761021 /* DrawerAnimationTests.swift */; };
-		DF74C8FB24167BF300761021 /* DrawerAnimationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF74C8FA24167BF300761021 /* DrawerAnimationUITests.swift */; };
 		DFA910A7241680470071AB87 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA910A6241680470071AB87 /* DrawerViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DF74C8EC24167BF200761021 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF74C8CD24167BF200761021 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF74C8D424167BF200761021;
-			remoteInfo = DrawerAnimation;
-		};
-		DF74C8F724167BF300761021 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF74C8CD24167BF200761021 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF74C8D424167BF200761021;
-			remoteInfo = DrawerAnimation;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DF74C8D524167BF200761021 /* DrawerAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawerAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,31 +25,11 @@
 		DF74C8E124167BF200761021 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF74C8E424167BF200761021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF74C8E624167BF200761021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF74C8EB24167BF200761021 /* DrawerAnimationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawerAnimationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF74C8EF24167BF200761021 /* DrawerAnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerAnimationTests.swift; sourceTree = "<group>"; };
-		DF74C8F124167BF200761021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF74C8F624167BF300761021 /* DrawerAnimationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawerAnimationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF74C8FA24167BF300761021 /* DrawerAnimationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerAnimationUITests.swift; sourceTree = "<group>"; };
-		DF74C8FC24167BF300761021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFA910A6241680470071AB87 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DF74C8D224167BF200761021 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF74C8E824167BF200761021 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF74C8F324167BF300761021 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -82,8 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				DF74C8D724167BF200761021 /* DrawerAnimation */,
-				DF74C8EE24167BF200761021 /* DrawerAnimationTests */,
-				DF74C8F924167BF300761021 /* DrawerAnimationUITests */,
 				DF74C8D624167BF200761021 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,8 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				DF74C8D524167BF200761021 /* DrawerAnimation.app */,
-				DF74C8EB24167BF200761021 /* DrawerAnimationTests.xctest */,
-				DF74C8F624167BF300761021 /* DrawerAnimationUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,34 +58,56 @@
 		DF74C8D724167BF200761021 /* DrawerAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				DF74C8D824167BF200761021 /* AppDelegate.swift */,
-				DF74C8DA24167BF200761021 /* SceneDelegate.swift */,
-				DF74C8DC24167BF200761021 /* FirstViewController.swift */,
-				DF74C8DE24167BF200761021 /* Main.storyboard */,
-				DF74C8E124167BF200761021 /* Assets.xcassets */,
-				DF74C8E324167BF200761021 /* LaunchScreen.storyboard */,
-				DF74C8E624167BF200761021 /* Info.plist */,
-				DFA910A6241680470071AB87 /* DrawerViewController.swift */,
+				DF9B9BBF244A0BEA003955DB /* StartUp */,
+				DF9B9BC0244A0BF7003955DB /* Storyboards */,
+				DF9B9BC1244A0C05003955DB /* Controllers */,
+				DF9B9BC2244A0C13003955DB /* Resources */,
+				DF9B9BC3244A0C26003955DB /* Supporting Files */,
 			);
 			path = DrawerAnimation;
 			sourceTree = "<group>";
 		};
-		DF74C8EE24167BF200761021 /* DrawerAnimationTests */ = {
+		DF9B9BBF244A0BEA003955DB /* StartUp */ = {
 			isa = PBXGroup;
 			children = (
-				DF74C8EF24167BF200761021 /* DrawerAnimationTests.swift */,
-				DF74C8F124167BF200761021 /* Info.plist */,
+				DF74C8D824167BF200761021 /* AppDelegate.swift */,
+				DF74C8DA24167BF200761021 /* SceneDelegate.swift */,
 			);
-			path = DrawerAnimationTests;
+			path = StartUp;
 			sourceTree = "<group>";
 		};
-		DF74C8F924167BF300761021 /* DrawerAnimationUITests */ = {
+		DF9B9BC0244A0BF7003955DB /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				DF74C8FA24167BF300761021 /* DrawerAnimationUITests.swift */,
-				DF74C8FC24167BF300761021 /* Info.plist */,
+				DF74C8DE24167BF200761021 /* Main.storyboard */,
 			);
-			path = DrawerAnimationUITests;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DF9B9BC1244A0C05003955DB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DFA910A6241680470071AB87 /* DrawerViewController.swift */,
+				DF74C8DC24167BF200761021 /* FirstViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DF9B9BC2244A0C13003955DB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DF74C8E124167BF200761021 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DF9B9BC3244A0C26003955DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF74C8E324167BF200761021 /* LaunchScreen.storyboard */,
+				DF74C8E624167BF200761021 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,42 +130,6 @@
 			productReference = DF74C8D524167BF200761021 /* DrawerAnimation.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DF74C8EA24167BF200761021 /* DrawerAnimationTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DF74C90224167BF300761021 /* Build configuration list for PBXNativeTarget "DrawerAnimationTests" */;
-			buildPhases = (
-				DF74C8E724167BF200761021 /* Sources */,
-				DF74C8E824167BF200761021 /* Frameworks */,
-				DF74C8E924167BF200761021 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DF74C8ED24167BF200761021 /* PBXTargetDependency */,
-			);
-			name = DrawerAnimationTests;
-			productName = DrawerAnimationTests;
-			productReference = DF74C8EB24167BF200761021 /* DrawerAnimationTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		DF74C8F524167BF300761021 /* DrawerAnimationUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DF74C90524167BF300761021 /* Build configuration list for PBXNativeTarget "DrawerAnimationUITests" */;
-			buildPhases = (
-				DF74C8F224167BF300761021 /* Sources */,
-				DF74C8F324167BF300761021 /* Frameworks */,
-				DF74C8F424167BF300761021 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DF74C8F824167BF300761021 /* PBXTargetDependency */,
-			);
-			name = DrawerAnimationUITests;
-			productName = DrawerAnimationUITests;
-			productReference = DF74C8F624167BF300761021 /* DrawerAnimationUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,14 +142,6 @@
 				TargetAttributes = {
 					DF74C8D424167BF200761021 = {
 						CreatedOnToolsVersion = 11.3.1;
-					};
-					DF74C8EA24167BF200761021 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = DF74C8D424167BF200761021;
-					};
-					DF74C8F524167BF300761021 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = DF74C8D424167BF200761021;
 					};
 				};
 			};
@@ -224,8 +159,6 @@
 			projectRoot = "";
 			targets = (
 				DF74C8D424167BF200761021 /* DrawerAnimation */,
-				DF74C8EA24167BF200761021 /* DrawerAnimationTests */,
-				DF74C8F524167BF300761021 /* DrawerAnimationUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,20 +171,6 @@
 				DF74C8E524167BF200761021 /* LaunchScreen.storyboard in Resources */,
 				DF74C8E224167BF200761021 /* Assets.xcassets in Resources */,
 				DF74C8E024167BF200761021 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF74C8E924167BF200761021 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF74C8F424167BF300761021 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,36 +188,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF74C8E724167BF200761021 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DF74C8F024167BF200761021 /* DrawerAnimationTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF74C8F224167BF300761021 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DF74C8FB24167BF300761021 /* DrawerAnimationUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DF74C8ED24167BF200761021 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DF74C8D424167BF200761021 /* DrawerAnimation */;
-			targetProxy = DF74C8EC24167BF200761021 /* PBXContainerItemProxy */;
-		};
-		DF74C8F824167BF300761021 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DF74C8D424167BF200761021 /* DrawerAnimation */;
-			targetProxy = DF74C8F724167BF300761021 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DF74C8DE24167BF200761021 /* Main.storyboard */ = {
@@ -470,90 +360,6 @@
 			};
 			name = Release;
 		};
-		DF74C90324167BF300761021 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = DrawerAnimationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.DrawerAnimationTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrawerAnimation.app/DrawerAnimation";
-			};
-			name = Debug;
-		};
-		DF74C90424167BF300761021 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = DrawerAnimationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.DrawerAnimationTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrawerAnimation.app/DrawerAnimation";
-			};
-			name = Release;
-		};
-		DF74C90624167BF300761021 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = DrawerAnimationUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.DrawerAnimationUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DrawerAnimation;
-			};
-			name = Debug;
-		};
-		DF74C90724167BF300761021 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2XHG2BAA6R;
-				INFOPLIST_FILE = DrawerAnimationUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinsol.DrawerAnimationUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DrawerAnimation;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -571,24 +377,6 @@
 			buildConfigurations = (
 				DF74C90024167BF300761021 /* Debug */,
 				DF74C90124167BF300761021 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DF74C90224167BF300761021 /* Build configuration list for PBXNativeTarget "DrawerAnimationTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DF74C90324167BF300761021 /* Debug */,
-				DF74C90424167BF300761021 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DF74C90524167BF300761021 /* Build configuration list for PBXNativeTarget "DrawerAnimationUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DF74C90624167BF300761021 /* Debug */,
-				DF74C90724167BF300761021 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
