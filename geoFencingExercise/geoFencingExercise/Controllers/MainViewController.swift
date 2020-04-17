@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     
     private let locationManager = CLLocationManager()
 
-    @IBOutlet private weak var lblTitle: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var segmentedControl: UISegmentedControl! {
         didSet {
             segmentedControl.layer.borderWidth = 0.5
@@ -48,9 +48,9 @@ class MainViewController: UIViewController {
     private var currentlyMonitoredRegions = [CLRegion]()
     private var pins = [CustomPin]()
     static let meters: CLLocationDistance = 30000
-    private var toBeShownAlerts: (entered: [String], exited: [String]) = ([], [])
+    private var pendingAlerts: (entered: [String], exited: [String]) = ([], [])
     private var alertTimer: Timer?
-    private var shownMonitoringAlert: UIAlertController?
+    private var displayedAlert: UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +61,8 @@ class MainViewController: UIViewController {
     
     private func updateRegionOverlays(state: MonitoredState?) {
         overlayRegions = DataHandler.shared.getAllMonitoredRegions(state: state)
+        let count = overlayRegions.count
+        titleLabel.text = "Regions" + (count > 0 ? "(\(count))" : "")
         addOverlays()
     }
     
@@ -157,7 +159,7 @@ class MainViewController: UIViewController {
     private func showMonitoringAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        shownMonitoringAlert = alert
+        displayedAlert = alert
         self.present(alert, animated: true)
     }
 
@@ -249,9 +251,9 @@ extension MainViewController: CLLocationManagerDelegate {
     private func addAlertForRegion(note: String, entered: Bool) {
         alertTimer?.invalidate()
         if entered {
-            toBeShownAlerts = (toBeShownAlerts.entered + [note], toBeShownAlerts.exited)
+            pendingAlerts = (pendingAlerts.entered + [note], pendingAlerts.exited)
         } else {
-            toBeShownAlerts = (toBeShownAlerts.entered, toBeShownAlerts.exited + [note])
+            pendingAlerts = (pendingAlerts.entered, pendingAlerts.exited + [note])
         }
         alertTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self](_) in
             self?.displayAlert()
@@ -261,15 +263,15 @@ extension MainViewController: CLLocationManagerDelegate {
     private func displayAlert() {
         var enteredString = ""
         var exitedString = ""
-        if !toBeShownAlerts.entered.isEmpty {
-            enteredString  = "entered " + toBeShownAlerts.entered.joined(separator: ", ")
+        if !pendingAlerts.entered.isEmpty {
+            enteredString  = "entered " + pendingAlerts.entered.joined(separator: ", ")
         }
-        if !toBeShownAlerts.exited.isEmpty {
-            exitedString  = "exited " + toBeShownAlerts.exited.joined(separator: ", ")
+        if !pendingAlerts.exited.isEmpty {
+            exitedString  = "exited " + pendingAlerts.exited.joined(separator: ", ")
         }
-        toBeShownAlerts = ([], [])
-        if shownMonitoringAlert != nil {
-            shownMonitoringAlert?.dismiss(animated: true, completion: {
+        pendingAlerts = ([], [])
+        if displayedAlert != nil {
+            displayedAlert?.dismiss(animated: true, completion: {
                 self.showMonitoringAlert(message: (enteredString.isEmpty ? exitedString : "\(enteredString)\n\n\(exitedString)"))
             })
         } else {
@@ -298,15 +300,3 @@ extension MainViewController: AddViewControllerDelegate {
         self.mapView.showAnnotations(pins, animated: true)
     }
 }
-
-class MyMKCircle: MKCircle {
-    private var state: MonitoredState!
-    private(set) var color = UIColor.blue
-    
-    convenience init(center: CLLocationCoordinate2D, radius: CLLocationDistance, state: MonitoredState) {
-        self.init(center: center, radius: radius)
-        self.state = state
-        self.color = state.color()
-    }
-}
-

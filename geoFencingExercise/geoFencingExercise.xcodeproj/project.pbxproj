@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DF0B5BAA241A402D005D5FD7 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B5BA9241A402D005D5FD7 /* DataHandler.swift */; };
+		DF50A9342449FC3300BD8E0E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF50A9332449FC3300BD8E0E /* Enums.swift */; };
+		DF50A9362449FCBA00BD8E0E /* CustomPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF50A9352449FCBA00BD8E0E /* CustomPin.swift */; };
+		DF50A9392449FCF600BD8E0E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF50A9382449FCF600BD8E0E /* String+Extension.swift */; };
+		DF50A93B2449FE3B00BD8E0E /* MyMKCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF50A93A2449FE3B00BD8E0E /* MyMKCircle.swift */; };
 		DF698A6B2418CBA2006BC93E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A6A2418CBA2006BC93E /* AppDelegate.swift */; };
 		DF698A6D2418CBA2006BC93E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A6C2418CBA2006BC93E /* SceneDelegate.swift */; };
 		DF698A6F2418CBA2006BC93E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A6E2418CBA2006BC93E /* AddViewController.swift */; };
@@ -16,13 +20,16 @@
 		DF698A772418CBA3006BC93E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF698A762418CBA3006BC93E /* Assets.xcassets */; };
 		DF698A7A2418CBA3006BC93E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF698A782418CBA3006BC93E /* LaunchScreen.storyboard */; };
 		DF698A9E2418CC0F006BC93E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A9D2418CC0F006BC93E /* MainViewController.swift */; };
-		DF698AA02418CC65006BC93E /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF698A9F2418CC65006BC93E /* RoundView.swift */; };
 		DF97B5D72440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97B5D52440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift */; };
 		DF97B5D82440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97B5D62440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DF0B5BA9241A402D005D5FD7 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		DF50A9332449FC3300BD8E0E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		DF50A9352449FCBA00BD8E0E /* CustomPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPin.swift; sourceTree = "<group>"; };
+		DF50A9382449FCF600BD8E0E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		DF50A93A2449FE3B00BD8E0E /* MyMKCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMKCircle.swift; sourceTree = "<group>"; };
 		DF698A672418CBA2006BC93E /* geoFencingExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geoFencingExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF698A6A2418CBA2006BC93E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF698A6C2418CBA2006BC93E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +40,6 @@
 		DF698A792418CBA3006BC93E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF698A7B2418CBA3006BC93E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF698A9D2418CC0F006BC93E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		DF698A9F2418CC65006BC93E /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		DF97B5D52440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonitoredRegions+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DF97B5D62440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonitoredRegions+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +55,86 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF31241F2449EDE0001C4CC6 /* StartUp */ = {
+			isa = PBXGroup;
+			children = (
+				DF698A6A2418CBA2006BC93E /* AppDelegate.swift */,
+				DF698A6C2418CBA2006BC93E /* SceneDelegate.swift */,
+			);
+			path = StartUp;
+			sourceTree = "<group>";
+		};
+		DF3124202449EDF3001C4CC6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF698A9D2418CC0F006BC93E /* MainViewController.swift */,
+				DF698A6E2418CBA2006BC93E /* AddViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DF3124212449EE00001C4CC6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DF698A762418CBA3006BC93E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DF3124222449EE10001C4CC6 /* Map Items */ = {
+			isa = PBXGroup;
+			children = (
+				DF50A9352449FCBA00BD8E0E /* CustomPin.swift */,
+				DF50A93A2449FE3B00BD8E0E /* MyMKCircle.swift */,
+			);
+			path = "Map Items";
+			sourceTree = "<group>";
+		};
+		DF3124232449EE28001C4CC6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DF698A702418CBA2006BC93E /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DF3124252449EE43001C4CC6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF698A782418CBA3006BC93E /* LaunchScreen.storyboard */,
+				DF698A7B2418CBA3006BC93E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF3124262449EE52001C4CC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF50A9322449FC2700BD8E0E /* Enums */,
+				DF698A732418CBA2006BC93E /* geoFencingExercise.xcdatamodeld */,
+				DF97B5D52440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift */,
+				DF97B5D62440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift */,
+				DF0B5BA9241A402D005D5FD7 /* DataHandler.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF50A9322449FC2700BD8E0E /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				DF50A9332449FC3300BD8E0E /* Enums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		DF50A9372449FCDB00BD8E0E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DF50A9382449FCF600BD8E0E /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DF698A5E2418CBA2006BC93E = {
 			isa = PBXGroup;
 			children = (
@@ -68,19 +154,14 @@
 		DF698A692418CBA2006BC93E /* geoFencingExercise */ = {
 			isa = PBXGroup;
 			children = (
-				DF698A6A2418CBA2006BC93E /* AppDelegate.swift */,
-				DF698A6C2418CBA2006BC93E /* SceneDelegate.swift */,
-				DF698A702418CBA2006BC93E /* Main.storyboard */,
-				DF698A762418CBA3006BC93E /* Assets.xcassets */,
-				DF698A782418CBA3006BC93E /* LaunchScreen.storyboard */,
-				DF698A7B2418CBA3006BC93E /* Info.plist */,
-				DF698A9D2418CC0F006BC93E /* MainViewController.swift */,
-				DF698A6E2418CBA2006BC93E /* AddViewController.swift */,
-				DF698A9F2418CC65006BC93E /* RoundView.swift */,
-				DF698A732418CBA2006BC93E /* geoFencingExercise.xcdatamodeld */,
-				DF97B5D52440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift */,
-				DF97B5D62440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift */,
-				DF0B5BA9241A402D005D5FD7 /* DataHandler.swift */,
+				DF31241F2449EDE0001C4CC6 /* StartUp */,
+				DF3124232449EE28001C4CC6 /* Storyboards */,
+				DF3124202449EDF3001C4CC6 /* Controllers */,
+				DF3124262449EE52001C4CC6 /* Model */,
+				DF3124222449EE10001C4CC6 /* Map Items */,
+				DF50A9372449FCDB00BD8E0E /* Extensions */,
+				DF3124212449EE00001C4CC6 /* Resources */,
+				DF3124252449EE43001C4CC6 /* Supporting Files */,
 			);
 			path = geoFencingExercise;
 			sourceTree = "<group>";
@@ -157,11 +238,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF698A752418CBA2006BC93E /* geoFencingExercise.xcdatamodeld in Sources */,
-				DF698AA02418CC65006BC93E /* RoundView.swift in Sources */,
+				DF50A9342449FC3300BD8E0E /* Enums.swift in Sources */,
 				DF698A6F2418CBA2006BC93E /* AddViewController.swift in Sources */,
+				DF50A9392449FCF600BD8E0E /* String+Extension.swift in Sources */,
+				DF50A9362449FCBA00BD8E0E /* CustomPin.swift in Sources */,
 				DF97B5D72440C0BF00678536 /* MonitoredRegions+CoreDataClass.swift in Sources */,
 				DF0B5BAA241A402D005D5FD7 /* DataHandler.swift in Sources */,
 				DF698A6B2418CBA2006BC93E /* AppDelegate.swift in Sources */,
+				DF50A93B2449FE3B00BD8E0E /* MyMKCircle.swift in Sources */,
 				DF97B5D82440C0BF00678536 /* MonitoredRegions+CoreDataProperties.swift in Sources */,
 				DF698A6D2418CBA2006BC93E /* SceneDelegate.swift in Sources */,
 				DF698A9E2418CC0F006BC93E /* MainViewController.swift in Sources */,

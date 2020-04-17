@@ -34,10 +34,25 @@ class AddViewController: UIViewController {
             txtRadius.delegate = self
         }
     }
-    @IBOutlet private weak var vwEntry: UIView!
-    @IBOutlet private weak var vwCheckedEntry: RoundView!
-    @IBOutlet private weak var vwExit: UIView!
-    @IBOutlet private weak var vwCheckedExit: RoundView!
+    @IBOutlet private weak var entryButton: UIButton! {
+        didSet {
+            entryButton.setImage(UIImage(systemName: "circle"), for: UIControl.State.normal)
+            entryButton.setImage(UIImage(systemName : "circle.fill"), for: UIControl.State.selected)
+            entryButton.isSelected = true
+            entryButton.tag = 1
+        }
+    }
+    @IBOutlet private weak var exitButton: UIButton! {
+        didSet {
+            exitButton.setImage(UIImage(systemName: "circle"), for: UIControl.State.normal)
+            exitButton.setImage(UIImage(systemName : "circle.fill"), for: UIControl.State.selected)
+            exitButton.isSelected = false
+            exitButton.tag = 2
+        }
+    }
+    @IBOutlet private weak var topNavigationView: UIView!
+    @IBOutlet private weak var bottomDetailView: UIView!
+    @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     private var monitoredState = MonitoredState.entry {
         didSet {
             updatePinColorForState()
@@ -53,10 +68,10 @@ class AddViewController: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         addToolbar()
         setUpLocationManager()
         setTapGesture()
-        setEntryExitViewTaps()
     }
     
     private func setUpLocationManager() {
@@ -67,13 +82,14 @@ class AddViewController: UIViewController {
     private func setTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         mapView.addGestureRecognizer(tapGesture)
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardOnTap))
+        bottomDetailView.addGestureRecognizer(tapGesture2)
+        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardOnTap))
+        topNavigationView.addGestureRecognizer(tapGesture3)
     }
     
-    private func setEntryExitViewTaps() {
-        let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(entryOrExitViewSelected(_:)))
-        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(entryOrExitViewSelected(_:)))
-        vwEntry.addGestureRecognizer(tapGesture1)
-        vwExit.addGestureRecognizer(tapGesture2)
+    @objc private func dismissKeyboardOnTap() {
+        self.view.endEditing(true)
     }
     
     private func addToolbar() {
@@ -92,15 +108,17 @@ class AddViewController: UIViewController {
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+            UIView.animate(withDuration: 0.5) {
+                self.bottomConstraint.constant = keyboardSize.height
+                self.view.layoutIfNeeded()
             }
         }
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {
-        if view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        UIView.animate(withDuration: 0.5) {
+            self.bottomConstraint.constant = 0
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -174,36 +192,34 @@ class AddViewController: UIViewController {
         return nil
     }
     
-    @objc private func entryOrExitViewSelected(_ sender: UITapGestureRecognizer) {
-        if let tag = sender.view?.tag {
-            switch tag {
-            case 1:
-                entryViewTapped()
-            case 2:
-                exitViewTapped()
-            default:
-                break
-            }
-            setEntryOrExitForPin()
+    @IBAction private func entryOrExitViewSelected(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            entryViewTapped()
+        case 2:
+            exitViewTapped()
+        default:
+            break
         }
+        setEntryOrExitForPin()
     }
     
     private func entryViewTapped() {
         if self.monitoredState == .both {
-            vwCheckedEntry.backgroundColor = UIColor.lightGray
+            entryButton.isSelected = false
             self.monitoredState = .exit
         } else if self.monitoredState == .exit {
-            vwCheckedEntry.backgroundColor = UIColor.systemGreen
+            entryButton.isSelected = true
             self.monitoredState = .both
         }
     }
     
     private func exitViewTapped() {
         if self.monitoredState == .both {
-            vwCheckedExit.backgroundColor = UIColor.lightGray
+            exitButton.isSelected = false
             self.monitoredState = .entry
         } else if self.monitoredState == .entry {
-            vwCheckedExit.backgroundColor = UIColor.systemGreen
+            exitButton.isSelected = true
             self.monitoredState = .both
         }
     }
@@ -256,16 +272,9 @@ extension AddViewController: UITextFieldDelegate, UITextViewDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let radiusString = textField.text {
             pin?.setRadius(Double(radiusString) ?? 0)
-            //MARK: update mapview circular region
             updateHighlightedRegion()
         }
     }
-}
-
-extension AddViewController: CLLocationManagerDelegate {
-    
-    
-    
 }
 
 extension AddViewController: MKMapViewDelegate {
@@ -290,88 +299,6 @@ extension AddViewController: MKMapViewDelegate {
     }
 }
 
-class CustomPin: NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
-    private(set) var note: String = ""
-    private(set) var monitoredState = MonitoredState.entry {
-        didSet {
-            setImage()
-        }
-    }
-    private(set) var radius: Double = 0
-    private(set) var image: UIImage?
+extension AddViewController: CLLocationManagerDelegate {
     
-    private init(coordinate: CLLocationCoordinate2D, monitoredState: MonitoredState, radius: Double, note: String) {
-        self.coordinate = coordinate
-        self.monitoredState = monitoredState
-        self.radius = radius
-        self.note = note
-    }
-    
-    static func createPin(coordinate: CLLocationCoordinate2D, monitoredState: MonitoredState, radius: Double, note: String) -> CustomPin {
-        let pin = CustomPin(coordinate: coordinate, monitoredState: monitoredState, radius: radius, note: note)
-        pin.setImage()
-        return pin
-    }
-    
-    func setImage() {
-        image = monitoredState.pinImage()
-    }
-    
-    func setMonitoredState(_ state: MonitoredState) {
-        self.monitoredState = state
-    }
-    
-    func setNote(_ note: String) {
-        self.note = note
-    }
-    
-    func setRadius(_ radius: Double) {
-        self.radius = radius
-    }
-    
-}
-
-enum MonitoredState: Int64 {
-    case entry, exit, both
-    
-    static func fromRawValue(_ val: Int64?) -> MonitoredState {
-        if let val = val, let state = MonitoredState(rawValue: val) {
-            return state
-        } else {
-            return .both
-        }
-    }
-    
-    func color() -> UIColor {
-        switch self {
-        case .entry:
-            return .blue
-        case .exit:
-            return .red
-        case .both:
-            return .black
-        }
-    }
-    
-    func pinImage() -> UIImage? {
-        switch self {
-        case .entry:
-            return UIImage(named: "bluePin")
-        case .exit:
-            return UIImage(named: "redPin")
-        case .both:
-            return UIImage(named: "blackPin")
-        }
-    }
-}
-
-extension String {
-    func checkForEmpty() -> Bool {
-        if self.trimmingCharacters(in: CharacterSet(charactersIn: " ")).isEmpty {
-            return true
-        } else {
-            return false
-        }
-    }
 }
