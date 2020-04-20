@@ -56,6 +56,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         checkLocationServices()
+        setUpLocationManager()
         setUpBothMonitorAndOverlay()
     }
     
@@ -80,6 +81,7 @@ class MainViewController: UIViewController {
     private func setUpLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
     }
     
     private func checkLocationServices() {
@@ -99,10 +101,8 @@ class MainViewController: UIViewController {
         case .denied:
             showAlert(message: Constants.permissionDenied)
         case .authorizedWhenInUse:
-            setUpLocationManager()
             mapView.showsUserLocation = true
             mapView.userLocation.title = nil
-            locationManager.startUpdatingLocation()
         default:
             break
         }
