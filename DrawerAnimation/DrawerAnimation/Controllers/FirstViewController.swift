@@ -44,7 +44,9 @@ class FirstViewController: UIViewController {
         visualEffectView.frame = self.view.frame
         self.view.addSubview(visualEffectView)
         
-        drawerViewController = (self.storyboard?.instantiateViewController(identifier: DrawerViewController.controllerId) as! DrawerViewController)
+        guard let drawerViewController = self.storyboard?.instantiateViewController(identifier: DrawerViewController.controllerId) as? DrawerViewController else {
+            return
+        }
         self.addChild(drawerViewController)
         self.view.addSubview(drawerViewController.view)
         drawerViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - drawerHandleHeight - bottomInset, width: self.view.frame.width, height: drawerHeight + bottomInset)
