@@ -17,9 +17,9 @@ class FirstViewController: UIViewController {
     private var drawerViewController: DrawerViewController!
     private var visualEffectView: UIVisualEffectView!
     
-    private var drawerHeight: CGFloat!
+    private var drawerHeight: CGFloat = 0
     private var drawerHandleHeight: CGFloat = 50
-    private var bottomInset: CGFloat!
+    private var bottomInset: CGFloat = 0
     private var drawerVisible: Bool = false
     private var nextState: DrawerState {
         return drawerVisible ? .collapsed : .expanded
@@ -52,6 +52,7 @@ class FirstViewController: UIViewController {
         drawerViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - drawerHandleHeight - bottomInset, width: self.view.frame.width, height: drawerHeight + bottomInset)
         
         drawerViewController.view.clipsToBounds = true
+        self.drawerViewController = drawerViewController
         
         addGestures()
     }
@@ -62,8 +63,8 @@ class FirstViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDrawerTap(recognizer:)))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrawerPan(recognizer:)))
         
-        drawerViewController.handleView.addGestureRecognizer(tapGesture)
-        drawerViewController.handleView.addGestureRecognizer(panGesture)
+        drawerViewController?.handleView.addGestureRecognizer(tapGesture)
+        drawerViewController?.handleView.addGestureRecognizer(panGesture)
     }
     
     @objc private func handleDrawerTap(recognizer: UITapGestureRecognizer) {
@@ -80,7 +81,7 @@ class FirstViewController: UIViewController {
         case .began:
             startInteractiveAnimation(state: nextState, duration: animationDuration)
         case .changed:
-            let translation = recognizer.translation(in: self.drawerViewController.handleView)
+            let translation = recognizer.translation(in: self.drawerViewController?.handleView)
             var fractionComplete = translation.y / drawerHeight
             setReverseFlag(panGesture: recognizer)
             fractionComplete = drawerVisible ? fractionComplete : -fractionComplete
@@ -121,9 +122,9 @@ class FirstViewController: UIViewController {
         let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
             switch state {
             case .expanded:
-                self.drawerViewController.view.frame.origin.y = self.view.frame.height - self.drawerHeight
+                self.drawerViewController?.view.frame.origin.y = self.view.frame.height - self.drawerHeight
             case .collapsed:
-                self.drawerViewController.view.frame.origin.y = self.view.frame.height - self.drawerHandleHeight - self.bottomInset
+                self.drawerViewController?.view.frame.origin.y = self.view.frame.height - self.drawerHandleHeight - self.bottomInset
             }
         }
         frameAnimator.addCompletion { (_) in
@@ -139,9 +140,9 @@ class FirstViewController: UIViewController {
         let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
             switch state {
             case .collapsed:
-                self.drawerViewController.view.layer.cornerRadius = 0
+                self.drawerViewController?.view.layer.cornerRadius = 0
             case .expanded:
-                self.drawerViewController.view.layer.cornerRadius = 10
+                self.drawerViewController?.view.layer.cornerRadius = 10
             }
         }
         cornerRadiusAnimator.startAnimation()
@@ -152,7 +153,7 @@ class FirstViewController: UIViewController {
         let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
             switch state {
             case .collapsed:
-                self.visualEffectView.effect = nil
+                self.visualEffectView?.effect = nil
             case .expanded:
                 self.visualEffectView.effect = UIBlurEffect(style: .dark)
             }
@@ -165,15 +166,15 @@ class FirstViewController: UIViewController {
         let fontChangeAnimation = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
             switch state {
             case .collapsed:
-                self.drawerViewController.lblBlue.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-                self.drawerViewController.lblBlack.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-                self.drawerViewController.lblBlue.alpha = 1
-                self.drawerViewController.lblBlack.alpha = 0
+                self.drawerViewController?.lblBlue.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+                self.drawerViewController?.lblBlack.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+                self.drawerViewController?.lblBlue.alpha = 1
+                self.drawerViewController?.lblBlack.alpha = 0
             case .expanded:
-                self.drawerViewController.lblBlue.transform = CGAffineTransform.identity
-                self.drawerViewController.lblBlack.transform = CGAffineTransform.identity
-                self.drawerViewController.lblBlue.alpha = 0
-                self.drawerViewController.lblBlack.alpha = 1
+                self.drawerViewController?.lblBlue.transform = CGAffineTransform.identity
+                self.drawerViewController?.lblBlack.transform = CGAffineTransform.identity
+                self.drawerViewController?.lblBlue.alpha = 0
+                self.drawerViewController?.lblBlack.alpha = 1
             }
         }
         fontChangeAnimation.startAnimation()
